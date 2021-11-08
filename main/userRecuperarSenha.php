@@ -8,7 +8,7 @@ include_once './function_mail_utf8.php';
 
 $mensagemErroCodigo = "";
 $mensagemErroSenha = "";
-
+$mensagemEmail = "";
 $geraFormulario = "Sim";
 
 

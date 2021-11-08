@@ -9,6 +9,8 @@ include_once  './conexaobasedados.php';
 
 $mensagemErroCodigo = "";
 $mensagemErroSenha = "";
+$codigo = "";
+$senha = "";
 
 
 if ( isset($_POST['botao-cancelar-entrada']) ) {
@@ -85,10 +87,9 @@ if ( isset($_POST['botao-iniciar-sessao']) ) {
     
 }
 
-
-
- 
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>

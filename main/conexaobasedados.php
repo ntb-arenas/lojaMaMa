@@ -2,7 +2,7 @@
 
 // para fazer a conexão é preciso: hostname, utilizador da bd, senha, nome da bd
 
-$_conn=mysqli_connect("localhost","root","root","basedados");
+$_conn=mysqli_connect("localhost","root","","basedados");
 $_conn->set_charset('utf8');
 
 // Verificar se a conexão correu bem
