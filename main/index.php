@@ -34,19 +34,15 @@ session_start();
                         <?php if (isset($_SESSION["NIVEL_UTILIZADOR"]) == 2) { ?>
                                 <A href="userGerirUtilizadores.php">Gerir utilizadores</A><br>
                         <?php } ?>
-
-
-                        <br><br><br>
-                        <b>Zona de conteúdos públicos.</b>
-
-
-                        <?php if (isset($_SESSION["UTILIZADOR"])) { ?>
-                                <br><br><br>
-                                <b>Zona de conteúdos privados!</b>
-                        <?php }  ?>
                 </div>
         </div>
+        <b>Zona de conteúdos públicos.</b>
 
+
+        <?php if (isset($_SESSION["UTILIZADOR"])) { ?>
+                <br><br><br>
+                <b>Zona de conteúdos privados!</b>
+        <?php }  ?>
 </body>
 
 </html>
