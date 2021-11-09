@@ -12,6 +12,9 @@ html, body {
     height: 95vh;
     font-size: 1.5em;
 }
+.container .div-contents {
+    border-style: solid;
+}
 
 .container .div-contents a{
     text-decoration: none;
@@ -24,8 +27,4 @@ html, body {
     word-spacing: 1px;
     color: #000000;
     font-weight: normal;
-    text-decoration: none;
-    font-style: normal;
-    font-variant: normal;
-    text-transform: none;
 }
