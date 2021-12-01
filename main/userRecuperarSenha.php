@@ -54,7 +54,7 @@ if (isset($_POST['botao-recuperar-senha'])) {
                     // Update efetuado com sucesso, preparar e enviar mensagem /////////////////////////////////////////
                     $id = base64_encode($codigo);
 
-                    $urlPagina = "http://localhost:8888/";
+                    $urlPagina = "https://creativelens.000webhostapp.com/";
 
 
                     $mensagem = "Caro(a) $nome" . "," . "\r\n" .  "\r\n" .
@@ -64,7 +64,11 @@ if (isset($_POST['botao-recuperar-senha'])) {
 
                         "Para recuperar agora a sua senha basta carregar na seguinte ligação:" . "\r\n" . "\r\n" .
 
+<<<<<<< HEAD
                         $urlPagina . "userNovaSenha.php?id=$id&code=$code" . "\r\n" . "\r\n" .
+=======
+                        $urlPagina . "sistemaX/userNovaSenha.php?id=$id&code=$code" . "\r\n" . "\r\n" .
+>>>>>>> 453e6db28d4fa390e587a13ff95f513136545cc2
 
                         "Esta mensagem foi-lhe enviada automaticamente.";
 

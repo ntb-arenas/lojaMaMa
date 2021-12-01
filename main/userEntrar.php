@@ -99,12 +99,20 @@ if (isset($_POST['botao-iniciar-sessao'])) {
         <p class="sign" align="center">Sign in</p>
         <form class="form1" action="#" method="POST">
             <input class="un " type="text" align="center" name="formCodigo" placeholder="Código de Utilizador" value="<?php echo $codigo; ?>" required>
+<<<<<<< HEAD
 
 
             <input class="pass" type="password" align="center" name="formSenha" placeholder="Senha" value="<?php echo $codigo; ?>" required>
             <div class="div-submit">
             <button name="botao-iniciar-sessao" type="submit" class="submit"> Iniciar Sessão</button>
             
+=======
+            <?php echo $mensagemErroCodigo; ?>
+            <input class="pass" type="password" align="center" name="formSenha" placeholder="Senha" value="<?php echo $codigo; ?>" required>
+            <?php echo $mensagemErroSenha; ?>
+            <div class="div-submit">
+            <button name="botao-iniciar-sessao" type="submit" class="submit"> Iniciar Sessão</button>
+>>>>>>> 453e6db28d4fa390e587a13ff95f513136545cc2
         </form>
 
         <form action="#" method="POST">.

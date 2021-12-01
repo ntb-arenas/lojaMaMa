@@ -1,0 +1,353 @@
+html{
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+}
+main{
+    height: 100%;
+    width: 100%;
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins',sans-serif;
+}
+
+header {
+    display: flex;
+    height: 80px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+#likeBtn, #userBtn, #cartBtn {
+    height: 25px;
+    width: 25px;
+}
+
+header ol {
+    display: flex;
+    list-style: none;
+    margin: auto 0;
+}
+header ol li {
+    margin: 0 2px;
+}
+header ol li a {
+    padding: 5px 20px;
+}
+header .search-bar {
+    display: flex;
+    margin: auto 0;
+    height: 35px;
+    line-height: 35px;
+}
+header .search-bar input {
+    border: none;
+    outline: none;
+    height: 100%;
+    padding: 0 10px;
+    font-size: 1.5rem;
+    width: 60rem;
+    box-shadow: 11px 3px 7px gray;
+}
+header .search-bar input::placeholder{
+    color: rgb(179, 179, 179);
+}
+header .search-bar span{
+    width: 100px;
+    background-color: #f35518;
+    box-shadow: 6px 4px 7px gray;
+    cursor: pointer;
+    transition: 0.6s;
+}
+header .search-bar span:hover{
+    background-color: black;
+}
+
+#searchBtn {
+    display: flex;
+    margin: 7px auto;
+    height: 20px;
+    width: 20px;
+}
+
+/*Nav bar*/
+.navBar {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    margin: 20px auto 20px auto;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: rgb(163, 163, 163);
+    padding-top: 20px;
+}
+
+.navBar span a{
+    text-decoration: none;
+    color: rgb(63, 63, 63);
+    font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px 15px 5px;
+    transition: 0.1s;
+
+}
+.navBar span:hover a{
+    border-bottom-style: solid;
+    border-bottom-width: 1.5px;
+}
+
+/*main cover*/
+.coverDiv{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url("../gallery/3582.webp");
+    background-size: cover;
+    width: 100%;
+    height: 400px;
+}
+.titleDiv{
+    color: white;
+    line-height: 50px;
+    font-size: 2.5rem;
+    margin-left: 150px;
+}
+.divImage {
+    height: 100%;
+    margin-right: 150px;
+}
+#coverImg{
+    height: 100%;
+}
+.divIcon{
+    display: flex;
+    justify-content: space-around;
+    margin-right: 20px;
+    width: 150px;
+}
+
+/*Title message*/
+.titleMsg{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 2.2rem;
+    color: rgb(88, 88, 88);
+    padding-bottom: 20px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(163, 163, 163);
+}
+
+/**FEATURES STARTS HERE**/
+.features .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    /* gap:1.5rem; */
+}
+.features .box-container .box{
+    padding:3rem 2rem;
+    background: #fff; 
+    text-align: center;
+}
+
+.features .box-container .box:hover{
+    outline: var(--outline-hover);
+    outline-offset: 0rem;
+}
+
+.features .box-container .box img{
+    margin: 1rem 0;
+    height: 30rem;
+}
+
+.features .box-container .box h3{
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500; 
+    line-height: 1.8;
+}
+
+.features .box-container .box a{
+    font-size: 1.5rem;
+    font-family: "Times New Roman", Times, serif;
+    text-decoration: none;
+    line-height: 1.8;
+    color: white;
+}
+
+.features2 .box-container2{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    /* gap:1.5rem; */
+}
+.features2 .box-container2 .box{
+    padding:3rem 2rem;
+    background: #fff; 
+    text-align: center;
+}
+
+.features2 .box-container2 .box:hover{
+    outline: var(--outline-hover);
+    outline-offset: 0rem;
+}
+
+.features2 .box-container2 .box img{
+    margin:1rem 0;
+    height: 30rem;
+}
+
+.features2 .box-container2 .box h3{
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500; 
+    line-height: 1.8;
+}
+
+.features2 .box-container2 .box a{
+    font-size: 1.5rem;
+    font-family: "Times New Roman", Times, serif;
+    text-decoration: none;
+    line-height: 1.8;
+    color: white;
+}
+
+.b6 .example_f {
+    border-radius: 4px;
+    background: linear-gradient(to right, #f35518, #ffc506) !important;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    padding: 10px;
+    width: 100px;
+    transition: all 0.4s;
+    cursor: pointer;
+    margin: 5px;
+  }
+ .b6 .example_f span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.4s;
+  }
+ .b6 .example_f span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+ .b6 .example_f:hover span {
+    padding-right: 25px;
+  }
+ .b6 .example_f:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+/**FEATURES ENDS HERE**/
+
+
+/**FOOTER STARTS HERE**/
+.coverFooter{
+    display: flex;
+    align-items: center;
+    height: 200px;
+    width: 100%;
+    margin-top: 50px;
+    background-color: rgb(224, 224, 224);
+}
+.coverFooter .logoContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 20%;
+    height: 80%;
+    margin-left: 50px;
+}
+.coverFooter .logoContainer .logo img{
+    height: 6rem;
+}
+.coverFooter .logoContainer .apoio{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 10px;
+    height: 8rem;
+    width: 15rem;
+    padding-left: 10px;
+}
+.coverFooter .logoContainer .apoio h5{
+    font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    color: #f35518;
+}
+.coverFooter .logoContainer .apoio h4{
+    font-size: 2.5rem;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(71, 71, 71);
+    text-decoration: none;
+}
+.coverFooter .logoContainer .apoio p{
+    font-size: 1.1rem;
+}
+
+
+.componentContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80%;
+    width: 80%;
+    margin-left: 7rem;
+}
+.component{
+    width: 30%;
+}
+.componentContainer .component .componentTitle{
+    font-size: 2rem;
+    color: rgb(44, 44, 44);
+    font-family: 'Roboto', sans-serif;
+}
+.componentContainer .component .componentContent a{
+    font-size: 1.5rem;
+    color: rgb(117, 117, 117);
+    line-height: 2rem;
+    text-decoration: none;
+}
+.componentContainer .component .line{
+    width: 70%;
+    height: 1px;
+    background-color: rgb(150, 150, 150);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/**FOOTER ENDS HERE**/
+
+
+@media (max-width: 1290px){
+    .titleDiv{
+        font-size: 2.3rem;
+    }
+}
+@media only screen and (max-width: 992px) {
+    .navBar span a {
+        font-size: 1.1rem;
+    }
+    .titleMsg{
+        font-size: 1.9rem;
+    }
+}
