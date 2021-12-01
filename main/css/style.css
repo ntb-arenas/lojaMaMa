@@ -1,43 +1,4 @@
 .div-article {
-<<<<<<< HEAD
-    display: flex;
-    justify-content: center;
-}
-
-.container1 {
-    position: absolute;
-    width: 97%;
-}
-
-.image {
-    width: 40%;
-    height: auto;
-    margin-right: 10px;
-}
-
-.artigo {
-    color: black;
-}
-
-.container1 h1 {
-    color: rgb(54, 54, 54);
-    font-size: 3rem;
-    text-align: left;
-}
-
-.container1 p {
-    font-size: 1.2rem;
-    margin: 0px;
-    text-align: left;
-}
-
-.article {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-=======
     display: flex;
     justify-content: center;
 }
@@ -98,4 +59,3 @@
     display: flex;
     justify-content: space-around;
 }
->>>>>>> 453e6db28d4fa390e587a13ff95f513136545cc2
