@@ -3,9 +3,9 @@ error_reporting(E_ERROR | E_PARSE);
 session_start();
 
 // to see all errors:
-// ini_set('display_errors', '1');
-// ini_set('display_startup_errors', '1');
-// error_reporting(E_ALL);
+ ini_set('display_errors', '1');
+ ini_set('display_startup_errors', '1');
+ error_reporting(E_ALL);
 
 include_once  './connect_DB.php';
 
@@ -23,8 +23,8 @@ if ( isset($_POST['button-login']) ) {
     $username = strtolower(trim(mysqli_real_escape_string($_conn,$_POST["formUsername"])));
     $username = trim($username);
     
-    $senha = trim(mysqli_real_escape_string($_conn,$_POST["formPassword"]));
-    $senha = trim($senha);
+    $password = trim(mysqli_real_escape_string($_conn,$_POST["formPassword"]));
+    $password = trim($password);
     
     $username = strip_tags($username);
     
@@ -37,18 +37,18 @@ if ( isset($_POST['button-login']) ) {
     if ($usersResult->num_rows > 0) {
         while ($rowUsers = $usersResult->fetch_assoc()) {
             
-            if ($rowUsers['USER_STATUS']==2) { // BLocked user
+            if ($rowUsers['USER_LEVEL']==2) { // BLocked user
                 
-                $errorMessagePassword="It's not possible to login. Contact our admins for more informations";
+                $errorMessagePassword="Não é possível entrar no sistema. Contacte os nossos serviços para obter ajuda.";
                 
-            } else  if ($rowUsers['USER_STATUS']==0 ) { // User account created but not verified
+            } else  if ($rowUsers['USER_LEVEL']==0 ) { // User account created but not verified
                 
-                $errorMessagePassword=  $rowUsers['NOME'] . ", ainda não ativou a sua conta. A mensagem com o código inicial de ativação de conta foi enviada para a sua caixa de correio. Caso não a encontre na sua caixa de entrada, verifique também o seu correio não solicitado ou envie-nos um email para ativarmos a sua conta. Obrigado.";
+                $errorMessagePassword=  $rowUsers['fNAME'] . ", ainda não ativou a sua conta. A mensagem com o código inicial de ativação de conta foi enviada para a sua caixa de correio. Caso não a encontre na sua caixa de entrada, verifique também o seu correio não solicitado ou envie-nos um email para ativarmos a sua conta. Obrigado.";
                 
-            } else  if ( password_verify($senha, $rowUsers["PASSWORD"])) {
+            } else  if ( password_verify($password, $rowUsers["PASSWORD"])) {
                 
-                $_SESSION["UTILIZADOR"]=$rowUsers["CODIGO"];
-                $_SESSION["NIVEL_UTILIZADOR"]=$rowUsers["NIVEL"];
+                $_SESSION["UTILIZADOR"]=$rowUsers["USERNAME"];
+                $_SESSION["NIVEL_UTILIZADOR"]=$rowUsers["USER_LEVEL"];
                 $_SESSION["NOME_UTILIZADOR"]= $rowUsers["NOME"];
                 $_SESSION["EMAIL_UTILIZADOR"]= $rowUsers["EMAIL"];
                 
@@ -56,7 +56,7 @@ if ( isset($_POST['button-login']) ) {
                 header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
                 header("Location: index.php");
             } else {
-                $errorMessagePassword = "Senha incorreta!";
+                $errorMessagePassword = "password incorreta!";
             }
         }
     } else {
@@ -88,7 +88,7 @@ if ( isset($_POST['button-login']) ) {
       <p><input class="w3-input w3-border" type="text" style="width:300px" placeholder="Código de utilizador"  name="formUsername" value="<?php echo $username;?>"></p>
       <p class="w3-large w3-text-red"><?php echo $errorMessageUsername;?></p>
  
-      <p><input class="w3-input w3-border" type="password" placeholder="Senha"  name="formPassword" value="<?php echo $senha;?>"></p>
+      <p><input class="w3-input w3-border" type="password" placeholder="password"  name="formPassword" value="<?php echo $password;?>"></p>
       <p class="w3-large w3-text-red"><?php echo $errorMessagePassword;?></p>
  
       <p>
@@ -99,7 +99,7 @@ if ( isset($_POST['button-login']) ) {
   </div>
   
    <br>
-   <p>Esqueceu-se da senha? <a href="userRecuperarSenha.php" class="w3-hover-text-green"> Recuperar senha.</a></p>
+   <p>Esqueceu-se da password? <a href="userRecuperarpassword.php" class="w3-hover-text-green"> Recuperar password.</a></p>
   
 </div>
 
