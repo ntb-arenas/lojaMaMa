@@ -2,24 +2,25 @@
 
 session_start();
 
-include_once  './conexaobasedados.php'; 
+include_once  './connect_DB.php'; 
 include_once './function_mail_utf8.php'; 
 
 
 // iniciar e limpar possíveis mensagens de erro
-$msgTemporaria = "";
+$temporaryMsg = "";
 
-$mensagemErroCodigo = "";
-$mensagemErroEmail = "";
-$mensagemErroSenha = "";
-$mensagemErroSenhaRecuperacao = "";
-$mensagemErroNome = "";
+$errorMessageUsername = "";
+$errorMessageUsername = "";
+$errorMessagePassword = "";
+$errorMessagePasswordRecover = "";
+$errorMessagefName = "";
+$errorMessagelName = "";
 
 // inciar e limpar variáveis
-$codigo="";
+$username="";
 $email="";
-$senha="";
-$senhaConfirmacao="";
+$password="";
+$passwordConfirmation="";
 $nome="";
 $aceito="";
 $aceitoMarketing = 0;
@@ -41,14 +42,14 @@ if ( isset($_POST['submit-criar-conta']) ) {
         $podeCriarRegisto = "Sim";
          
         // obter parametros (determinadas validações poderiam ser feitas no lado cliente)
-        $codigo = mysqli_real_escape_string($_conn, $_POST['formCodigo']);
-        $codigo = strtolower(trim($codigo));
+        $username = mysqli_real_escape_string($_conn, $_POST['formUser']);
+        $username = strtolower(trim($username));
         $email=mysqli_real_escape_string($_conn, $_POST['formEmail']);
         $email=strtolower(trim($email));
-        $senha=mysqli_real_escape_string($_conn, $_POST['formSenha1']);
-        $senha = trim($senha);
-        $senhaConfirmacao=mysqli_real_escape_string($_conn, $_POST['formSenha2']);
-        $senhaConfirmacao = trim($senhaConfirmacao);
+        $password=mysqli_real_escape_string($_conn, $_POST['formPassword1']);
+        $password = trim($password);
+        $passwordConfirmation=mysqli_real_escape_string($_conn, $_POST['formPassword2']);
+        $passwordConfirmation = trim($passwordConfirmation);
         $nome= mysqli_real_escape_string($_conn, $_POST['formNome']);
         $nome = trim($nome);
         $aceito = $_POST['formAceito'];
@@ -60,42 +61,46 @@ if ( isset($_POST['submit-criar-conta']) ) {
         }
         
         // retirar possíveis tags html do código
-        $codigo = strip_tags($codigo);
+        $username = strip_tags($username);
         $email = strip_tags($email);
         $nome = strip_tags($nome);
         
         // não permitir que um user tenha espaços no código...
-        $codigo = str_replace(' ', '', $codigo);
+        $username = str_replace(' ', '', $username);
         
         // validar parametros recebidos
 
-        if (strlen(trim($codigo))<4) {
-            $mensagemErroCodigo="O código é demasiado curto!";
+        if (strlen(trim($username))<4) {
+            $errorMessageUsername="O código é demasiado curto!";
             $podeCriarRegisto = "Nao"; 
         }
 
         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $mensagemErroEmail="O e-mail não é válido!";
+            $errorMessageUsername="O e-mail não é válido!";
             $podeCriarRegisto = "Nao"; 
         } 
 
 
-        if (strlen(trim($senha))<8) { 
-            $mensagemErroSenha="A senha tem que ter pelo menos 8 caracteres!";
+        if (strlen(trim($password))<8) { 
+            $errorMessagePassword="A password tem que ter pelo menos 8 caracteres!";
             $podeCriarRegisto = "Nao"; 
         }
         
-        if ($senha!=$senhaConfirmacao) { 
-            $mensagemErroSenhaRecuperacao="A senha de confirmação deve ser igual à primeira senha!";
+        if ($password!=$passwordConfirmation) { 
+            $errorMessagePasswordRecover="A password de confirmação deve ser igual à primeira password!";
             $podeCriarRegisto = "Nao"; 
         }
 
          
-        if (strlen(trim($nome))<2) {
-            $mensagemErroNome="O nome é demasiado curto!";
+        if (strlen(trim($fName))<2) {
+            $errorMessagefName="O nome é demasiado curto!";
             $podeCriarRegisto = "Nao"; 
-              
+        }
+
+        if (strlen(trim($lName))<2) {
+            $errorMessagelName="O nome é demasiado curto!";
+            $podeCriarRegisto = "Nao"; 
         }
         
         // a check box não precisa de ser validada..
@@ -105,15 +110,15 @@ if ( isset($_POST['submit-criar-conta']) ) {
         if ( $podeCriarRegisto == "Sim") { 
             
             // validações corretas: validar se existe utilizador
-            $stmt = $_conn->prepare('SELECT * FROM USERS WHERE CODIGO = ?');
-            $stmt->bind_param('s', $codigo); 
+            $stmt = $_conn->prepare('SELECT * FROM USERS WHERE username = ?');
+            $stmt->bind_param('s', $username); 
             $stmt->execute();
 
             $resultadoUsers = $stmt->get_result();
     
             if ($resultadoUsers->num_rows > 0) {
                 
-                $mensagemErroCodigo = "Já existe um utilizador registado com este código.";
+                $errorMessageUsername = "Já existe um utilizador registado com este código.";
                 
                 $stmt->free_result();
                 $stmt->close();
@@ -125,7 +130,7 @@ if ( isset($_POST['submit-criar-conta']) ) {
                 ///////////////////////////////////
                 // INSERE UTILIZADOR NA BASE DE DADOS
                 //////////
-                $sql= "INSERT INTO USERS (CODIGO, EMAIL, PASSWORD, NOME, NIVEL,USER_STATUS, MENSAGENS_MARKETING,DATA_HORA) 
+                $sql= "INSERT INTO USERS (username, EMAIL, PASSWORD, NOME, NIVEL,USER_STATUS, MENSAGENS_MARKETING,DATA_HORA) 
                                     VALUES (?,?,?,?,?,?,?,?)";
                 
                 if ( $stmt = mysqli_prepare($_conn, $sql) ) {
@@ -133,12 +138,12 @@ if ( isset($_POST['submit-criar-conta']) ) {
                     $nivel = 1;
                     $status = 0;
 
-                    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+                    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
                     
                     date_default_timezone_set('Europe/Lisbon');
                     $data_hora = date("Y-m-d H:i:s", time()); 
                                 
-                    mysqli_stmt_bind_param($stmt, "ssssiiis", $codigo, $email,$senhaHash,$nome,$nivel,$status,$aceitoMarketing,$data_hora);
+                    mysqli_stmt_bind_param($stmt, "ssssiiis", $username, $email,$passwordHash,$nome,$nivel,$status,$aceitoMarketing,$data_hora);
 
 
                     mysqli_stmt_execute($stmt);
@@ -159,15 +164,15 @@ if ( isset($_POST['submit-criar-conta']) ) {
                 // registo efetuado, gerar token, preparar e enviar mail de ativação
                 $code = md5(uniqid(rand()));
 
-                $sql= "UPDATE  USERS SET TOKEN_CODE=? WHERE CODIGO=?";
+                $sql= "UPDATE  USERS SET TOKEN_CODE=? WHERE username=?";
                 
                 if ( $stmt = mysqli_prepare($_conn, $sql) ) {
                                    
-                    mysqli_stmt_bind_param($stmt, "ss", $code,$codigo);
+                    mysqli_stmt_bind_param($stmt, "ss", $code,$username);
                     mysqli_stmt_execute($stmt);
                 
                     // Update efetuado com sucesso, preparar e enviar mensagem 
-                    $id = base64_encode($codigo);
+                    $id = base64_encode($username);
                     
                     $urlPagina = "http://localhost:8888/";
                     
@@ -232,22 +237,22 @@ if ( isset($_POST['submit-criar-conta']) ) {
     ?>
      <p class="w3-center w3-large">Exclusivo para novos utilizadores.</p>
     <form action="#" method="POST">
-      <p><input class="w3-input w3-border" type="text" style="width:300px" placeholder="Código de utilizador"  name="formCodigo" value="<?php echo $codigo;?>"></p>
-      <p class="w3-large w3-text-red"><?php echo $mensagemErroCodigo;?></p>
+      <p><input class="w3-input w3-border" type="text" style="width:300px" placeholder="Código de utilizador"  name="formUser" value="<?php echo $username;?>"></p>
+      <p class="w3-large w3-text-red"><?php echo $errorMessageUsername;?></p>
  
       <p><input class="w3-input w3-border" type="email" placeholder="e-Mail"  name="formEmail" value="<?php echo $email;?>"></p>
-      <p class="w3-large w3-text-red"><?php echo $mensagemErroEmail;?></p>
+      <p class="w3-large w3-text-red"><?php echo $errorMessageUsername;?></p>
  
  
-      <p><input class="w3-input w3-border" type="password" placeholder="Senha"  name="formSenha1" value="<?php echo $senha;?>"></p>
-      <p class="w3-large w3-text-red"><?php echo $mensagemErroSenha;?></p>
+      <p><input class="w3-input w3-border" type="password" placeholder="password"  name="formPassword1" value="<?php echo $password;?>"></p>
+      <p class="w3-large w3-text-red"><?php echo $errorMessagePassword;?></p>
 
-      <p><input class="w3-input w3-border" type="password" placeholder="Confirmação de senha"  name="formSenha2" value="<?php echo $senhaConfirmacao;?>"></p>
-      <p class="w3-large w3-text-red"><?php echo $mensagemErroSenhaRecuperacao;?></p>
+      <p><input class="w3-input w3-border" type="password" placeholder="Confirmação de password"  name="formPassword2" value="<?php echo $passwordConfirmation;?>"></p>
+      <p class="w3-large w3-text-red"><?php echo $errorMessagePasswordRecover;?></p>
 
 
       <p><input class="w3-input w3-border" type="text" placeholder="Nome completo"  name="formNome" value="<?php echo $nome;?>"></p>
-      <p class="w3-large w3-text-red"><?php echo $mensagemErroNome;?></p>
+      <p class="w3-large w3-text-red"><?php echo $errorMessagefName;?></p>
    
       <p><input class="w3-large w3-text-black" type="checkbox" name="formAceito" value="aceito_marketing" <?php if ($aceitoMarketing == 1 ) { echo " checked"; } ?>>
       <label> Aceito que os meus dados sejam utilizados para efeitos de marketing</label></p>
