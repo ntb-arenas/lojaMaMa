@@ -234,23 +234,54 @@ if (isset($_POST['submit-create-account'])) {
                 if ($geraFormulario == "Sim") {
                 ?>
 
+                    <form action="#" method="POST">
+                        <input type="text" placeholder="Código de utilizador" name="formUser" value="<?php echo $username; ?>">
+                        <p><?php echo $errorMessageUsername; ?></p>
+
+                        <input type="email" placeholder="e-Mail" name="formEmail" value="<?php echo $email; ?>">
+                        <p><?php echo $errorMessageUsername; ?></p>
+
+
+                        <input type="password" placeholder="password" name="formPassword1" value="<?php echo $password; ?>">
+                        <p><?php echo $errorMessagePassword; ?></p>
+
+                        <input type="password" placeholder="Confirmação de password" name="formPassword2" value="<?php echo $passwordConfirmation; ?>">
+                        <p><?php echo $errorMessagePasswordRecover; ?></p>
+
+
+                        <input type="text" placeholder="Primeiro Nome" name="formfName" value="<?php echo $fName; ?>">
+                        <p><?php echo $errorMessagefName; ?></p>
+
+                        <input type="text" placeholder="Ultimo Nome" name="formlName" value="<?php echo $lName; ?>">
+                        <p><?php echo $errorMessagelName; ?></p>
+
+                        <input type="checkbox" name="formAceito" value="aceito_marketing" <?php if ($aceitoMarketing == 1) {
+                                                                                                echo " checked";
+                                                                                            } ?>>
+                            <label> Aceito que os meus dados sejam utilizados para efeitos de marketing</label>
+
+                            <p>
+                                <button name="submit-create-account" type="submit">CRIAR CONTA</button>
+                                <button name=button-cancel-account type="submit">CANCELAR</button>
+
+                            </p>
+                    </form>
+
                 <?php
                 } else {
                 ?>
 
 
-                    <p class="w3-center w3-large">Conta criada com sucesso</p>
-                    <p class="w3-center w3-large"><b><?php echo $temporaryMsg; ?></b></p>
+                    <p>Conta criada com sucesso</p>
+                    <p><b><?php echo $temporaryMsg; ?></b></p>
 
-                    <form action="./index.php" method="POST">
+                    <form action="../index.php" method="POST">
                         <!-- A LINHA SEGUINTE DEVE SER REMOVIDA EM INSTANCIAÇÃO COM SERVIÇO DE EMAIL ATIVO -->
-                        <textarea class="w3-input w3-border" rows="10" cols="50"><?php echo $mensagem; ?></textarea>
+                        <textarea rows="10" cols="50"><?php echo $mensagem; ?></textarea>
 
-                        <p><button class="w3-button w3-black" type="submit">VOLTAR</button></p>
+                        <p><button type="submit">VOLTAR</button></p>
 
                     </form>
-
-
                 <?php
                 }
                 ?>
@@ -258,90 +289,6 @@ if (isset($_POST['submit-create-account'])) {
         </div>
     </main>
 
-</body>
-
-</html>
-
-
-<!DOCTYPE html>
-<html>
-<title>Cloud Gallery - Criar conta</title>
-<?php include_once  './includes/estilos.php'; ?>
-
-<body>
-    <?php include_once  './includes/menus.php'; ?>
-
-    <!-- interface para entrar no sistema -->
-
-    <div class="w3-container w3-light-grey" style="padding:128px 16px">
-        <h3 class="w3-center">CRIAR CONTA</h3>
-
-        <div style="margin-top:48px">
-            <?php
-            if ($geraFormulario == "Sim") {
-            ?>
-                <p class="w3-center w3-large">Exclusivo para novos utilizadores.</p>
-                <form action="#" method="POST">
-                    <p><input class="w3-input w3-border" type="text" style="width:300px" placeholder="Código de utilizador" name="formUser" value="<?php echo $username; ?>"></p>
-                    <p class="w3-large w3-text-red"><?php echo $errorMessageUsername; ?></p>
-
-                    <p><input class="w3-input w3-border" type="email" placeholder="e-Mail" name="formEmail" value="<?php echo $email; ?>"></p>
-                    <p class="w3-large w3-text-red"><?php echo $errorMessageUsername; ?></p>
-
-
-                    <p><input class="w3-input w3-border" type="password" placeholder="password" name="formPassword1" value="<?php echo $password; ?>"></p>
-                    <p class="w3-large w3-text-red"><?php echo $errorMessagePassword; ?></p>
-
-                    <p><input class="w3-input w3-border" type="password" placeholder="Confirmação de password" name="formPassword2" value="<?php echo $passwordConfirmation; ?>"></p>
-                    <p class="w3-large w3-text-red"><?php echo $errorMessagePasswordRecover; ?></p>
-
-
-                    <p><input class="w3-input w3-border" type="text" placeholder="fName completo" name="formfName" value="<?php echo $fName; ?>"></p>
-                    <p class="w3-large w3-text-red"><?php echo $errorMessagefName; ?></p>
-
-                    <p><input class="w3-large w3-text-black" type="checkbox" name="formAceito" value="aceito_marketing" <?php if ($aceitoMarketing == 1) {
-                                                                                                                            echo " checked";
-                                                                                                                        } ?>>
-                        <label> Aceito que os meus dados sejam utilizados para efeitos de marketing</label>
-                    </p>
-
-                    <p>
-                        <button class="w3-button w3-black" name="submit-create-account" type="submit"> <i class="material-icons" style="font-size:24px;vertical-align:middle;">done</i> CRIAR CONTA</button>
-                        <button class="w3-button w3-black" name=button-cancel-account type="submit"> <i class="material-icons" style="font-size:24px;vertical-align:middle;">cancel</i> CANCELAR</button>
-
-                    </p>
-                </form>
-        </div>
-
-    <?php
-            } else {
-    ?>
-
-
-        <p class="w3-center w3-large">Conta criada com sucesso</p>
-        <p class="w3-center w3-large"><b><?php echo $temporaryMsg; ?></b></p>
-
-        <form action="./index.php" method="POST">
-            <!-- A LINHA SEGUINTE DEVE SER REMOVIDA EM INSTANCIAÇÃO COM SERVIÇO DE EMAIL ATIVO -->
-            <textarea class="w3-input w3-border" rows="10" cols="50"><?php echo $mensagem; ?></textarea>
-
-            <p><button class="w3-button w3-black" type="submit">VOLTAR</button></p>
-
-        </form>
-
-
-    <?php
-            }
-    ?>
-
-
-
-
-    </div>
-
-    <!--  -->
-    <?php include_once  './includes/rodape.php'; ?>
-    <?php include_once  './includes/scripts.php'; ?>
 </body>
 
 </html>
