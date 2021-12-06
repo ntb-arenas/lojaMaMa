@@ -33,7 +33,7 @@ if (isset($_POST['button-cancel-account'])) {
 
     header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
     header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
-    header("Location: ./PROJETOALMOFADAS/index.php");
+    header("Location: ../index.php");
 }
 
 
@@ -118,9 +118,9 @@ if (isset($_POST['submit-create-account'])) {
         $stmt->bind_param('s', $username);
         $stmt->execute();
 
-        $resultadoUsers = $stmt->get_result();
+        $usersResult = $stmt->get_result();
 
-        if ($resultadoUsers->num_rows > 0) {
+        if ($usersResult->num_rows > 0) {
 
             $errorMessageUsername = "Já existe um utilizador registado com este código.";
 
@@ -132,7 +132,7 @@ if (isset($_POST['submit-create-account'])) {
             ///////////////////////////////////
             // INSERE UTILIZADOR NA BASE DE DADOS
             //////////
-            $sql = "INSERT INTO USERS (username, EMAIL, PASSWORD, fName, lName, USER_LEVEL, USER_STATUS_ADMIN, MSGS_MARKETING, DATE_HOUR) 
+            $sql = "INSERT INTO USERS (USERNAME, EMAIL, PASSCODE, fNAME, lNAME, USER_LEVEL, USER_STATUS_ADMIN, MSGS_MARKETING, DATE_HOUR) 
                                     VALUES (?,?,?,?,?,?,?,?)";
 
             if ($stmt = mysqli_prepare($_conn, $sql)) {
@@ -145,7 +145,7 @@ if (isset($_POST['submit-create-account'])) {
                 date_default_timezone_set('Europe/Lisbon');
                 $data_hora = date("Y-m-d H:i:s", time());
 
-                mysqli_stmt_bind_param($stmt, "ssssiiis", $username, $email, $passwordHash, $fName, $nivel, $status, $aceitoMarketing, $data_hora);
+                mysqli_stmt_bind_param($stmt, "ssssiiis", $username, $email, $passwordHash, $fName, $lName, $nivel, $status, $aceitoMarketing, $data_hora);
 
 
                 mysqli_stmt_execute($stmt);

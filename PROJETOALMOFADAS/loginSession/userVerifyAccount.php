@@ -2,7 +2,7 @@
 
 session_start();
 
-include_once  './conexaobasedados.php'; 
+include_once  './connect_DB.php'; 
 
 
 $message ="";
@@ -36,7 +36,7 @@ if (isset($_GET['id']) && isset($_GET['code'])) {
                  } else {
                      // o código de ativação está correto e não foi ainda utilizado
                      // fazer update à tabela de USERS para atualizar o estado e limpar o token
-                     $sql= "UPDATE  USERS SET USER_STATUS=1, TOKEN_CODE=? WHERE username=?";
+                     $sql= "UPDATE  USERS SET USER_STATUS_ADMIN=1, TOKEN_CODE=? WHERE USERNAME=?";
                 
                      if ( $stmt = mysqli_prepare($_conn, $sql) ) {
                          
@@ -74,7 +74,7 @@ if (isset($_GET['id']) && isset($_GET['code'])) {
         // encaminhar para página principal
   		 header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
   		 header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
-  		 header("Location: index.php"); // encaminhar de imediato
+  		 header("Location: ../index.php"); // encaminhar de imediato
 
         
         
@@ -86,30 +86,24 @@ if (isset($_GET['id']) && isset($_GET['code'])) {
 <!DOCTYPE html>
 <html>
 <title>Cloud Gallery - Ativar conta</title>
-<?php include_once  './includes/estilos.php'; ?>
+
 <body>
-<?php include_once  './includes/menus.php'; ?>
 
-
-<div class="w3-container w3-light-grey" style="padding:128px 16px" >
-  <h3 class="w3-center">ATIVAR CONTA</h3>
-  <p class="w3-center w3-large">Ativar a sua conta de utilizador.</p>
+<div>
+  <h3>ATIVAR CONTA</h3>
+  <p>Ativar a sua conta de utilizador.</p>
   
   
-  <p class="w3-center w3-large"><b><?php echo $message;?></b></p>
+  <p><b><?php echo $message;?></b></p>
 
-  <form action="./index.php" method="POST">
+  <form action="../index.php" method="POST">
          
-   		<p><button class="w3-button w3-black" type="submit">PÁGINA PRINCIPAL</button></p>
+   		<p><button type="submit">PÁGINA PRINCIPAL</button></p>
    
   </form>
   
 </div>
 
-
-<!--  -->
-<?php include_once  './includes/rodape.php'; ?>
-<?php include_once  './includes/scripts.php'; ?>
 </body>
 </html>
 
