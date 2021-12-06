@@ -132,8 +132,7 @@ if (isset($_POST['submit-create-account'])) {
             ///////////////////////////////////
             // INSERE UTILIZADOR NA BASE DE DADOS
             //////////
-            $sql = "INSERT INTO USERS (USERNAME, EMAIL, PASSCODE, fNAME, lNAME, USER_LEVEL, USER_STATUS_ADMIN, MSGS_MARKETING, DATE_HOUR) 
-                                    VALUES (?,?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO USERS (USERNAME, EMAIL, PASSCODE, fNAME, lNAME, USER_LEVEL, USER_STATUS_ADMIN, MSGS_MARKETING, DATE_HOUR) VALUES (?,?,?,?,?,?,?,?)";
 
             if ($stmt = mysqli_prepare($_conn, $sql)) {
 
@@ -258,13 +257,13 @@ if (isset($_POST['submit-create-account'])) {
                         <input type="checkbox" name="formAceito" value="aceito_marketing" <?php if ($aceitoMarketing == 1) {
                                                                                                 echo " checked";
                                                                                             } ?>>
-                            <label> Aceito que os meus dados sejam utilizados para efeitos de marketing</label>
+                        <label> Aceito que os meus dados sejam utilizados para efeitos de marketing</label>
 
-                            <p>
-                                <button name="submit-create-account" type="submit">CRIAR CONTA</button>
-                                <button name=button-cancel-account type="submit">CANCELAR</button>
+                        <p>
+                            <button name="submit-create-account" type="submit">CRIAR CONTA</button>
+                            <button name=button-cancel-account type="submit">CANCELAR</button>
 
-                            </p>
+                        </p>
                     </form>
 
                 <?php
