@@ -49,7 +49,7 @@ if ( isset($_POST['botao-iniciar-sessao']) ) {
                 
                 $_SESSION["UTILIZADOR"]=$rowUsers["CODIGO"];
                 $_SESSION["NIVEL_UTILIZADOR"]=$rowUsers["NIVEL"];
-                $_SESSION["NOME_UTILIZADOR"]= $rowUsers["NOME"];
+                $_SESSION["NOME_UTILIZADOR"]= $rowUsers["fNAME" . "lNAME"];
                 $_SESSION["EMAIL_UTILIZADOR"]= $rowUsers["EMAIL"];
                 
                 header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
