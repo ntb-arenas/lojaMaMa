@@ -2,7 +2,7 @@
 
 // To do the connection: hostname, DB user, password, DB name
 
-$_conn=mysqli_connect("localhost","root","","projetoalmofada");
+$_conn=mysqli_connect("localhost","root","","projetoalmo");
 $_conn->set_charset('utf8');
 
 // Check if the connection failed...

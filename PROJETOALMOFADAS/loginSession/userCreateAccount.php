@@ -132,7 +132,7 @@ if (isset($_POST['submit-create-account'])) {
             ///////////////////////////////////
             // INSERE UTILIZADOR NA BASE DE DADOS
             //////////
-            $sql = "INSERT INTO USERS (USERNAME, EMAIL, PASSCODE, fNAME, lNAME, USER_LEVEL, USER_STATUS, MSGS_MARKETING, DATE_HOUR) VALUES (?,?,?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO USERS (USERNAME, EMAIL, PASSWORD, fNAME, lNAME, USER_LEVEL, USER_STATUS, MSGS_MARKETING, DATE_HOUR) VALUES (?,?,?,?,?,?,?,?,?)";
 
             if ($stmt = mysqli_prepare($_conn, $sql)) {
 
@@ -184,7 +184,7 @@ if (isset($_POST['submit-create-account'])) {
 
                     "Para ativar a sua conta basta carregar na seguinte ligação:" . "\r\n" . "\r\n" .
 
-                    $urlPagina . "userAtivarConta.php?id=$id&code=$code" . "\r\n" . "\r\n" .
+                    $urlPagina . "userVerifyAccount.php?id=$id&code=$code" . "\r\n" . "\r\n" .
 
                     "Esta mensagem foi-lhe enviada automaticamente.";
 
@@ -241,10 +241,10 @@ if (isset($_POST['submit-create-account'])) {
                         <p><?php echo $errorMessageUsername; ?></p>
 
 
-                        <input type="password" placeholder="password" name="formPassword1" value="<?php echo $password; ?>">
+                        <input type="password" placeholder="Senha" name="formPassword1" value="<?php echo $password; ?>">
                         <p><?php echo $errorMessagePassword; ?></p>
 
-                        <input type="password" placeholder="Confirmação de password" name="formPassword2" value="<?php echo $passwordConfirmation; ?>">
+                        <input type="password" placeholder="Confirmação de Senha" name="formPassword2" value="<?php echo $passwordConfirmation; ?>">
                         <p><?php echo $errorMessagePasswordRecover; ?></p>
 
 

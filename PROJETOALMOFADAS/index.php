@@ -30,7 +30,7 @@
 
             <div class="divIcon">
                 <span><a href="like.html"><img src="gallery/like.png" id="likeBtn"></a></span>
-                <span><a href="user.html"><img src="gallery/user.png" id="userBtn"></a></span>
+                <span><a href="./loginSession/login.php"><img src="gallery/user.png" id="userBtn"></a></span>
                 <span><a href="cart.html"><img src="gallery/cart.png" id="cartBtn"></a></span>
             </div>
         </header>
