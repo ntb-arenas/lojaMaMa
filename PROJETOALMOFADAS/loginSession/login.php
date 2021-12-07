@@ -37,22 +37,22 @@ if (isset($_POST['button-login'])) {
     if ($usersResult->num_rows > 0) {
         while ($rowUsers = $usersResult->fetch_assoc()) {
 
-            if ($rowUsers['USER_LEVEL'] == 2) { // BLocked user
+            if ($rowUsers['USER_STATUS'] == 2) { // BLocked user
 
                 $errorMessagePassword = "Não é possível entrar no sistema. Contacte os nossos serviços para obter ajuda.";
-            } else  if ($rowUsers['USER_LEVEL'] == 0) { // User account created but not verified
+            } else  if ($rowUsers['USER_STATUS'] == 0) { // User account created but not verified
 
                 $errorMessagePassword =  $rowUsers['fNAME'] . ", ainda não ativou a sua conta. A mensagem com o código inicial de ativação de conta foi enviada para a sua caixa de correio. Caso não a encontre na sua caixa de entrada, verifique também o seu correio não solicitado ou envie-nos um email para ativarmos a sua conta. Obrigado.";
             } else  if (password_verify($password, $rowUsers["PASSWORD"])) {
 
                 $_SESSION["USER"] = $rowUsers["USERNAME"];
-                $_SESSION["LEVEL_USER"] = $rowUsers["USER_LEVEL"];
-                $_SESSION["NAME_USER"] = $rowUsers["fNAME" . "lNAME"];
+                $_SESSION["LEVEL_USER"] = $rowUsers["USER_STATUS"];
+                $_SESSION["NAME_USER"] = $rowUsers["fNAME"];
                 $_SESSION["EMAIL_USER"] = $rowUsers["EMAIL"];
 
                 header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
                 header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
-                header("Location: index.php");
+                header("Location: ../index.php");
             } else {
                 $errorMessagePassword = "password incorreta!";
             }
@@ -92,7 +92,6 @@ if (isset($_POST['button-login'])) {
                 <button name="button-cancel" type="submit">CANCELAR</button>
             </p>
         </form>
-        <br>
         <p>Esqueceu-se da password? <a href="userRecoverPassword.php"> Recuperar password.</a></p>
     </main>
 

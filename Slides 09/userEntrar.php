@@ -37,11 +37,11 @@ if ( isset($_POST['botao-iniciar-sessao']) ) {
     if ($resultadoUsers->num_rows > 0) {
         while ($rowUsers = $resultadoUsers->fetch_assoc()) {
             
-            if ($rowUsers['USER_LEVEL']==2) { // utilizador bloqueado
+            if ($rowUsers['USER_STATUS']==2) { // utilizador bloqueado
                 
                 $mensagemErroSenha="Não é possível entrar no sistema. Contacte os nossos serviços para obter ajuda.";
                 
-            } else  if ($rowUsers['USER_LEVEL']==0 ) { // Utilizador criou a conta mas não ativou
+            } else  if ($rowUsers['USER_STATUS']==0 ) { // Utilizador criou a conta mas não ativou
                 
                 $mensagemErroSenha=  $rowUsers['NOME'] . ", ainda não ativou a sua conta. A mensagem com o código inicial de ativação de conta foi enviada para a sua caixa de correio. Caso não a encontre na sua caixa de entrada, verifique também o seu correio não solicitado ou envie-nos um email para ativarmos a sua conta. Obrigado.";
                 
