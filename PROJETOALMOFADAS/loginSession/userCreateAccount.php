@@ -132,7 +132,7 @@ if (isset($_POST['submit-create-account'])) {
             ///////////////////////////////////
             // INSERE UTILIZADOR NA BASE DE DADOS
             //////////
-            $sql = "INSERT INTO USERS (USERNAME, EMAIL, PASSCODE, fNAME, lNAME, USER_LEVEL, USER_STATUS_ADMIN, MSGS_MARKETING, DATE_HOUR) VALUES (?,?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO USERS (USERNAME, EMAIL, PASSCODE, fNAME, lNAME, USER_LEVEL, USER_STATUS_ADMIN, MSGS_MARKETING, DATE_HOUR) VALUES (?,?,?,?,?,?,?,?,?)";
 
             if ($stmt = mysqli_prepare($_conn, $sql)) {
 
@@ -144,7 +144,7 @@ if (isset($_POST['submit-create-account'])) {
                 date_default_timezone_set('Europe/Lisbon');
                 $data_hora = date("Y-m-d H:i:s", time());
 
-                mysqli_stmt_bind_param($stmt, "ssssiiis", $username, $email, $passwordHash, $fName, $lName, $nivel, $status, $aceitoMarketing, $data_hora);
+                mysqli_stmt_bind_param($stmt, "sssssiiis", $username, $email, $passwordHash, $fName, $lName, $nivel, $status, $aceitoMarketing, $data_hora);
 
 
                 mysqli_stmt_execute($stmt);
