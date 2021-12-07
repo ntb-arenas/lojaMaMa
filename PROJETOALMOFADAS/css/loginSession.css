@@ -1,0 +1,32 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+.information_container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 30x;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 1.5rem;
+}
+
+.sidebar_main {
+    width:  30%;
+}
+
+.information_component {
+    width: 70%;
+    
+}
+
+.box_information {
+    margin-top: 50px;
+}
+
+.box_title {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(163, 163, 163);
+    margin-bottom: 20px;
+}

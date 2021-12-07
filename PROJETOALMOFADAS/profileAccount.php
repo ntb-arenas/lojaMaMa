@@ -5,9 +5,6 @@ include_once  '../PROJETOALMOFADAS/loginSession/connect_DB.php';
 ?>
 
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +14,7 @@ include_once  '../PROJETOALMOFADAS/loginSession/connect_DB.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma-Ma Profile</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loginSession.css">
     <link rel="shortcut icon" href="gallery/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,26 +57,42 @@ include_once  '../PROJETOALMOFADAS/loginSession/connect_DB.php';
 
         <!--Navbar starts here-->
         <div class="navBar">
-            <span><a href="almofadasAma.html">ALMOFADAS DE AMAMENTAÇÃO</a></span>
-            <span><a href="cunhas.html">CUNHAS</a></span>
-            <span><a href="slings.html">SLINGS</a></span>
-            <span><a href="mudafraldas.html">MUDA FRALDAS</a></span>
-            <span><a href="kitMat.html">KIT MATERNIDADE</a></span>
-            <span><a href="almofadasAnti.html">ALMOFADAS ANTI-CÓLICAS</a></span>
+            <span><a href="./almofadasAma.php">ALMOFADAS DE AMAMENTAÇÃO</a></span>
+            <span><a href="./cunhas.php">CUNHAS</a></span>
+            <span><a href="./slings.php">SLINGS</a></span>
+            <span><a href="./mudafraldas.php">MUDA FRALDAS</a></span>
+            <span><a href="./kitMat.php">KIT MATERNIDADE</a></span>
+            <span><a href="./almofadasAnti.php">ALMOFADAS ANTI-CÓLICAS</a></span>
         </div>
         <!--Navbar ends here-->
 
+        <div class="information_container">
+            <div class="sidebar-main">
+                <div class="customer_area">
+                    <h1>
+                        Olá <?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"] ?>
+                    </h1>
+                    <h3><a href="./loginSession/userSair.php">Logout</a></h3>
+                </div>
+            </div>
 
-        <div class="sidebar-main">
-            <ul class="customer-account">
-                <li>
-                    <span>Olá</span>
-                    <span>- <?php echo $_SESSION["FIRSTNAME_USER"] ." " . $_SESSION["LASTNAME_USER"]; ?></span>
-                </li>
-                <li>
-                    <a href="./loginSession/userSair.php">Logout</a>
-                </li>
-            </ul>
+            <div class="information_component">
+                <h1>A Minha conta</h1>
+
+                <div class="box_information">
+                    <div class="box_title">
+                        <h2 class="info_cont">INFORMAÇÃO DE CONTACTO</h2>
+                    </div>
+
+                    <div class="box_content">
+                        <p>
+                            <?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"] ?>
+                            <br>
+                            <?php echo $_SESSION["EMAIL_USER"] ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 </body>
