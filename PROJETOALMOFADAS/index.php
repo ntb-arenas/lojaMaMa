@@ -1,3 +1,7 @@
+<?php 
+session_start()
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,11 +32,20 @@
                 <span><img src="gallery/searchBtn.png" id="searchBtn"></span>
             </div>
 
-            <div class="divIcon">
-                <span><a href="like.html"><img src="gallery/like.png" id="likeBtn"></a></span>
-                <span><a href="./loginSession/login.php"><img src="gallery/user.png" id="userBtn"></a></span>
-                <span><a href="cart.html"><img src="gallery/cart.png" id="cartBtn"></a></span>
-            </div>
+            <?php
+            if (isset($_SESSION["USER"])) { ?>
+                <div class="divIcon">
+                    <span><a href="like.html"><img src="gallery/like.png" id="likeBtn"></a></span>
+                    <span><a href="./profileAccount.php"><img src="gallery/user.png" id="userBtn"></a></span>
+                    <span><a href="cart.html"><img src="gallery/cart.png" id="cartBtn"></a></span>
+                </div>
+            <?php } else { ?>
+                <div class="divIcon">
+                    <span><a href="like.html"><img src="gallery/like.png" id="likeBtn"></a></span>
+                    <span><a href="./loginSession/login.php"><img src="gallery/user.png" id="userBtn"></a></span>
+                    <span><a href="cart.html"><img src="gallery/cart.png" id="cartBtn"></a></span>
+                </div>
+            <?php } ?>
         </header>
         <!--Header ends here-->
 
