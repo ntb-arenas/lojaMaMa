@@ -12,7 +12,7 @@ include_once  './connect_DB.php';
 $errorMessageUsername = "";
 $errorMessagePassword = "";
 
-if(isset($_SESSION["USER"])) {
+if (isset($_SESSION["USER"])) {
     header("Location: ../index.php"); // redirects them to homepage
     exit; // for good measure
 }
@@ -20,7 +20,7 @@ if(isset($_SESSION["USER"])) {
 if (isset($_POST['button-cancel'])) {
     header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
     header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
-    header("Location: ./PROJETOALMOFADAS/index.php");
+    header("Location: ../index.php");
 }
 
 if (isset($_POST['button-login'])) {
@@ -83,22 +83,39 @@ if (isset($_POST['button-login'])) {
     <link rel="stylesheet" href="../css/loginSession.css">
 </head>
 
-<body>
+<body class="login-page">
     <!-- interface para entrar no sistema -->
     <main>
-        <form action="#" method="POST">
-            <input type="text" placeholder="Código de utilizador" name="formUsername" value="<?php echo $username; ?>">
-            <p><?php echo $errorMessageUsername; ?></p>
+        <div class="form-login">
+            <div class="form-container">
+                <form action="#" method="POST">
+                    <fieldset class="login-input-fieldset">
+                        <legend>Código de Utilizador</legend>
+                        <input class="input-login" type="text" name="formUsername" value="<?php echo $username; ?>">
+                    </fieldset>
+                    <p><?php echo $errorMessageUsername; ?></p>
 
-            <input type="password" placeholder="password" name="formPassword" value="<?php echo $password; ?>">
-            <p><?php echo $errorMessagePassword; ?></p>
+                    <fieldset class="login-input-fieldset">
+                        <legend>Senha</legend>
+                        <input class="input-login" type="password" name="formPassword" value="<?php echo $password; ?>">
+                    </fieldset>
+                    <p><?php echo $errorMessagePassword; ?></p>
 
-            <p>
-                <button name="button-login" type="submit">INICIAR SESSÃO</button>
-                <button name="button-cancel" type="submit">CANCELAR</button>
-            </p>
-        </form>
-        <p>Esqueceu-se da password? <a href="userRecoverPassword.php"> Recuperar password.</a></p>
+                    <div class="div-forgot-password">
+                        <a href="./userRecuperarSenha.php">Esqueceu-se da palavra-passe?</a>
+                    </div>
+
+                    <div class="div-button-login">
+                        <button class="btn" name="button-login" type="submit"><span>INICIAR SESSÃO</span></button>
+                        <button class="btn" name="button-cancel" type="submit"><span>CANCELAR</span></button>
+                    </div>
+                </form>
+                
+                <div class="div-criar-conta">
+                    <a href="./userCreateAccount.php">Criar Conta</a>
+                </div>
+            </div>
+        </div>
     </main>
 
 

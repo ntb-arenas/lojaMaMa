@@ -66,9 +66,9 @@ include_once  '../PROJETOALMOFADAS/loginSession/connect_DB.php';
         </div>
         <!--Navbar ends here-->
 
-        <div class="information_container">
+        <div class="information-container">
             <div class="sidebar-main">
-                <div class="customer_area">
+                <div class="customer-area">
                     <h1>
                         Olá <?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"] ?>
                     </h1>
@@ -76,7 +76,7 @@ include_once  '../PROJETOALMOFADAS/loginSession/connect_DB.php';
                 </div>
             </div>
 
-            <div class="information_component">
+            <div class="information-component">
                 <h1>A Minha conta</h1>
 
                 <div class="box_information">
@@ -84,7 +84,7 @@ include_once  '../PROJETOALMOFADAS/loginSession/connect_DB.php';
                         <h2 class="info_cont">INFORMAÇÃO DE CONTACTO</h2>
                     </div>
 
-                    <div class="box_content">
+                    <div class="box-content">
                         <p>
                             <?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"] ?>
                             <br>
