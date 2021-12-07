@@ -1,7 +1,9 @@
 <?php
 
 session_start();
+include_once  '../PROJETOALMOFADAS/loginSession/connect_DB.php';
 ?>
+
 
 
 
@@ -26,7 +28,7 @@ session_start();
         <!--Header starts here-->
         <header>
             <div class="logo">
-                <a href="index.html">
+                <a href="index.php">
                     <img src="gallery/logo.png" alt="Ma-ma logo" class="logo">
                 </a>
             </div>
@@ -71,7 +73,7 @@ session_start();
             <ul class="customer-account">
                 <li>
                     <span>Olá</span>
-                    <span>- <?php echo $_SESSION["NAME_USER"]; ?></span>
+                    <span>- <?php echo $_SESSION["FIRSTNAME_USER"] ." " . $_SESSION["LASTNAME_USER"]; ?></span>
                 </li>
                 <li>
                     <a href="./loginSession/userSair.php">Logout</a>

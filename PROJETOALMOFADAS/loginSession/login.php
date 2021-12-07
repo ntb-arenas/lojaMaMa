@@ -47,7 +47,8 @@ if (isset($_POST['button-login'])) {
 
                 $_SESSION["USER"] = $rowUsers["USERNAME"];
                 $_SESSION["LEVEL_USER"] = $rowUsers["USER_STATUS"];
-                $_SESSION["NAME_USER"] = $rowUsers["fNAME"];
+                $_SESSION["FIRSTNAME_USER"] = $rowUsers["fNAME"];
+                $_SESSION["LASTNAME_USER"] = $rowUsers["lNAME"];
                 $_SESSION["EMAIL_USER"] = $rowUsers["EMAIL"];
 
                 header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
