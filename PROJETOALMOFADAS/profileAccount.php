@@ -74,13 +74,19 @@ include_once  '../PROJETOALMOFADAS/loginSession/connect_DB.php';
                     </h1>
                     <h3><a href="./loginSession/userSair.php">Logout</a></h3>
                 </div>
+
+                <div class="account-panel">
+                    <h3>Painel do Utilizador</h3>
+
+                    <h4></h4>
+                </div>
             </div>
 
             <div class="information-component">
                 <h1>A Minha conta</h1>
 
-                <div class="box_information">
-                    <div class="box_title">
+                <div class="box-information">
+                    <div class="box-title">
                         <h2 class="info_cont">INFORMAÇÃO DE CONTACTO</h2>
                     </div>
 

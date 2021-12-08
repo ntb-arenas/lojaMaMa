@@ -10,7 +10,7 @@ include_once './function_mail_utf8.php';
 $temporaryMsg = "";
 
 $errorMessageUsername = "";
-$errorMessageUsername = "";
+$errorMessageEmail = "";
 $errorMessagePassword = "";
 $errorMessagePasswordRecover = "";
 $errorMessagefName = "";
@@ -81,7 +81,7 @@ if (isset($_POST['submit-create-account'])) {
 
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errorMessageUsername = "O e-mail não é válido!";
+        $errorMessageEmail = "O e-mail não é válido!";
         $podeCriarRegisto = "Nao";
     }
 
@@ -220,38 +220,57 @@ if (isset($_POST['submit-create-account'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/loginSession.css">
     <title>Ma-Ma Criar Conta</title>
 </head>
 
-<body>
+<body class="createAccount-page">
 
     <main>
-        <div class="div-container">
-            <div class="container">
-                <h3>Criar Conta</h3>
+        <div class="createAccount-container">
+            <div class="createAccount-content">
+                <h2 style="margin: 0px; margin-bottom: 10px; text-align: center;">Criar Conta</h2>
                 <?php
                 if ($geraFormulario == "Sim") {
                 ?>
 
                     <form action="#" method="POST">
-                        <input type="text" placeholder="Código de utilizador" name="formUser" value="<?php echo $username; ?>">
+
+                        <fieldset class="createAcc-fieldset">
+                            <legend>Código de Utilizador</legend>
+                            <input type="text" class="createAcc-input" name="formUser" value="<?php echo $username; ?>">
+                        </fieldset>
                         <p><?php echo $errorMessageUsername; ?></p>
 
-                        <input type="email" placeholder="e-Mail" name="formEmail" value="<?php echo $email; ?>">
-                        <p><?php echo $errorMessageUsername; ?></p>
+                        <fieldset class="createAcc-fieldset">
+                            <legend>E-mail</legend>
+                            <input type="email" class="createAcc-input" name="formEmail" value="<?php echo $email; ?>">
+                        </fieldset>
+                        <p><?php echo $errorMessageEmail; ?></p>
 
-
-                        <input type="password" placeholder="Senha" name="formPassword1" value="<?php echo $password; ?>">
+                        <fieldset class="createAcc-fieldset">
+                            <legend>Senha</legend>
+                            <input type="password" class="createAcc-input" name="formPassword1" value="<?php echo $password; ?>">
+                        </fieldset>
                         <p><?php echo $errorMessagePassword; ?></p>
 
-                        <input type="password" placeholder="Confirmação de Senha" name="formPassword2" value="<?php echo $passwordConfirmation; ?>">
+                        <fieldset class="createAcc-fieldset">
+                            <legend>Confirmação de Senha</legend>
+                            <input type="password" class="createAcc-input" name="formPassword2" value="<?php echo $passwordConfirmation; ?>">
+                        </fieldset>
                         <p><?php echo $errorMessagePasswordRecover; ?></p>
 
 
-                        <input type="text" placeholder="Primeiro Nome" name="formfName" value="<?php echo $fName; ?>">
+                        <fieldset class="createAcc-fieldset">
+                            <legend>Primeiro Nome</legend>
+                            <input type="text" class="createAcc-input" name="formfName" value="<?php echo $fName; ?>">
+                        </fieldset>
                         <p><?php echo $errorMessagefName; ?></p>
 
-                        <input type="text" placeholder="Ultimo Nome" name="formlName" value="<?php echo $lName; ?>">
+                        <fieldset class="createAcc-fieldset">
+                            <legend>Apelido</legend>
+                            <input type="text" class="createAcc-input" name="formlName" value="<?php echo $lName; ?>">
+                        </fieldset>
                         <p><?php echo $errorMessagelName; ?></p>
 
                         <input type="checkbox" name="formAceito" value="aceito_marketing" <?php if ($aceitoMarketing == 1) {
@@ -259,33 +278,31 @@ if (isset($_POST['submit-create-account'])) {
                                                                                             } ?>>
                         <label> Aceito que os meus dados sejam utilizados para efeitos de marketing</label>
 
-                        <p>
-                            <button name="submit-create-account" type="submit">CRIAR CONTA</button>
-                            <button name=button-cancel-account type="submit">CANCELAR</button>
-
-                        </p>
+                        <div class="createAcc-btn">
+                            <button class="btn" name="submit-create-account" type="submit">CRIAR CONTA</button>
+                            <button class="btn" name=button-cancel-account type="submit">CANCELAR</button>
+                        </div>
                     </form>
-
-                <?php
-                } else {
-                ?>
-
-
-                    <p>Conta criada com sucesso</p>
-                    <p><b><?php echo $temporaryMsg; ?></b></p>
-
-                    <form action="../index.php" method="POST">
-                        <!-- A LINHA SEGUINTE DEVE SER REMOVIDA EM INSTANCIAÇÃO COM SERVIÇO DE EMAIL ATIVO -->
-                        <textarea rows="10" cols="50"><?php echo $mensagem; ?></textarea>
-
-                        <p><button type="submit">VOLTAR</button></p>
-
-                    </form>
-                <?php
-                }
-                ?>
             </div>
         </div>
+
+    <?php
+                } else {
+    ?>
+        <p>Conta criada com sucesso</p>
+        <p><b><?php echo $temporaryMsg; ?></b></p>
+
+        <form action="../index.php" method="POST">
+            <!-- A LINHA SEGUINTE DEVE SER REMOVIDA EM INSTANCIAÇÃO COM SERVIÇO DE EMAIL ATIVO -->
+            <textarea rows="10" cols="50"><?php echo $mensagem; ?></textarea>
+
+            <p><button type="submit">VOLTAR</button></p>
+
+        </form>
+    <?php
+                }
+    ?>
+
     </main>
 
 </body>

@@ -1,15 +1,16 @@
 * {
     font-family: 'Roboto', sans-serif;
 }
-
+/*PROFILE ACCOUNT PAGE*/
 .information-container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-top: 30x;
+    margin-top: 30px;
     margin-left: 20px;
     margin-right: 20px;
     font-size: 1.5rem;
+    height: 1000px;
 }
 
 .sidebar-main {
@@ -31,6 +32,19 @@
     border-bottom-color: rgb(163, 163, 163);
     margin-bottom: 20px;
 }
+
+
+.account-panel {
+    margin-top: 40px;
+}
+
+
+/*PROFILE ACCOUNT PAGE*/
+
+
+
+
+
 
 
 /* LOGIN PAGE */
@@ -55,7 +69,7 @@
     padding: 20px;
     background-color: white;
     overflow: hidden;
-    width: 450px;
+    width: 40%;
 }
 
 .login-input-fieldset {
@@ -87,7 +101,7 @@
 
 .div-button-login {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 
@@ -160,4 +174,71 @@
 
 .div-criar-conta a:hover {
     color: #FF723A;
+}
+
+/* LOGIN PAGE */
+
+
+
+
+
+
+
+
+
+
+/* CREATE ACCOUNT PAGE */
+.createAccount-page {
+    background: #FF723A;
+    background: -moz-linear-gradient(-45deg, #FF723A 0%, #FFB952 50%, #FF723A 100%);
+    background: -webkit-linear-gradient(-45deg, #FF723A 0%, #FFB952 50%, #FF723A 100%);
+    background: linear-gradient(135deg, #FF723A 0%, #FFB952 50%, #FF723A 100%);
+}
+
+.createAccount-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+}
+
+.createAccount-content {
+    border-style: solid;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: white;
+    overflow: hidden;
+    width: 450px;
+}
+
+.createAcc-fieldset {
+    transition: 0.3s;
+}
+
+.createAcc-fieldset:hover {
+    border-color: #FF723A;
+}
+
+.createAcc-input {
+    width: 98%;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+}
+
+.createAcc-input:focus {
+    outline: none;
+}
+
+.createAcc-input:-webkit-autofill,
+.createAcc-input:-webkit-autofill:hover,
+.createAcc-input:-webkit-autofill:focus,
+.createAcc-input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.createAcc-btn {
+    margin-top: 10px;
+    display: flex;
 }

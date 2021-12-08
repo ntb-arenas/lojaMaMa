@@ -51,12 +51,12 @@ session_start()
 
         <!--Navbar starts here-->
         <div class="navBar">
-            <span><a href="almofadasAma.html">ALMOFADAS DE AMAMENTAÇÃO</a></span>
-            <span><a href="cunhas.html">CUNHAS</a></span>
-            <span><a href="slings.html">SLINGS</a></span>
-            <span><a href="mudafraldas.html">MUDA FRALDAS</a></span>
-            <span><a href="kitMat.html">KIT MATERNIDADE</a></span>
-            <span><a href="almofadasAnti.html">ALMOFADAS ANTI-CÓLICAS</a></span>
+            <span><a href="almofadasAma.php">ALMOFADAS DE AMAMENTAÇÃO</a></span>
+            <span><a href="cunhas.php">CUNHAS</a></span>
+            <span><a href="slings.php">SLINGS</a></span>
+            <span><a href="mudafraldas.php">MUDA FRALDAS</a></span>
+            <span><a href="kitMat.php">KIT MATERNIDADE</a></span>
+            <span><a href="almofadasAnti.php">ALMOFADAS ANTI-CÓLICAS</a></span>
         </div>
         <!--Navbar ends here-->
 
@@ -82,7 +82,7 @@ session_start()
                     <h3>ALMOFADAS DE AMAMENTAÇÃO</h3>
                     <div class="b6">
                         <div class="button_cont" align="center">
-                            <div class="example_f"> <span><a href="almofadasAma.html" class="btn">EXPLORAR</a></div>
+                            <div class="example_f"> <span><a href="almofadasAma.php" class="btn">EXPLORAR</a></div>
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@ session_start()
                     <h3>CUNHAS</h3>
                     <div class="b6">
                         <div class="button_cont" align="center">
-                            <div class="example_f"> <span><a href="cunhas.html" class="btn">EXPLORAR</a></div>
+                            <div class="example_f"> <span><a href="cunhas.php" class="btn">EXPLORAR</a></div>
                         </div>
                     </div>
                 </div>
@@ -100,7 +100,7 @@ session_start()
                     <h3>SLINGS</h3>
                     <div class="b6">
                         <div class="button_cont" align="center">
-                            <div class="example_f"> <span><a href="slings.html" class="btn">EXPLORAR</a></div>
+                            <div class="example_f"> <span><a href="slings.php" class="btn">EXPLORAR</a></div>
                         </div>
                     </div>
                 </div>
@@ -114,7 +114,7 @@ session_start()
                     <h3>MUDA FRALDAS</h3>
                     <div class="b6">
                         <div class="button_cont" align="center">
-                            <div class="example_f"> <span><a href="mudafraldas.html" class="btn">EXPLORAR</a></div>
+                            <div class="example_f"> <span><a href="mudafraldas.php" class="btn">EXPLORAR</a></div>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@ session_start()
                     <h3>KIT MATERNIDADE</h3>
                     <div class="b6">
                         <div class="button_cont" align="center">
-                            <div class="example_f"> <span><a href="kitMat.html" class="btn">EXPLORAR</a></div>
+                            <div class="example_f"> <span><a href="kitMat.php" class="btn">EXPLORAR</a></div>
                         </div>
                     </div>
                 </div>
@@ -132,7 +132,7 @@ session_start()
                     <h3>ALMOFADAS ANTI-CÓLICAS</h3>
                     <div class="b6">
                         <div class="button_cont" align="center">
-                            <div class="example_f"> <span><a href="almofadasAnti.html" class="btn">EXPLORAR</a></div>
+                            <div class="example_f"> <span><a href="almofadasAnti.php" class="btn">EXPLORAR</a></div>
                         </div>
                     </div>
                 </div>
