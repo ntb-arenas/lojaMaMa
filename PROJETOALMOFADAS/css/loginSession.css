@@ -64,7 +64,6 @@
 }
 
 .form-container {
-    border-style: solid;
     border-radius: 15px;
     padding: 20px;
     background-color: white;
@@ -203,7 +202,6 @@
 }
 
 .createAccount-content {
-    border-style: solid;
     border-radius: 15px;
     padding: 20px;
     background-color: white;
@@ -264,7 +262,6 @@
 }
 
 .verifyAcc-content {
-    border-style: solid;
     border-radius: 15px;
     padding: 20px;
     background-color: white;
