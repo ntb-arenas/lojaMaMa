@@ -242,3 +242,35 @@
     margin-top: 10px;
     display: flex;
 }
+
+
+
+
+/*verify acc page*/
+
+.verifyAcc-page {
+    background: #FF723A;
+    background: -moz-linear-gradient(-45deg, #FF723A 0%, #FFB952 50%, #FF723A 100%);
+    background: -webkit-linear-gradient(-45deg, #FF723A 0%, #FFB952 50%, #FF723A 100%);
+    background: linear-gradient(135deg, #FF723A 0%, #FFB952 50%, #FF723A 100%);
+}
+
+.verifyAcc-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+    flex-direction: column;
+}
+
+.verifyAcc-content {
+    border-style: solid;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: white;
+    overflow: hidden;
+    width: 35%;
+}
+
+
+/*verify acc page*/

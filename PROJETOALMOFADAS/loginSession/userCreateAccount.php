@@ -174,9 +174,7 @@ if (isset($_POST['submit-create-account'])) {
                 // Update efetuado com sucesso, preparar e enviar mensagem 
                 $id = base64_encode($username);
 
-                $urlPagina = "http://localhost:8888/";
-
-                // ou: $urlPagina = "http://alexandrebarao.infinityfreeapp.com/";
+                $urlPagina = "creativelens.000webhostapp.com/Ma-Ma/loginSession/";
 
                 $mensagem = "Caro(a) $fName " . $lName . "," . "\r\n" .  "\r\n" .
 
@@ -293,10 +291,8 @@ if (isset($_POST['submit-create-account'])) {
         <p><b><?php echo $temporaryMsg; ?></b></p>
 
         <form action="../index.php" method="POST">
-            <!-- A LINHA SEGUINTE DEVE SER REMOVIDA EM INSTANCIAÇÃO COM SERVIÇO DE EMAIL ATIVO -->
-            <textarea rows="10" cols="50"><?php echo $mensagem; ?></textarea>
 
-            <p><button type="submit">VOLTAR</button></p>
+            <button class="btn" type="submit"><span>VOLTAR</span></button>
 
         </form>
     <?php
