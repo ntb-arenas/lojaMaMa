@@ -70,7 +70,7 @@ session_start();
             <span><a href="#">ALMOFADAS DE AMAMENTAÇÃO</a></span>
             <span><a href="#">CUNHAS</a></span>
             <span><a href="#">SLINGS</a></span>
-            <span><a href="#l">MUDA FRALDAS</a></span>
+            <span><a href="#">MUDA FRALDAS</a></span>
             <span><a href="#">KIT MATERNIDADE</a></span>
             <span><a href="#">ALMOFADAS ANTI-CÓLICAS</a></span>
         </div>
@@ -585,6 +585,79 @@ session_start();
         </div>
 
         <!--Product page ends here-->
+
+        <!-- HOW TO USE -->
+        <div class="container-modoUtilizacao">
+            <div class="title-desc">
+                <h1>Modo de Utilização</h1>
+                <span>
+                    A Almofada de Amamentação MA-MA® Original tem uma série de funções praticas que vão para além de uma
+                    simples almofada de amamentação.
+                    <br> A almofada pode acompanhar a mamã desde o início da gravidez até aos primeiros anos de vida do
+                    bebé.
+                </span>
+            </div>
+            <br><br>
+
+            <div class="content-wrapper-modoUtilizacao">
+                <div class="component-modoUtilizacao">
+                    <div class="image-modoUtilizacao-dormir">
+                    </div>
+                    <div class="content">
+                        <h3>Para dormir</h3>
+                        <span>
+                            A Almofada de Amamentação MA-MA® é uma perfeita aliada da mamã mesmo antes do nascimento do
+                            bebé.
+                            <br> Durante a gravidez a mamã pode utilizar a almofada para dormir. O seu tamanho e
+                            <br> formato em U permitem colocar a almofada entre as pernas ao mesmo tempo que a barriga
+                            <br> fica apoiada e a cabeça e pescoço ficam numa posição ideal. Desta forma a mamã consegue
+                            encontrar uma
+                            <br> posição de repouso confortável tanto para ela como para o pequeno bebé que se está a
+                            desenvolver.
+                        </span>
+                    </div>
+                </div>
+                <br><br>
+
+                <div class="component-modoUtilizacao">
+                    <div class="image-modoUtilizacao-amamentar">
+                    </div>
+                    <div class="content">
+                        <h3>Para amamentar</h3>
+                        <span>
+                            A Almofada de Amamentação MA-MA® é uma perfeita aliada da mamã mesmo antes do nascimento do
+                            bebé.
+                            <br> Durante a gravidez a mamã pode utilizar a almofada para dormir. O seu tamanho e
+                            <br> formato em U permitem colocar a almofada entre as pernas ao mesmo tempo que a barriga
+                            <br> fica apoiada e a cabeça e pescoço ficam numa posição ideal. Desta forma a mamã consegue
+                            encontrar uma
+                            <br> posição de repouso confortável tanto para ela como para o pequeno bebé que se está a
+                            desenvolver.
+                        </span>
+                    </div>
+                </div>
+                <br><br>
+
+                <div class="component-modoUtilizacao">
+                    <div class="image-modoUtilizacao-descansar">
+                    </div>
+                    <div class="content">
+                        <h3>Para o bebé descansar</h3>
+                        <span>
+                            A Almofada de Amamentação MA-MA® é uma perfeita aliada da mamã mesmo antes do nascimento do
+                            bebé.
+                            <br> Durante a gravidez a mamã pode utilizar a almofada para dormir. O seu tamanho e
+                            <br> formato em U permitem colocar a almofada entre as pernas ao mesmo tempo que a barriga
+                            <br> fica apoiada e a cabeça e pescoço ficam numa posição ideal. Desta forma a mamã consegue
+                            encontrar uma
+                            <br> posição de repouso confortável tanto para ela como para o pequeno bebé que se está a
+                            desenvolver.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- HOW TO USE -->
 
 
         <!--Footer section starts here-->

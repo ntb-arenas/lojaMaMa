@@ -39,15 +39,15 @@ include_once  '../PROJETOALMOFADAS/loginSession/connect_DB.php';
             <?php
             if (isset($_SESSION["USER"])) { ?>
                 <div class="divIcon">
-                    <span><a href="like.html"><img src="gallery/like.png" id="likeBtn"></a></span>
+                    <span><a href="#"><img src="gallery/like.png" id="likeBtn"></a></span>
                     <span><a href="./profileAccount.php"><img src="gallery/user.png" id="userBtn"></a></span>
-                    <span><a href="cart.html"><img src="gallery/cart.png" id="cartBtn"></a></span>
+                    <span><a href="#"><img src="gallery/cart.png" id="cartBtn"></a></span>
                 </div>
             <?php } else { ?>
                 <div class="divIcon">
-                    <span><a href="like.html"><img src="gallery/like.png" id="likeBtn"></a></span>
+                    <span><a href="#"><img src="gallery/like.png" id="likeBtn"></a></span>
                     <span><a href="./loginSession/login.php"><img src="gallery/user.png" id="userBtn"></a></span>
-                    <span><a href="cart.html"><img src="gallery/cart.png" id="cartBtn"></a></span>
+                    <span><a href="#"><img src="gallery/cart.png" id="cartBtn"></a></span>
                 </div>
             <?php } ?>
 
@@ -127,6 +127,58 @@ include_once  '../PROJETOALMOFADAS/loginSession/connect_DB.php';
                 </div>
             </div>
         </div>
+
+        <!--Footer section starts here-->
+        <footer>
+            <div class="coverFooter">
+                <div class="logoContainer">
+                    <div class="logo">
+                        <a href="./index.php"><img src="gallery/logo.png" alt=""></a>
+                    </div>
+                    <div class="apoio">
+                        <h5>Apoio Comercial</h5>
+                        <h4><b>916 532 480</b></h4>
+                        <p>das 9h às 18h</p>
+                    </div>
+                </div>
+
+                <div class="componentContainer">
+                    <div class="component">
+                        <div class="componentTitle">
+                            <h4>Sobre Nós</h4>
+                        </div>
+                        <div class="line"></div>
+                        <div class="componentContent">
+                            <a href="#">Quem Somos</a><br>
+                            <a href="#">Contactos</a>
+                        </div>
+                    </div>
+                    <div class="component">
+                        <div class="componentTitle">
+                            <h4>Informações</h4>
+                        </div>
+                        <div class="line"></div>
+                        <div class="componentContent">
+                            <a href="#">Modos de Pagamento</a><br>
+                            <a href="#">Envio de Encomendas e Custos</a>
+                            <a href="#">Garantias</a>
+                        </div>
+                    </div>
+                    <div class="component">
+                        <div class="componentTitle">
+                            <h4>Siga-nos</h4>
+                        </div>
+                        <div class="line"></div>
+                        <div class="componentContent">
+                            <a href="#">Instagram</a><br>
+                            <a href="#">Facebook</a><br>
+                            <a href="#">Twitter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--Footer section ends here-->
     </main>
 </body>
 

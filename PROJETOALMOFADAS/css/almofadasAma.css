@@ -1,4 +1,6 @@
 /**title desc STARTS HERE**/
+/**title desc STARTS HERE**/
+/**title desc STARTS HERE**/
 .content-wrapper {
     display: flex;
     justify-content: center;
@@ -55,9 +57,13 @@
 }
 
 /**title desc ENDS HERE**/
+/**title desc ENDS HERE**/
+/**title desc ENDS HERE**/
 
 
 
+/**PRODUCT STARTS HERE**/
+/**PRODUCT STARTS HERE**/
 /**PRODUCT STARTS HERE**/
 .div-row {
     display: flex;
@@ -230,3 +236,57 @@
 }
 
 /**PRODUCT ENDS HERE**/
+/**PRODUCT ENDS HERE**/
+/**PRODUCT ENDS HERE**/
+
+
+
+
+
+
+/* HOW TO USE */
+/* HOW TO USE */
+/* HOW TO USE */
+.container-modoUtilizacao {
+    margin: 20px;
+}
+
+.image-modoUtilizacao-dormir {
+    background-image: url("../gallery/productimg/6.jpg");
+    height: 300px;
+    width: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 10px;
+}
+
+.image-modoUtilizacao-amamentar {
+    background-image: url("../gallery/productimg/10.jpg");
+    height: 300px;
+    width: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 10px;
+}
+
+.image-modoUtilizacao-descansar {
+    background-image: url("../gallery/productimg/7.jpg");
+    height: 300px;
+    width: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 10px;
+}
+
+.content-wrapper-modoUtilizacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+/* HOW TO USE */
+/* HOW TO USE */
+/* HOW TO USE */
