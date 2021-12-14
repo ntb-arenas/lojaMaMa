@@ -227,7 +227,7 @@ if (isset($_POST['submit-create-account'])) {
     <main>
         <div class="createAccount-container">
             <div class="createAccount-content">
-                <h2 style="margin: 0px; margin-bottom: 10px; text-align: center;">Criar Conta</h2>
+            <div class="form-logo"><div class="form-logo-content"></div></div>
                 <?php
                 if ($geraFormulario == "Sim") {
                 ?>
@@ -277,8 +277,8 @@ if (isset($_POST['submit-create-account'])) {
                         <label> Aceito que os meus dados sejam utilizados para efeitos de marketing</label>
 
                         <div class="createAcc-btn">
-                            <button class="btn" name="submit-create-account" type="submit">CRIAR CONTA</button>
-                            <button class="btn" name=button-cancel-account type="submit">CANCELAR</button>
+                            <button class="btn-createAcc" name="submit-create-account" type="submit"><span>CRIAR CONTA</span></button>
+                            <button class="btn-createAcc" name=button-cancel-account type="submit"><span>CANCELAR</span></button>
                         </div>
                     </form>
             </div>

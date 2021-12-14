@@ -82,7 +82,19 @@
     transform: translateX(-9%) translateY(-25%) rotate(45deg);
 }
 
+.account-panel-wrapper p {
+    margin-top: 15px;
+}
 
+.account-panel-wrapper p a {
+    text-decoration: none;
+    color: black;
+    transition: 1s;
+}
+
+.account-panel-wrapper p a:hover {
+    text-decoration: underline;
+}
 /*PROFILE ACCOUNT PAGE*/
 
 
@@ -121,7 +133,6 @@
 }
 
 .form-logo-content {
-    background: url("../gallery/logo.png");
     height: 70px;
     width: 170px;
     background-repeat: no-repeat;
@@ -251,10 +262,7 @@
 
 /* CREATE ACCOUNT PAGE */
 .createAccount-page {
-    background: #FF723A;
-    background: -moz-linear-gradient(-45deg, #FF723A 0%, #FFB952 50%, #FF723A 100%);
-    background: -webkit-linear-gradient(-45deg, #FF723A 0%, #FFB952 50%, #FF723A 100%);
-    background: linear-gradient(135deg, #FF723A 0%, #FFB952 50%, #FF723A 100%);
+    background-color: white;
 }
 
 .createAccount-container {
@@ -302,10 +310,50 @@
 .createAcc-btn {
     margin-top: 10px;
     display: flex;
+    justify-content: space-around;
 }
 
+.btn-createAcc {
+    border: none;
+    border-radius: 10px;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    width: 12rem;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: #FF723A;
+    padding: 15px 40px;
+}
 
+.btn-createAcc span {
+    position: relative;
+    z-index: 1;
+}
 
+.btn-createAcc:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 490%;
+    width: 200%;
+    background: #ffb81e;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+    transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+
+.btn-createAcc:hover:after {
+    -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+    transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
 
 /*verify acc page*/
 

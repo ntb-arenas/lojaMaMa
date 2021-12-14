@@ -76,9 +76,12 @@ include_once  '../PROJETOALMOFADAS/loginSession/connect_DB.php';
                 </div>
 
                 <div class="account-panel">
-                    <h3>Painel do Utilizador</h3>
-
-                    <h4></h4>
+                    <h3>PAINEL DE CONTA</h3>
+                    <div class="account-panel-wrapper">
+                        <p><a href="#">A MINHA CONTA</a></p>
+                        <p><a href="#">AS MINHAS ENCOMENDAS</a></p>
+                        <p><a href="#">SUBSCRIÇÃO MARKETING</a></p>
+                    </div>
                 </div>
             </div>
 

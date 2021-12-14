@@ -93,7 +93,11 @@ if (isset($_POST['button-login'])) {
     <main>
         <div class="form-login">
             <div class="form-container">
-                <div class="form-logo"><div class="form-logo-content"><a href="../index.php"></a></div></div>
+                <div class="form-logo">
+                    <div class="form-logo-content">
+                        <a href="../index.php"><img src="../gallery/logo.png" alt=""></a>
+                    </div>
+                </div>
                 <form action="#" method="POST">
                     <fieldset class="login-input-fieldset">
                         <legend>Código de Utilizador</legend>
@@ -116,7 +120,7 @@ if (isset($_POST['button-login'])) {
                         <button class="btn" name="button-cancel" type="submit"><span>CANCELAR</span></button>
                     </div>
                 </form>
-                
+
                 <div class="div-criar-conta">
                     <a href="./userCreateAccount.php">Criar Conta</a>
                 </div>
