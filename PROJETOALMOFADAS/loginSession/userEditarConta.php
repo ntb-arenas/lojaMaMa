@@ -86,12 +86,6 @@ if ( !isset($_SESSION["UTILIZADOR"])) {
 
 
 
-
-
-
-
-
-
 if ( isset($_POST['botao-gravar-alteracoes']) ) {
     
         
