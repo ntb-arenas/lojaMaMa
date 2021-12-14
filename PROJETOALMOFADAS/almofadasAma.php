@@ -67,8 +67,8 @@ session_start();
 
         <!--Navbar starts here-->
         <div class="navBar">
-            <span><a href="#">ALMOFADAS DE AMAMENTAÇÃO</a></span>
-            <span><a href="#">CUNHAS</a></span>
+            <span><a href="./almofadasAnti.php">ALMOFADAS DE AMAMENTAÇÃO</a></span>
+            <span><a href="./cunhas.php">CUNHAS</a></span>
             <span><a href="#">SLINGS</a></span>
             <span><a href="#">MUDA FRALDAS</a></span>
             <span><a href="#">KIT MATERNIDADE</a></span>
@@ -648,8 +648,7 @@ session_start();
                             bebé.
                             <br> Durante a gravidez a mamã pode utilizar a almofada para dormir. O seu tamanho e
                             <br> formato em U permitem colocar a almofada entre as pernas ao mesmo tempo que a barriga
-                            <br> fica apoiada e a cabeça e pescoço ficam numa posição ideal. Desta forma a mamã consegue
-                            encontrar uma
+                            <br> fica apoiada e a cabeça e pescoço ficam numa posição ideal. Desta forma a mamã consegue encontrar uma
                             <br> posição de repouso confortável tanto para ela como para o pequeno bebé que se está a
                             desenvolver.
                         </span>
