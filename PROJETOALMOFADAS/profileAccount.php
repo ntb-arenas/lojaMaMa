@@ -70,7 +70,7 @@ include_once  '../PROJETOALMOFADAS/loginSession/connect_DB.php';
             <div class="sidebar-main">
                 <div class="customer-area">
                     <h1>
-                        Olá <?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"] ?>
+                        Olá <?php echo $_SESSION["FIRSTNAME_USER"] ?>
                     </h1>
                     <h3><a href="./loginSession/userSair.php">Logout</a></h3>
                 </div>
@@ -97,6 +97,30 @@ include_once  '../PROJETOALMOFADAS/loginSession/connect_DB.php';
                             <?php echo $_SESSION["EMAIL_USER"] ?>
                         </p>
                     </div>
+                    <div class="div-btn-profile">
+                        <button class="btn-profile" name="button-edit-info" type="submit"><span>EDITAR</span></button>
+                    </div>
+                </div>
+                <div class="box-information">
+                    <div class="box-title">
+                        <h2 class="info_cont">MORADA</h2>
+                    </div>
+
+                    <div class="box-content">
+                        <p>
+                            <?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"] ?>
+                            <br>
+                            <?php echo $_SESSION["MORADA_USER"] ?>
+                            <br>
+                            <?php echo $_SESSION["COD_POSTAL_USER"] ?>, <?php echo $_SESSION["CIDADE_USER"] ?>
+                            <br>
+                            <?php echo $_SESSION["PAIS_USER"] ?>
+                            <br>
+                            Número de telefone: <?php echo $_SESSION["TELEMOVEL_USER"] ?>
+                        </p>
+                    </div>
+
+                    <button class="btn-profile" name="button-edit-morada" type="submit"><span>EDITAR</span></button>
                 </div>
             </div>
         </div>

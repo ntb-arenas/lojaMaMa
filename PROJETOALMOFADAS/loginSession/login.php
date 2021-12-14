@@ -54,6 +54,11 @@ if (isset($_POST['button-login'])) {
                 $_SESSION["LEVEL_USER"] = $rowUsers["USER_STATUS"];
                 $_SESSION["FIRSTNAME_USER"] = $rowUsers["fNAME"];
                 $_SESSION["LASTNAME_USER"] = $rowUsers["lNAME"];
+                $_SESSION["MORADA_USER"] = $rowUsers["MORADA"];
+                $_SESSION["COD_POSTAL_USER"] = $rowUsers["COD_POSTAL"];
+                $_SESSION["CIDADE_USER"] = $rowUsers["CIDADE"];
+                $_SESSION["PAIS_USER"] = $rowUsers["PAIS"];
+                $_SESSION["TELEMOVEL_USER"] = $rowUsers["TELEMOVEL"];
                 $_SESSION["EMAIL_USER"] = $rowUsers["EMAIL"];
 
                 header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
@@ -88,6 +93,7 @@ if (isset($_POST['button-login'])) {
     <main>
         <div class="form-login">
             <div class="form-container">
+                <div class="form-logo"><div class="form-logo-content"><a href="../index.php"></a></div></div>
                 <form action="#" method="POST">
                     <fieldset class="login-input-fieldset">
                         <legend>Código de Utilizador</legend>

@@ -1,6 +1,7 @@
 * {
     font-family: 'Roboto', sans-serif;
 }
+
 /*PROFILE ACCOUNT PAGE*/
 .information-container {
     display: flex;
@@ -38,6 +39,49 @@
     margin-top: 40px;
 }
 
+.btn-profile {
+    border: none;
+    border-radius: 10px;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    width: 15rem;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: #FF723A;
+    padding: 15px 40px;
+    margin-top: 15px;
+}
+
+.btn-profile span {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-profile:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 490%;
+    width: 250%;
+    background: #ffb81e;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+    transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+
+.btn-profile:hover:after {
+    -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+    transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
+
 
 /*PROFILE ACCOUNT PAGE*/
 
@@ -49,10 +93,7 @@
 
 /* LOGIN PAGE */
 .login-page {
-    background: #FF723A;
-    background: -moz-linear-gradient(-45deg, #FF723A 0%, #FFB952 50%, #FF723A 100%);
-    background: -webkit-linear-gradient(-45deg, #FF723A 0%, #FFB952 50%, #FF723A 100%);
-    background: linear-gradient(135deg, #FF723A 0%, #FFB952 50%, #FF723A 100%);
+    background-color: white;
 }
 
 .form-login {
@@ -69,6 +110,27 @@
     background-color: white;
     overflow: hidden;
     width: 40%;
+}
+
+.form-logo {
+    height: 100px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-logo-content {
+    background: url("../gallery/logo.png");
+    height: 70px;
+    width: 170px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.form-logo-content a {
+    height: 70px;
+    width: 170px;
 }
 
 .login-input-fieldset {
@@ -115,6 +177,7 @@
     overflow: hidden;
     position: relative;
     color: #fff;
+    width: 15rem;
     font-weight: 700;
     font-size: 15px;
     background-color: #FF723A;
