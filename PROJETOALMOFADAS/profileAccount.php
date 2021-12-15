@@ -2,6 +2,7 @@
 
 session_start();
 include_once  '../PROJETOALMOFADAS/loginSession/connect_DB.php';
+
 ?>
 
 

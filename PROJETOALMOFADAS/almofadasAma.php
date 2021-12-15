@@ -67,7 +67,7 @@ session_start();
 
         <!--Navbar starts here-->
         <div class="navBar">
-            <span><a href="./almofadasAnti.php">ALMOFADAS DE AMAMENTAÇÃO</a></span>
+            <span><a href="./almofadasAma.php">ALMOFADAS DE AMAMENTAÇÃO</a></span>
             <span><a href="./cunhas.php">CUNHAS</a></span>
             <span><a href="#">SLINGS</a></span>
             <span><a href="#">MUDA FRALDAS</a></span>
