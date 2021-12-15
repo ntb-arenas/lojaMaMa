@@ -114,13 +114,13 @@ include_once  '../PROJETOALMOFADAS/loginSession/connect_DB.php';
                         <p>
                             <?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"] ?>
                             <br>
-                            <?php echo $_SESSION["MORADA_USER"] ?>
+                            Praça José Fontana
                             <br>
-                            <?php echo $_SESSION["COD_POSTAL_USER"] ?>, <?php echo $_SESSION["CIDADE_USER"] ?>
+                            1050-169, Lisboa
                             <br>
-                            <?php echo $_SESSION["PAIS_USER"] ?>
+                            Portugal
                             <br>
-                            Número de telefone: <?php echo $_SESSION["TELEMOVEL_USER"] ?>
+                            T: 999888777
                         </p>
                     </div>
 
