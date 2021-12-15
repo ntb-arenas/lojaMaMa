@@ -227,7 +227,11 @@ if (isset($_POST['submit-create-account'])) {
     <main>
         <div class="createAccount-container">
             <div class="createAccount-content">
-            <div class="form-logo"><div class="form-logo-content"></div></div>
+                <div class="form-logo">
+                    <div class="form-logo-content">
+                        <a href="../index.php"><img src="../gallery/logo.png" alt=""></a>
+                    </div>
+                </div>
                 <?php
                 if ($geraFormulario == "Sim") {
                 ?>
