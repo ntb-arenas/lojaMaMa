@@ -1,4 +1,6 @@
 /**title desc STARTS HERE**/
+/**title desc STARTS HERE**/
+/**title desc STARTS HERE**/
 .content-wrapper {
     display: flex;
     justify-content: center;
@@ -21,7 +23,6 @@
     margin-top: 10px;
     color: rgb(56, 56, 56);
 }
-
 .desc__read-more {
     display: block;
     opacity: 0;
@@ -56,9 +57,13 @@
 }
 
 /**title desc ENDS HERE**/
+/**title desc ENDS HERE**/
+/**title desc ENDS HERE**/
 
 
 
+/**PRODUCT STARTS HERE**/
+/**PRODUCT STARTS HERE**/
 /**PRODUCT STARTS HERE**/
 .div-row {
     display: flex;
@@ -231,9 +236,35 @@
 }
 
 /**PRODUCT ENDS HERE**/
+/**PRODUCT ENDS HERE**/
+/**PRODUCT ENDS HERE**/
 
+
+
+
+
+
+/* HOW TO USE */
+/* HOW TO USE */
+/* HOW TO USE */
 .container-modoUtilizacao {
     margin: 20px;
+}
+
+.title-desc{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.title-desc h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.title-desc span{
+    color: rgb(87, 87, 87);
 }
 
 .image-modoUtilizacao-dormir {
@@ -272,3 +303,19 @@
     align-items: center;
     text-align: center;
 }
+
+.content{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+}
+
+.content span{
+    color: rgb(87, 87, 87);
+}
+
+.component-modoUtilizacao {
+    margin: 10px;
+}
+/* HOW TO USE */
+/* HOW TO USE */
+/* HOW TO USE */
