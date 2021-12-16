@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include_once  '../PROJETOALMOFADAS/loginSession/connect_DB.php';
+include_once  './loginSession/connect_DB.php';
 
 ?>
 
