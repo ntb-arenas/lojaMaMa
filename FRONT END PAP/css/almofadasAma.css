@@ -1,0 +1,321 @@
+/**title desc STARTS HERE**/
+/**title desc STARTS HERE**/
+/**title desc STARTS HERE**/
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-image: url("../gallery/coverAlmofada.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.content-wrapper .div-contents h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3rem;
+    margin-top: 20px;
+}
+
+.content-wrapper .div-contents h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: rgb(56, 56, 56);
+}
+.desc__read-more {
+    display: block;
+    opacity: 0;
+    height: 0;
+    transition: all 0.5s;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: rgb(53, 53, 53);
+}
+
+.desc__read-more--open {
+    display: block;
+    opacity: 1;
+    height: 100%;
+    padding-top: 10px;
+}
+
+.read-more-btn {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+    transition: all 0.5s;
+    cursor: pointer;
+    color: #ff6b31;
+}
+
+.read-more-btn:hover {
+    transform: translateY(-3px);
+}
+
+/**title desc ENDS HERE**/
+/**title desc ENDS HERE**/
+/**title desc ENDS HERE**/
+
+
+
+/**PRODUCT STARTS HERE**/
+/**PRODUCT STARTS HERE**/
+/**PRODUCT STARTS HERE**/
+.div-row {
+    display: flex;
+    flex-wrap: wrap;
+    background: rgb(235, 235, 235);
+}
+
+.content-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+}
+
+.content-container .component {
+    background: #ff723a;
+    width: 20rem;
+    height: 25rem;
+    margin: 10px;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 3%;
+    overflow: hidden;
+    background: #ff723a;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.content-container .component:hover {
+    background: #fc4700;
+    border: 1px solid #fc4700;
+}
+
+.content-container h2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    color: #ff723a;
+}
+
+.product {
+    display: flex;
+    justify-content: center;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin: 5px;
+    height: 75%;
+    overflow: hidden;
+}
+
+.component a {
+    text-decoration: none;
+}
+
+.productName {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 2.1rem;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(217, 255, 0);
+
+}
+
+
+
+
+.sidebar {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.comPadrao {
+    margin: 10px;
+    margin-top: 20px;
+    font-size: 1.7rem;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #ff723a;
+    padding: 10px;
+}
+
+.comPadrao .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.5rem 0 1rem;
+}
+
+.comPadrao .container h3 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.comPadrao p, label, select {
+    padding: 0 1.5rem 0 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.comPadrao select {
+    font-size: 1.8rem;
+    margin-left: 1.3rem;
+    padding-right: 10rem;
+    overflow: hidden;
+}
+
+.semPadrao {
+    margin: 10px;
+    margin-top: 20px;
+    font-size: 1.7rem;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #db6232;
+    padding: 10px;
+}
+
+.semPadrao .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.5rem 0 1rem;
+}
+
+.semPadrao .container h3 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.semPadrao p, label, select {
+    padding: 0 1.5rem 0 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.semPadrao select {
+    font-size: 1.8rem;
+    margin-left: 1.3rem;
+    padding-right: 10rem;
+    overflow: hidden;
+}
+
+.comPadrao .container-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.semPadrao .container-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.addToCart {
+    margin-left: 10px;
+}
+
+#addToCart {
+    font-size: 1.6rem;
+    padding: 1.1rem 10px 1.1rem 10px;
+    border-radius: 10px;
+    background: #ff723a;
+    cursor: pointer;
+    border-style: none;
+    transition: 0.3s;
+}
+
+#addToCart:hover {
+    background: #df490d;
+}
+
+/**PRODUCT ENDS HERE**/
+/**PRODUCT ENDS HERE**/
+/**PRODUCT ENDS HERE**/
+
+
+
+
+
+
+/* HOW TO USE */
+/* HOW TO USE */
+/* HOW TO USE */
+.container-modoUtilizacao {
+    margin: 20px;
+}
+
+.title-desc{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.title-desc h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.title-desc span{
+    color: rgb(87, 87, 87);
+}
+
+.image-modoUtilizacao-dormir {
+    background-image: url("../gallery/productimg/6.jpg");
+    height: 300px;
+    width: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 10px;
+}
+
+.image-modoUtilizacao-amamentar {
+    background-image: url("../gallery/productimg/10.jpg");
+    height: 300px;
+    width: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 10px;
+}
+
+.image-modoUtilizacao-descansar {
+    background-image: url("../gallery/productimg/7.jpg");
+    height: 300px;
+    width: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 10px;
+}
+
+.content-wrapper-modoUtilizacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.content{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+}
+
+.content span{
+    color: rgb(87, 87, 87);
+}
+
+.component-modoUtilizacao {
+    margin: 10px;
+}
+/* HOW TO USE */
+/* HOW TO USE */
+/* HOW TO USE */
