@@ -112,19 +112,12 @@ include_once  './loginSession/connect_DB.php';
 
                     <div class="box-content">
                         <p>
-                            <?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"] ?>
-                            <br>
-                            Praça José Fontana
-                            <br>
-                            1050-169, Lisboa
-                            <br>
-                            Portugal
-                            <br>
-                            T: 999888777
                         </p>
                     </div>
 
-                    <button class="btn-profile" name="button-edit-morada" type="submit"><span><a href="./loginSession/userEditAccount.php">EDITAR</a></span></button>
+                    <form action="./loginSession/userEditAccount.php">
+                        <button class="btn-profile" name="button-edit-morada" type="submit"><span>EDITAR</span></button>
+                    </form>
                 </div>
             </div>
         </div>

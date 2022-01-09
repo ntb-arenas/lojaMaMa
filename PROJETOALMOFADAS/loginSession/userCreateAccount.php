@@ -264,7 +264,7 @@ if (isset($_POST['submit-create-account'])) {
 
 
                         <fieldset class="createAcc-fieldset">
-                            <legend>Primeiro Nome</legend>
+                            <legend>Nome</legend>
                             <input type="text" class="createAcc-input" name="formfName" value="<?php echo $fName; ?>">
                         </fieldset>
                         <p><?php echo $errorMessagefName; ?></p>

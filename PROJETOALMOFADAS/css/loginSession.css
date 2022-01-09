@@ -388,3 +388,31 @@
 
 
 /*verify acc page*/
+
+
+/* edit account page */
+/* edit account page */
+/* edit account page */
+
+.editAcc-fieldset {
+    transition: 0.3s;
+    width: 40%;
+}
+
+.editAcc-fieldset:hover {
+    border-color: #FF723A;
+}
+
+.editAcc-input {
+    width: 98%;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    font-size: 1.7rem;
+    padding: 5px;
+}
+
+.editAcc-input:focus {
+    outline: none;
+}
