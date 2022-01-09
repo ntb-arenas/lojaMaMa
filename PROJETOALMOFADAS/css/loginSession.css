@@ -81,6 +81,12 @@
     transform: translateX(-9%) translateY(-25%) rotate(45deg);
 }
 
+.btn-profile a {
+    text-decoration: none;
+    color: white;
+}
+
+
 .account-panel-wrapper p {
     margin-top: 15px;
 }
@@ -94,6 +100,7 @@
 .account-panel-wrapper p a:hover {
     text-decoration: underline;
 }
+
 /*PROFILE ACCOUNT PAGE*/
 
 

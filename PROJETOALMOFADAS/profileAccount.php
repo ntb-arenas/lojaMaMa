@@ -124,7 +124,7 @@ include_once  './loginSession/connect_DB.php';
                         </p>
                     </div>
 
-                    <button class="btn-profile" name="button-edit-morada" type="submit"><span>EDITAR</span></button>
+                    <button class="btn-profile" name="button-edit-morada" type="submit"><span><a href="./loginSession/userEditAccount.php">EDITAR</a></span></button>
                 </div>
             </div>
         </div>
