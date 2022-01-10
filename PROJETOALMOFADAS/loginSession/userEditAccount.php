@@ -29,6 +29,14 @@ $temporaryMsg = "";
 $errorMessagefName = "";
 $errorMessagelName = "";
 $errorMessagePassword = "";
+$errorMessageTelemovel = "";
+$errorMessageCodPostal = "";
+
+$telemovel = "";
+$morada = "";
+$codPostal = "";
+$cidade = "";
+$pais = "";
 
 if (!isset($_SESSION["USER"])) {
     header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
@@ -48,7 +56,18 @@ if (!isset($_SESSION["USER"])) {
         while ($rowUsers = $usersResult->fetch_assoc()) {
 
             $password = "";
-            $encryptedPassowrd = $rowUsers['PASSWORD'];
+            $encryptedPassword = $rowUsers['PASSWORD'];
+            $morada = $rowUsers['MORADA'];
+            $telemovel = $rowUsers['TELEMOVEL'];
+            $cidade = $rowUsers['CIDADE'];
+            $codPostal = $rowUsers['COD_POSTAL'];
+            $pais = $rowUsers['PAIS'];
+
+            $_SESSION["MORADA_USER"] = $rowUsers["MORADA"];
+            $_SESSION["TELEMOVEL_USER"] = $rowUsers["TELEMOVEL"];
+            $_SESSION["CIDADE_USER"] = $rowUsers["CIDADE"];
+            $_SESSION["CODPOSTAL_USER"] = $rowUsers["COD_POSTAL"];
+            $_SESSION["PAIS_USER"] = $rowUsers["PAIS"];
 
             if (!isset($_POST["fName"], $_POST["lName"])) {
 
@@ -63,6 +82,16 @@ if (!isset($_SESSION["USER"])) {
                 $fName = trim($fName);
                 $lName = mysqli_real_escape_string($_conn, $_POST['lName']);
                 $lName = trim($lName);
+                $morada = mysqli_real_escape_string($_conn, $_POST['formMorada']);
+                $morada = trim($morada);
+                $cidade = mysqli_real_escape_string($_conn, $_POST['formCidade']);
+                $cidade = trim($cidade);
+                $telemovel = mysqli_real_escape_string($_conn, $_POST['formTelemovel']);
+                $telemovel = trim($telemovel);
+                $codPostal = mysqli_real_escape_string($_conn, $_POST['formCodPostal']);
+                $codPostal = trim($codPostal);
+                $pais = mysqli_real_escape_string($_conn, $_POST['formPais']);
+                $pais = trim($pais);
 
                 $receberMensagens = $_POST['receberMensagens'];
                 if ($receberMensagens == "Sim") {
@@ -80,6 +109,15 @@ if (!isset($_SESSION["USER"])) {
                     $errorMessagelName = "O apelido é demasiado curto!";
                     $podeRegistar = "Nao";
                 }
+                if (strlen(trim($telemovel)) < 9) {
+                    $errorMessageTelemovel = "O número telemóvel tem que ter pelo menos 9 digitos!";
+                    $podeRegistar = "Nao";
+                }
+                if (strlen(trim($codPostal)) < 8) {
+                    $errorMessageCodPostal = "O código postal fornecido parece ser inválido. 
+                    Exemplo: 5360-316; 1234-567";
+                    $podeRegistar = "Nao";
+                }
             }
         }
     } else {
@@ -92,18 +130,14 @@ if (!isset($_SESSION["USER"])) {
 
 if (isset($_POST['btn-save-changes'])) {
 
-
     // verificar senha por questões de segurança
-
     $password = mysqli_real_escape_string($_conn, $_POST['password']);
     $password = trim($password);
 
 
-    if (password_verify($password, $encryptedPassowrd)) {
+    if (password_verify($password, $encryptedPassword)) {
 
         // senha OK, filtar e validar inputs
-
-
 
     } else {
 
@@ -116,16 +150,22 @@ if (isset($_POST['btn-save-changes'])) {
 
 
         ///////////////////////////////////
-        // ALTERA
+        // ALTERA/INSIRA
         //////////////////////////////////
 
-        $fName = strip_tags($fName); // demonstração da remoção de caracteres especiais html por exemplo..
 
-        $sql = "UPDATE USERS SET fNAME = ?, lNAME = ?, MSGS_MARKETING = ? WHERE USERNAME = ?";
+        $morada = strip_tags($morada);
+        $cidade = strip_tags($cidade);
+        $telemovel = strip_tags($telemovel);
+        $pais = strip_tags($pais);
+        $fName = strip_tags($fName);
+        $lName = strip_tags($lName); // demonstração da remoção de caracteres especiais html por exemplo..
+
+        $sql = "UPDATE USERS SET fNAME = ?, lNAME = ?, MORADA = ?, COD_POSTAL = ?, CIDADE = ?, PAIS = ?, TELEMOVEL = ?, MSGS_MARKETING = ? WHERE USERNAME = ?";
 
         if ($stmt = mysqli_prepare($_conn, $sql)) {
 
-            mysqli_stmt_bind_param($stmt, "ssis", $fName, $lName, $receberMsgs, $username);
+            mysqli_stmt_bind_param($stmt, "sssssssis", $fName, $lName, $morada, $codPostal, $cidade, $pais, $telemovel, $receberMsgs, $username);
 
 
             mysqli_stmt_execute($stmt);
@@ -151,6 +191,7 @@ if (isset($_POST['btn-save-changes'])) {
         mysqli_stmt_close($stmt);
     }
 }
+
 ?>
 
 
@@ -251,26 +292,35 @@ if (isset($_POST['btn-save-changes'])) {
                 Por uma questão de segurança, para alterar as suas definições de conta deverá digitar a
                 sua senha. No final, não se esqueça de gravar as alterações. Se apenas pretende alterar a sua senha use a opção "Esqueci-me da senha".
 
+                <p><b><?php echo $temporaryMsg; ?></b></p>
                 <div class="editAcc-box">
                     <div class="information-editAcc-content">
                         <form action="#" method="POST">
                             <fieldset class="editAcc-fieldset">
                                 <legend>Nome</legend>
-                                <input type="text" class="editAcc-input" name="fName" value="<?php echo $fName; ?>">
+                                <div class="div-input">
+                                    <input type="text" class="editAcc-input" name="fName" value="<?php echo $fName; ?>">
+                                </div>
                             </fieldset>
                             <p><?php echo $errorMessagefName; ?></p>
                             <br>
                             <fieldset class="editAcc-fieldset">
                                 <legend>Apelido</legend>
-                                <input type="text" class="editAcc-input" name="lName" value="<?php echo $lName; ?>">
+                                <div class="div-input">
+                                    <input type="text" class="editAcc-input" name="lName" value="<?php echo $lName; ?>">
+                                </div>
                             </fieldset>
                             <p><?php echo $errorMessagelName; ?></p>
                             <br>
 
                             <fieldset class="editAcc-fieldset">
                                 <legend>Número de telemóvel</legend>
-                                <input type="text" class="editAcc-input" name="telemovel" value="<?php echo $telemovel; ?>">
+                                <div class="div-input">
+                                    <input type="text" class="editAcc-input" name="formTelemovel" value="<?php echo $telemovel; ?>">
+                                </div>
+
                             </fieldset>
+                            <p><?php echo $errorMessageTelemovel; ?></p>
                             <br>
                             <p>Pretendo receber mensagens de marketing:</p>
                             <select name="receberMensagens">
@@ -286,27 +336,38 @@ if (isset($_POST['btn-save-changes'])) {
                     <div class="information-editAcc-content">
                         <fieldset class="editAcc-fieldset">
                             <legend>Morada</legend>
-                            <input type="text" class="editAcc-input" name="morada" value="<?php echo $morada; ?>">
+                            <div class="div-input">
+                                <input type="text" class="editAcc-input" name="formMorada" value="<?php echo $morada; ?>">
+                            </div>
                         </fieldset>
                         <br>
                         <fieldset class="editAcc-fieldset">
                             <legend>Código Postal</legend>
-                            <input type="text" class="editAcc-input" name="codPostal" value="<?php echo $codPostal; ?>">
+                            <div class="div-input">
+                                <input type="text" class="editAcc-input" name="formCodPostal" value="<?php echo $codPostal; ?>">
+                            </div>
                         </fieldset>
+                        <p><?php echo $errorMessageCodPostal; ?></p>
                         <br>
                         <fieldset class="editAcc-fieldset">
                             <legend>Cidade</legend>
-                            <input type="text" class="editAcc-input" name="cidade" value="<?php echo $cidade; ?>">
+                            <div class="div-input">
+                                <input type="text" class="editAcc-input" name="formCidade" value="<?php echo $cidade; ?>">
+                            </div>
                         </fieldset>
                         <br>
                         <fieldset class="editAcc-fieldset">
                             <legend>País</legend>
-                            <input type="text" class="editAcc-input" name="pais" value="<?php echo $pais; ?>">
+                            <div class="div-input">
+                                <input type="text" class="editAcc-input" name="formPais" value="<?php echo $pais; ?>">
+                            </div>
                         </fieldset>
                         <br>
                         <fieldset class="editAcc-fieldset">
                             <legend>Senha</legend>
-                            <input type="password" class="editAcc-input" name="password" value="<?php echo $password; ?>">
+                            <div class="div-input">
+                                <input type="password" class="editAcc-input" name="password" value="<?php echo $password; ?>">
+                            </div>
                         </fieldset>
                         <p><?php echo $errorMessagePassword; ?></p>
                     </div>
@@ -386,25 +447,6 @@ if (isset($_POST['btn-save-changes'])) {
         </footer>
         <!--Footer section ends here-->
     </main>
-</body>
-
-</html>
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-
-
-
 </body>
 
 </html>

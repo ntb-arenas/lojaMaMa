@@ -413,13 +413,17 @@
 }
 
 .editAcc-input {
-    width: 80%;
+    width: 100%;
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
     border-bottom-style: hidden;
     font-size: 1.7rem;
     padding: 5px;
+}
+
+.div-input {
+    overflow: hidden;
 }
 
 .editAcc-input:focus {
