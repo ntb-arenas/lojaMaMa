@@ -104,7 +104,7 @@ if (!isset($_SESSION["USER"])) {
                     $podeRegistar = "Nao";
                 }
                 if (strlen(trim($telemovel)) < 9) {
-                    $errorMessageTelemovel = "O número telemóvel tem que ter pelo menos 9 digitos!";
+                    $errorMessageTelemovel = "O número telemóvel é invalido!";
                     $podeRegistar = "Nao";
                 }
                 if (strlen(trim($codPostal)) < 8) {
@@ -176,7 +176,7 @@ if (isset($_POST['btn-save-changes'])) {
             // encaminhar com timer 3 segundos
             header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
             header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
-            header("Refresh: 3; URL=../index.php");
+            header("Refresh: 3; URL=../profileAccount.php");
         } else {
             // echo "ERROR: Could not prepare query: $sql. " . mysqli_error($_conn);
             echo "STATUS ADMIN (alterar definições): " . mysqli_error($_conn);
@@ -289,22 +289,28 @@ if (isset($_POST['btn-save-changes'])) {
                 <p><b><?php echo $temporaryMsg; ?></b></p>
                 <div class="editAcc-box">
                     <div class="information-editAcc-content">
-                        <form action="../profileAccount.php" method="POST">
+                        <form action="#" method="POST">
                             <fieldset class="editAcc-fieldset">
                                 <legend>Nome</legend>
                                 <div class="div-input">
                                     <input type="text" class="editAcc-input" name="fName" value="<?php echo $fName; ?>">
                                 </div>
                             </fieldset>
-                            <p><?php echo $errorMessagefName; ?></p>
+
+                            <div class="div-errors">
+                                <p><?php echo $errorMessagefName; ?></p>
+                            </div>
                             <br>
+
                             <fieldset class="editAcc-fieldset">
                                 <legend>Apelido</legend>
                                 <div class="div-input">
                                     <input type="text" class="editAcc-input" name="lName" value="<?php echo $lName; ?>">
                                 </div>
                             </fieldset>
-                            <p><?php echo $errorMessagelName; ?></p>
+                            <div class="div-errors">
+                                <p><?php echo $errorMessagelName; ?></p>
+                            </div>
                             <br>
 
                             <fieldset class="editAcc-fieldset">
@@ -312,10 +318,14 @@ if (isset($_POST['btn-save-changes'])) {
                                 <div class="div-input">
                                     <input type="text" class="editAcc-input" name="formTelemovel" value="<?php echo $telemovel; ?>">
                                 </div>
-
                             </fieldset>
-                            <p><?php echo $errorMessageTelemovel; ?></p>
+
+                            <div class="div-errors">
+                                <p><?php echo $errorMessageTelemovel; ?></p>
+                            </div>
+
                             <br>
+
                             <p>Pretendo receber mensagens de marketing:</p>
                             <select name="receberMensagens">
                                 <option value="Sim" <?php if ($receberMsgs == 1) {
@@ -340,7 +350,9 @@ if (isset($_POST['btn-save-changes'])) {
                                 <input type="text" class="editAcc-input" name="formCodPostal" value="<?php echo $codPostal; ?>">
                             </div>
                         </fieldset>
-                        <p><?php echo $errorMessageCodPostal; ?></p>
+                        <div class="div-errors">
+                            <p><?php echo $errorMessageCodPostal; ?></p>
+                        </div>
                         <br>
                         <fieldset class="editAcc-fieldset">
                             <legend>Cidade</legend>
@@ -362,7 +374,10 @@ if (isset($_POST['btn-save-changes'])) {
                                 <input type="password" class="editAcc-input" name="password" value="<?php echo $password; ?>">
                             </div>
                         </fieldset>
-                        <p><?php echo $errorMessagePassword; ?></p>
+                        <div class="div-errors">
+                            <p><?php echo $errorMessagePassword; ?></p>
+                        </div>
+
                     </div>
                 </div>
                 <button name="btn-save-changes" type="submit">GRAVAR ALTERAÇÕES</button>

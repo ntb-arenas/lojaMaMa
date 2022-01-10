@@ -242,38 +242,56 @@ if (isset($_POST['submit-create-account'])) {
                             <legend>Código de Utilizador</legend>
                             <input type="text" class="createAcc-input" name="formUser" value="<?php echo $username; ?>">
                         </fieldset>
-                        <p><?php echo $errorMessageUsername; ?></p>
+                        <div class="div-errors">
+                            <p><?php echo $errorMessageUsername; ?></p>
+                        </div>
+
 
                         <fieldset class="createAcc-fieldset">
                             <legend>E-mail</legend>
                             <input type="email" class="createAcc-input" name="formEmail" value="<?php echo $email; ?>">
                         </fieldset>
-                        <p><?php echo $errorMessageEmail; ?></p>
+                        <div class="div-errors">
+                            <p><?php echo $errorMessageEmail; ?></p>
+                        </div>
+
 
                         <fieldset class="createAcc-fieldset">
                             <legend>Senha</legend>
                             <input type="password" class="createAcc-input" name="formPassword1" value="<?php echo $password; ?>">
                         </fieldset>
-                        <p><?php echo $errorMessagePassword; ?></p>
+                        <div class="div-errors">
+                            <p><?php echo $errorMessagePassword; ?></p>
+                        </div>
+
 
                         <fieldset class="createAcc-fieldset">
                             <legend>Confirmação de Senha</legend>
                             <input type="password" class="createAcc-input" name="formPassword2" value="<?php echo $passwordConfirmation; ?>">
                         </fieldset>
-                        <p><?php echo $errorMessagePasswordRecover; ?></p>
+                        <div class="div-errors">
+                            <p><?php echo $errorMessagePasswordRecover; ?></p>
+                        </div>
+
 
 
                         <fieldset class="createAcc-fieldset">
                             <legend>Nome</legend>
                             <input type="text" class="createAcc-input" name="formfName" value="<?php echo $fName; ?>">
                         </fieldset>
-                        <p><?php echo $errorMessagefName; ?></p>
+                        <div class="div-errors">
+                            <p><?php echo $errorMessagefName; ?></p>
+                        </div>
+
 
                         <fieldset class="createAcc-fieldset">
                             <legend>Apelido</legend>
                             <input type="text" class="createAcc-input" name="formlName" value="<?php echo $lName; ?>">
                         </fieldset>
-                        <p><?php echo $errorMessagelName; ?></p>
+                        <div class="div-errors">
+                            <p><?php echo $errorMessagelName; ?></p>
+                        </div>
+
 
                         <input type="checkbox" name="formAceito" value="aceito_marketing" <?php if ($aceitoMarketing == 1) {
                                                                                                 echo " checked";

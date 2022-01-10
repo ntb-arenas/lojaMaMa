@@ -429,3 +429,7 @@
 .editAcc-input:focus {
     outline: none;
 }
+
+.div-errors {
+    color: red;
+}
