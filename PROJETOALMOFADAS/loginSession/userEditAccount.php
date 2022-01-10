@@ -63,12 +63,6 @@ if (!isset($_SESSION["USER"])) {
             $codPostal = $rowUsers['COD_POSTAL'];
             $pais = $rowUsers['PAIS'];
 
-            $_SESSION["MORADA_USER"] = $rowUsers["MORADA"];
-            $_SESSION["TELEMOVEL_USER"] = $rowUsers["TELEMOVEL"];
-            $_SESSION["CIDADE_USER"] = $rowUsers["CIDADE"];
-            $_SESSION["CODPOSTAL_USER"] = $rowUsers["COD_POSTAL"];
-            $_SESSION["PAIS_USER"] = $rowUsers["PAIS"];
-
             if (!isset($_POST["fName"], $_POST["lName"])) {
 
                 $fName = $rowUsers['fNAME'];
@@ -295,7 +289,7 @@ if (isset($_POST['btn-save-changes'])) {
                 <p><b><?php echo $temporaryMsg; ?></b></p>
                 <div class="editAcc-box">
                     <div class="information-editAcc-content">
-                        <form action="#" method="POST">
+                        <form action="../profileAccount.php" method="POST">
                             <fieldset class="editAcc-fieldset">
                                 <legend>Nome</legend>
                                 <div class="div-input">
@@ -331,7 +325,6 @@ if (isset($_POST['btn-save-changes'])) {
                                                         echo " selected";
                                                     } ?>>Não</option>
                             </select>
-                            <p>
                     </div>
                     <div class="information-editAcc-content">
                         <fieldset class="editAcc-fieldset">
@@ -372,13 +365,8 @@ if (isset($_POST['btn-save-changes'])) {
                         <p><?php echo $errorMessagePassword; ?></p>
                     </div>
                 </div>
-
-
-
                 <button name="btn-save-changes" type="submit">GRAVAR ALTERAÇÕES</button>
                 <button name="btn-cancel-changes" type="submit">CANCELAR ALTERAÇÕES</button>
-
-                </p>
                 </form>
 
                 <br>

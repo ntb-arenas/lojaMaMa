@@ -3,6 +3,24 @@
 session_start();
 include_once  './loginSession/connect_DB.php';
 
+$username = $_SESSION["USER"];
+
+$stmt = $_conn->prepare('SELECT * FROM USERS WHERE USERNAME = ?');
+$stmt->bind_param('s', $username);
+$stmt->execute();
+
+$usersResult = $stmt->get_result();
+
+if ($usersResult->num_rows > 0) {
+    while ($rowUsers = $usersResult->fetch_assoc()) {
+        $morada = $rowUsers['MORADA'];
+        $telemovel = $rowUsers['TELEMOVEL'];
+        $cidade = $rowUsers['CIDADE'];
+        $codPostal = $rowUsers['COD_POSTAL'];
+        $pais = $rowUsers['PAIS'];
+    }
+}
+
 ?>
 
 
@@ -111,8 +129,11 @@ include_once  './loginSession/connect_DB.php';
                     </div>
 
                     <div class="box-content">
-                        <p>
-                        </p>
+                        <p><?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"]; ?></p>
+                        <p><?php echo $morada; ?></p>
+                        <p><?php echo $codPostal . ", " . $cidade; ?></p>
+                        <p><?php echo $pais; ?></p>
+                        <p><?php echo "T: " . $telemovel; ?></p>
                     </div>
 
                     <form action="./loginSession/userEditAccount.php">
