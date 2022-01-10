@@ -151,10 +151,19 @@ if (isset($_POST['btn-save-changes'])) {
         mysqli_stmt_close($stmt);
     }
 }
-
-
-
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -223,7 +232,7 @@ if (isset($_POST['btn-save-changes'])) {
                     <h1>
                         Olá <?php echo $_SESSION["FIRSTNAME_USER"] ?>
                     </h1>
-                    <h3><a href="./loginSession/userSair.php">Logout</a></h3>
+                    <h3><a href="./userSair.php">Logout</a></h3>
                 </div>
 
                 <div class="account-panel">
@@ -238,71 +247,77 @@ if (isset($_POST['btn-save-changes'])) {
 
             <div class="information-component">
                 <h1>Editar Conta</h1>
-
+                <br>
                 Por uma questão de segurança, para alterar as suas definições de conta deverá digitar a
                 sua senha. No final, não se esqueça de gravar as alterações. Se apenas pretende alterar a sua senha use a opção "Esqueci-me da senha".
 
-                <form action="#" method="POST">
+                <div class="editAcc-box">
+                    <div class="information-editAcc-content">
+                        <form action="#" method="POST">
+                            <fieldset class="editAcc-fieldset">
+                                <legend>Nome</legend>
+                                <input type="text" class="editAcc-input" name="fName" value="<?php echo $fName; ?>">
+                            </fieldset>
+                            <p><?php echo $errorMessagefName; ?></p>
+                            <br>
+                            <fieldset class="editAcc-fieldset">
+                                <legend>Apelido</legend>
+                                <input type="text" class="editAcc-input" name="lName" value="<?php echo $lName; ?>">
+                            </fieldset>
+                            <p><?php echo $errorMessagelName; ?></p>
+                            <br>
 
-                    <fieldset class="editAcc-fieldset">
-                        <legend>Nome</legend>
-                        <input type="text" class="editAcc-input" name="fName" value="<?php echo $fName; ?>">
-                    </fieldset>
-                    <p><?php echo $errorMessagefName; ?></p>
-                    <br>
-                    <fieldset class="editAcc-fieldset">
-                        <legend>Apelido</legend>
-                        <input type="text" class="editAcc-input" name="lName" value="<?php echo $lName; ?>">
-                    </fieldset>
-                    <p><?php echo $errorMessagelName;?></p>
-                    <br>
-                    <fieldset class="editAcc-fieldset">
-                        <legend>Número de telemóvel</legend>
-                        <input type="text" class="editAcc-input" name="telemovel" value="<?php echo $telemovel; ?>">
-                    </fieldset>
-                    <br>
-                    <fieldset class="editAcc-fieldset">
-                        <legend>Morada</legend>
-                        <input type="text" class="editAcc-input" name="morada" value="<?php echo $morada; ?>">
-                    </fieldset>
-                    <br>
-                    <fieldset class="editAcc-fieldset">
-                        <legend>Código Postal</legend>
-                        <input type="text" class="editAcc-input" name="codPostal" value="<?php echo $codPostal; ?>">
-                    </fieldset>
-                    <br>
-                    <fieldset class="editAcc-fieldset">
-                        <legend>Cidade</legend>
-                        <input type="text" class="editAcc-input" name="cidade" value="<?php echo $cidade; ?>">
-                    </fieldset>
-                    <br>
-                    <fieldset class="editAcc-fieldset">
-                        <legend>País</legend>
-                        <input type="text" class="editAcc-input" name="pais" value="<?php echo $pais; ?>">
-                    </fieldset>
-                    <br>
-                    <fieldset class="editAcc-fieldset">
-                        <legend>Senha</legend>
-                        <input type="password" class="editAcc-input" name="password" value="<?php echo $password; ?>">
-                    </fieldset>
-                    <p><?php echo $errorMessagePassword; ?></p>
+                            <fieldset class="editAcc-fieldset">
+                                <legend>Número de telemóvel</legend>
+                                <input type="text" class="editAcc-input" name="telemovel" value="<?php echo $telemovel; ?>">
+                            </fieldset>
+                            <br>
+                            <p>Pretendo receber mensagens de marketing:</p>
+                            <select name="receberMensagens">
+                                <option value="Sim" <?php if ($receberMsgs == 1) {
+                                                        echo " selected";
+                                                    } ?>>Sim</option>
+                                <option value="Não" <?php if ($receberMsgs == 0) {
+                                                        echo " selected";
+                                                    } ?>>Não</option>
+                            </select>
+                            <p>
+                    </div>
+                    <div class="information-editAcc-content">
+                        <fieldset class="editAcc-fieldset">
+                            <legend>Morada</legend>
+                            <input type="text" class="editAcc-input" name="morada" value="<?php echo $morada; ?>">
+                        </fieldset>
+                        <br>
+                        <fieldset class="editAcc-fieldset">
+                            <legend>Código Postal</legend>
+                            <input type="text" class="editAcc-input" name="codPostal" value="<?php echo $codPostal; ?>">
+                        </fieldset>
+                        <br>
+                        <fieldset class="editAcc-fieldset">
+                            <legend>Cidade</legend>
+                            <input type="text" class="editAcc-input" name="cidade" value="<?php echo $cidade; ?>">
+                        </fieldset>
+                        <br>
+                        <fieldset class="editAcc-fieldset">
+                            <legend>País</legend>
+                            <input type="text" class="editAcc-input" name="pais" value="<?php echo $pais; ?>">
+                        </fieldset>
+                        <br>
+                        <fieldset class="editAcc-fieldset">
+                            <legend>Senha</legend>
+                            <input type="password" class="editAcc-input" name="password" value="<?php echo $password; ?>">
+                        </fieldset>
+                        <p><?php echo $errorMessagePassword; ?></p>
+                    </div>
+                </div>
 
 
-                    <p>Pretendo receber mensagens de marketing:</p>
 
-                    <select name="receberMensagens">
-                        <option value="Sim" <?php if ($receberMsgs == 1) {
-                                                echo " selected";
-                                            } ?>>Sim</option>
-                        <option value="Não" <?php if ($receberMsgs == 0) {
-                                                echo " selected";
-                                            } ?>>Não</option>
-                    </select>
-                    <p>
-                        <button name="btn-save-changes" type="submit">GRAVAR ALTERAÇÕES</button>
-                        <button name="btn-cancel-changes" type="submit">CANCELAR ALTERAÇÕES</button>
+                <button name="btn-save-changes" type="submit">GRAVAR ALTERAÇÕES</button>
+                <button name="btn-cancel-changes" type="submit">CANCELAR ALTERAÇÕES</button>
 
-                    </p>
+                </p>
                 </form>
 
                 <br>
