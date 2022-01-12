@@ -219,12 +219,22 @@ if (isset($_POST['btn-save-changes'])) {
 
         <!--Navbar starts here-->
         <div class="navBar">
-            <span><a href="./almofadasAma.php">ALMOFADAS DE AMAMENTAÇÃO</a></span>
-            <span><a href="./cunhas.php">CUNHAS</a></span>
-            <span><a href="./slings.php">SLINGS</a></span>
-            <span><a href="./mudafraldas.php">MUDA FRALDAS</a></span>
-            <span><a href="./kitMat.php">KIT MATERNIDADE</a></span>
-            <span><a href="./almofadasAnti.php">ALMOFADAS ANTI-CÓLICAS</a></span>
+            <?php
+            $resultTablecategory = mysqli_query($_conn, "SELECT * FROM CATEGORY WHERE VISIBLE = 1 ORDER BY SEQUENCE ASC");
+
+            if (mysqli_num_rows($resultTablecategory) > 0) {
+                $ctd = 0;
+                while ($rowTablecategory = mysqli_fetch_assoc($resultTablecategory)) {
+                    $ctd = $ctd + 1;
+
+            ?>
+
+                    <span><a href="../<?php echo $rowTablecategory['LINK'] ?>"><?php echo $rowTablecategory['TITLE'] ?></a></span>
+
+            <?php
+                }
+            }
+            ?>
         </div>
         <!--Navbar ends here-->
 

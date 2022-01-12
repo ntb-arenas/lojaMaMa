@@ -67,16 +67,16 @@ include_once  './loginSession/connect_DB.php';
         <!--Navbar starts here-->
         <div class="navBar">
             <?php
-            $resultTableCategories = mysqli_query($_conn, "SELECT * FROM CATEGORIES");
+            $resultTablecategory = mysqli_query($_conn, "SELECT * FROM CATEGORY WHERE VISIBLE = 1 ORDER BY SEQUENCE ASC");
 
-            if (mysqli_num_rows($resultTableCategories) > 0) {
+            if (mysqli_num_rows($resultTablecategory) > 0) {
                 $ctd = 0;
-                while ($rowTableCategories = mysqli_fetch_assoc($resultTableCategories)) {
+                while ($rowTablecategory = mysqli_fetch_assoc($resultTablecategory)) {
                     $ctd = $ctd + 1;
 
             ?>
 
-                    <span><a href="<?php echo $rowTableCategories['LINK'] ?>"><?php echo $rowTableCategories['TITLE'] ?></a></span>
+                    <span><a href="<?php echo $rowTablecategory['LINK'] ?>"><?php echo $rowTablecategory['TITLE'] ?></a></span>
 
             <?php
                 }
