@@ -23,7 +23,7 @@ include_once  './loginSession/connect_DB.php';
         <!--Header starts here-->
         <header>
             <div class="logo">
-                <a href="index.html">
+                <a href="./index.php">
                     <img src="gallery/logo.png" alt="Ma-ma logo" class="logo">
                 </a>
             </div>

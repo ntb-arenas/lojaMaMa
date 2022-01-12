@@ -41,7 +41,7 @@ $pais = "";
 if (!isset($_SESSION["USER"])) {
     header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
     header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
-    header("Location: index.php");
+    header("Location: ../index.php");
 } else {
     // ler informações de conta 
     $username = $_SESSION["USER"];
@@ -252,12 +252,22 @@ if (isset($_POST['btn-save-changes'])) {
 
         <!--Navbar starts here-->
         <div class="navBar">
-            <span><a href="./almofadasAma.php">ALMOFADAS DE AMAMENTAÇÃO</a></span>
-            <span><a href="./cunhas.php">CUNHAS</a></span>
-            <span><a href="./slings.php">SLINGS</a></span>
-            <span><a href="./mudafraldas.php">MUDA FRALDAS</a></span>
-            <span><a href="./kitMat.php">KIT MATERNIDADE</a></span>
-            <span><a href="./almofadasAnti.php">ALMOFADAS ANTI-CÓLICAS</a></span>
+            <?php
+            $resultTableCategories = mysqli_query($_conn, "SELECT * FROM CATEGORIES");
+
+            if (mysqli_num_rows($resultTableCategories) > 0) {
+                $ctd = 0;
+                while ($rowTableCategories = mysqli_fetch_assoc($resultTableCategories)) {
+                    $ctd = $ctd + 1;
+
+            ?>
+
+                    <span><a href="../<?php echo $rowTableCategories['LINK'] ?>"><?php echo $rowTableCategories['TITLE'] ?></a></span>
+
+            <?php
+                }
+            }
+            ?>
         </div>
         <!--Navbar ends here-->
 

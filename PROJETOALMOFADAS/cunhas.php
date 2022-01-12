@@ -1,5 +1,6 @@
-<?php 
+<?php
 session_start();
+include_once  './loginSession/connect_DB.php';
 ?>
 
 
@@ -36,7 +37,7 @@ session_start();
         <!--Header starts here-->
         <header>
             <div class="logo">
-                <a href="#">
+                <a href="./index.php">
                     <img src="gallery/logo.png" alt="Ma-ma logo" class="logo">
                 </a>
             </div>
@@ -65,12 +66,22 @@ session_start();
 
         <!--Navbar starts here-->
         <div class="navBar">
-            <span><a href="./almofadasAma.php">ALMOFADAS DE AMAMENTAÇÃO</a></span>
-            <span><a href="./cunhas.php">CUNHAS</a></span>
-            <span><a href="#">SLINGS</a></span>
-            <span><a href="#">MUDA FRALDAS</a></span>
-            <span><a href="#">KIT MATERNIDADE</a></span>
-            <span><a href="#">ALMOFADAS ANTI-CÓLICAS</a></span>
+            <?php
+            $resultTableCategories = mysqli_query($_conn, "SELECT * FROM CATEGORIES");
+
+            if (mysqli_num_rows($resultTableCategories) > 0) {
+                $ctd = 0;
+                while ($rowTableCategories = mysqli_fetch_assoc($resultTableCategories)) {
+                    $ctd = $ctd + 1;
+
+            ?>
+
+                    <span><a href="<?php echo $rowTableCategories['LINK'] ?>"><?php echo $rowTableCategories['TITLE'] ?></a></span>
+
+            <?php
+                }
+            }
+            ?>
         </div>
         <!--Navbar ends here-->
 

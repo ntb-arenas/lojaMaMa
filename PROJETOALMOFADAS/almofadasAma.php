@@ -1,5 +1,6 @@
-<?php  
+<?php
 session_start();
+include_once  './loginSession/connect_DB.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,8 +25,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <!-- Jquery ----------------------------------------------->
     <script src="js/jquery.js"></script>
-    <script data-require="jquery@3.1.1" data-semver="3.1.1"
-        src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- lightslider.js ------------------------------------------>
     <script src="js/lightslider.js"></script>
     <script src="js/script1.js"></script>
@@ -38,7 +38,7 @@ session_start();
         <!--Header starts here-->
         <header>
             <div class="logo">
-                <a href="#">
+                <a href="./index.php">
                     <img src="gallery/logo.png" alt="Ma-ma logo" class="logo">
                 </a>
             </div>
@@ -67,12 +67,22 @@ session_start();
 
         <!--Navbar starts here-->
         <div class="navBar">
-            <span><a href="./almofadasAma.php">ALMOFADAS DE AMAMENTAÇÃO</a></span>
-            <span><a href="./cunhas.php">CUNHAS</a></span>
-            <span><a href="#">SLINGS</a></span>
-            <span><a href="#">MUDA FRALDAS</a></span>
-            <span><a href="#">KIT MATERNIDADE</a></span>
-            <span><a href="#">ALMOFADAS ANTI-CÓLICAS</a></span>
+            <?php
+            $resultTableCategories = mysqli_query($_conn, "SELECT * FROM CATEGORIES");
+
+            if (mysqli_num_rows($resultTableCategories) > 0) {
+                $ctd = 0;
+                while ($rowTableCategories = mysqli_fetch_assoc($resultTableCategories)) {
+                    $ctd = $ctd + 1;
+
+            ?>
+
+                    <span><a href="<?php echo $rowTableCategories['LINK'] ?>"><?php echo $rowTableCategories['TITLE'] ?></a></span>
+
+            <?php
+                }
+            }
+            ?>
         </div>
         <!--Navbar ends here-->
 
@@ -160,9 +170,7 @@ session_start();
 
                         <div class="container-button">
                             <div class="quantity buttons_added">
-                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1"
-                                    max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4"
-                                    pattern="" inputmode=""><input type="button" value="+" class="plus">
+                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
                             </div>
 
                             <div class="addToCart">
@@ -217,9 +225,7 @@ session_start();
 
                         <div class="container-button">
                             <div class="quantity buttons_added">
-                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1"
-                                    max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4"
-                                    pattern="" inputmode=""><input type="button" value="+" class="plus">
+                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
                             </div>
 
                             <div class="addToCart">
@@ -309,8 +315,7 @@ session_start();
                         <div class="component">
                             <a href="#">
                                 <div class="product">
-                                    <img src="gallery/productimg/azul_escuro.jpg" alt="" id="azul-escuro"
-                                        class="azul-escuro">
+                                    <img src="gallery/productimg/azul_escuro.jpg" alt="" id="azul-escuro" class="azul-escuro">
                                 </div>
                             </a>
                             <div class="productName">
@@ -322,8 +327,7 @@ session_start();
                         <div class="component">
                             <a href="#">
                                 <div class="product">
-                                    <img src="gallery/productimg/azul_pique.jpg" alt="" id="azul-pique"
-                                        class="azul-pique">
+                                    <img src="gallery/productimg/azul_pique.jpg" alt="" id="azul-pique" class="azul-pique">
                                 </div>
                             </a>
                             <div class="productName">
@@ -354,7 +358,9 @@ session_start();
                                     <img src="gallery/productimg/baloes.jpg" alt="" class="baloes">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Balões</h4></div>
+                            <div class="productName">
+                                <h4>Balões</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-j">
@@ -364,7 +370,9 @@ session_start();
                                     <img src="gallery/productimg/bhen.jpg" alt="" class="bhen">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Bhen</h4></div>
+                            <div class="productName">
+                                <h4>Bhen</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-k">
@@ -374,18 +382,21 @@ session_start();
                                     <img src="gallery/productimg/selva.jpg" alt="" class="selva">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Selva</h4></div>
+                            <div class="productName">
+                                <h4>Selva</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-l">
                         <div class="component">
                             <a href="#">
                                 <div class="product">
-                                    <img src="gallery/productimg/riscas_diferentes.jpg" alt=""
-                                        class="riscas_diferentes">
+                                    <img src="gallery/productimg/riscas_diferentes.jpg" alt="" class="riscas_diferentes">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Riscas Tamanhos Diferentes</h4></div>
+                            <div class="productName">
+                                <h4>Riscas Tamanhos Diferentes</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-m">
@@ -395,7 +406,9 @@ session_start();
                                     <img src="gallery/productimg/riscas_largas.jpg" alt="" class="riscas_largas">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Riscas Largas</h4></div>
+                            <div class="productName">
+                                <h4>Riscas Largas</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-n">
@@ -405,7 +418,9 @@ session_start();
                                     <img src="gallery/productimg/flores_verde.jpg" alt="" class="flores_verde">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Flores Fundo Verde</h4></div>
+                            <div class="productName">
+                                <h4>Flores Fundo Verde</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-o">
@@ -415,7 +430,9 @@ session_start();
                                     <img src="gallery/productimg/bolas.jpg" alt="" class="bolas">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Bolas</h4></div>
+                            <div class="productName">
+                                <h4>Bolas</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-p">
@@ -425,7 +442,9 @@ session_start();
                                     <img src="gallery/productimg/carros.jpg" alt="" class="carros">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Carros</h4></div>
+                            <div class="productName">
+                                <h4>Carros</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-q">
@@ -435,7 +454,9 @@ session_start();
                                     <img src="gallery/productimg/animais_beje.jpg" alt="" class="animais_beje">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Animais com Fundo Beje</h4></div>
+                            <div class="productName">
+                                <h4>Animais com Fundo Beje</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-r">
@@ -445,7 +466,9 @@ session_start();
                                     <img src="gallery/productimg/circo_verde.jpg" alt="" class="circo_verde">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Circo com Fundo Verde</h4></div>
+                            <div class="productName">
+                                <h4>Circo com Fundo Verde</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-s">
@@ -455,7 +478,9 @@ session_start();
                                     <img src="gallery/productimg/malmequeres.jpg" alt="" class="malmequeres">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Malmequeres</h4></div>
+                            <div class="productName">
+                                <h4>Malmequeres</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-t">
@@ -465,7 +490,9 @@ session_start();
                                     <img src="gallery/productimg/coracoes_azuis.jpg" alt="" class="coracoes_azuis">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Corações Azuis</h4></div>
+                            <div class="productName">
+                                <h4>Corações Azuis</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-u">
@@ -475,7 +502,9 @@ session_start();
                                     <img src="gallery/productimg/cidade.jpg" alt="" class="cidade">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Cidade</h4></div>
+                            <div class="productName">
+                                <h4>Cidade</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-v">
@@ -485,7 +514,9 @@ session_start();
                                     <img src="gallery/productimg/circulos.jpg" alt="" class="circulos">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Circulos</h4></div>
+                            <div class="productName">
+                                <h4>Circulos</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-w">
@@ -495,7 +526,9 @@ session_start();
                                     <img src="gallery/productimg/ovelhas_rosa.jpg" alt="" class="ovelhas_rosa">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Ovelhas Fundo Rosa</h4></div>
+                            <div class="productName">
+                                <h4>Ovelhas Fundo Rosa</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-x">
@@ -505,7 +538,9 @@ session_start();
                                     <img src="gallery/productimg/argolas_laranja.jpg" alt="" class="argolas_laranja">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Argolas Laranja</h4></div>
+                            <div class="productName">
+                                <h4>Argolas Laranja</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-y">
@@ -515,7 +550,9 @@ session_start();
                                     <img src="gallery/productimg/argolas_turquesa.jpg" alt="" class="argolas_turquesa">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Argolas Turquesa</h4></div>
+                            <div class="productName">
+                                <h4>Argolas Turquesa</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-z">
@@ -525,18 +562,21 @@ session_start();
                                     <img src="gallery/productimg/bolas_azul.jpg" alt="" class="bolas_azul">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Bolas Azul</h4></div>
+                            <div class="productName">
+                                <h4>Bolas Azul</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-a1">
                         <div class="component">
                             <a href="#">
                                 <div class="product">
-                                    <img src="gallery/productimg/estrelinhas_azul_bebe.jpg" alt=""
-                                        class="estrelinhas_azul_bebe">
+                                    <img src="gallery/productimg/estrelinhas_azul_bebe.jpg" alt="" class="estrelinhas_azul_bebe">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Estrelinhas Azul Bebé</h4></div>
+                            <div class="productName">
+                                <h4>Estrelinhas Azul Bebé</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-b1">
@@ -546,18 +586,21 @@ session_start();
                                     <img src="gallery/productimg/fantasia_bonecos.jpg" alt="" class="fantasia_bonecos">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Fantasia Bonecos</h4></div>
+                            <div class="productName">
+                                <h4>Fantasia Bonecos</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-c1">
                         <div class="component">
                             <a href="#">
                                 <div class="product">
-                                    <img src="gallery/productimg/pintinhas_azul_bebe.jpg" alt=""
-                                        class="pintinhas_azul_bebe">
+                                    <img src="gallery/productimg/pintinhas_azul_bebe.jpg" alt="" class="pintinhas_azul_bebe">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Pitinihas Azul Bebé</h4></div>
+                            <div class="productName">
+                                <h4>Pitinihas Azul Bebé</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-d1">
@@ -567,7 +610,9 @@ session_start();
                                     <img src="gallery/productimg/pintinhas_cinza.jpg" alt="" class="pintinhas_cinza">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Pitinhas Cinza</h4></div>
+                            <div class="productName">
+                                <h4>Pitinhas Cinza</h4>
+                            </div>
                         </div>
                     </li>
                     <li class="item-z">
@@ -577,7 +622,9 @@ session_start();
                                     <img src="gallery/productimg/pintinhas_rosa.jpg" alt="" class="pintinhas_rosa">
                                 </div>
                             </a>
-                            <div class="productName"><h4>Pitinhas Rosa</h4></div>
+                            <div class="productName">
+                                <h4>Pitinhas Rosa</h4>
+                            </div>
                         </div>
                     </li>
                 </ul>
