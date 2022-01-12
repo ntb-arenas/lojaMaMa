@@ -1,176 +1,289 @@
-<?php 
+<?php
 
 session_start();
+error_reporting(E_ERROR | E_PARSE);
 
 
-include_once  './conexaobasedados.php'; 
-include_once './function_mail_utf8.php'; 
+include_once  './connect_DB.php';
+include_once './function_mail_utf8.php';
 
-$mensagemErroCodigo = "";
+$mensagemErrousername = "";
 $mensagemErroSenha = "";
 $mensagemErroEmail = "";
 $geraFormulario = "Sim";
 
-    
 
-if ( isset($_POST['botao-recuperar-senha']) ) {
-    
-        $codigo = mysqli_real_escape_string($_conn, $_POST['formCodigo']);
-        $codigo = strtolower(trim($codigo));
- 
-    
-        $stmt = $_conn->prepare('SELECT * FROM USERS WHERE CODIGO = ?');
-        $stmt->bind_param('s', $codigo); 
-        $stmt->execute();
 
-        $resultadoUsers = $stmt->get_result();
+if (isset($_POST['botao-recuperar-senha'])) {
 
-        if ($resultadoUsers->num_rows > 0) {
-            while ($rowUsers = $resultadoUsers->fetch_assoc()) { 
-                
-                $nome = $rowUsers['NOME'];
+    $username = mysqli_real_escape_string($_conn, $_POST['formusername']);
+    $username = strtolower(trim($username));
 
-                if ($rowUsers['USER_STATUS']==2) { // utilizador bloqueado
 
-                        $mensagemErroSenha="Não foi enviada mensagem de recuperação de senha, contacte os nossos serviços para obter ajuda.";
+    $stmt = $_conn->prepare('SELECT * FROM USERS WHERE USERNAME = ?');
+    $stmt->bind_param('s', $username);
+    $stmt->execute();
 
-                        } else  if ($rowUsers['USER_STATUS']==0 ) { // Utilizador criou a conta mas não ativou
+    $resultadoUsers = $stmt->get_result();
 
-                                     $mensagemErroSenha=  $rowUsers['NOME'] . ", ainda não ativou a sua conta. A mensagem com o código inicial de ativação de conta foi enviada para a sua caixa de correio. Caso não a encontre na sua caixa de entrada, verifique também o seu correio não solicitado ou envie-nos um email para ativarmos a sua conta. Obrigado."; 
+    if ($resultadoUsers->num_rows > 0) {
+        while ($rowUsers = $resultadoUsers->fetch_assoc()) {
 
-                                } else   {
+            $fName = $rowUsers['fNAME'];
+            $lName = $rowUsers['lNAME'];
+
+            if ($rowUsers['USER_STATUS'] == 2) { // utilizador bloqueado
+
+                $mensagemErroSenha = "Não foi enviada mensagem de recuperação de senha, contacte os nossos serviços para obter ajuda.";
+            } else  if ($rowUsers['USER_STATUS'] == 0) { // Utilizador criou a conta mas não ativou
+
+                $mensagemErroSenha =  $rowUsers['fNAME'] . ", ainda não ativou a sua conta. A mensagem com o código inicial de ativação de conta foi enviada para a sua caixa de correio. Caso não a encontre na sua caixa de entrada, verifique também o seu correio não solicitado ou envie-nos um email para ativarmos a sua conta. Obrigado.";
+            } else {
 
                 // Recuperar a senha 
                 // gerar token, preparar e enviar mail de recuperação
-                
+
                 $code = md5(uniqid(rand()));
- 
-                $sql= "UPDATE  USERS SET TOKEN_CODE=? WHERE CODIGO=?";
-                
-                if ( $stmt = mysqli_prepare($_conn, $sql) ) {
-                                   
-                    mysqli_stmt_bind_param($stmt, "ss", $code,$codigo);
+
+                $sql = "UPDATE USERS SET TOKEN_CODE=? WHERE USERNAME=?";
+
+                if ($stmt = mysqli_prepare($_conn, $sql)) {
+
+                    mysqli_stmt_bind_param($stmt, "ss", $code, $username);
                     mysqli_stmt_execute($stmt);
-                    
+
                     // Update efetuado com sucesso, preparar e enviar mensagem 
-                    $id = base64_encode($codigo);
-                    
-                    $urlPagina = "http://localhost:8888/";
-                  
-                    
-                    $mensagem = "Caro(a) $nome" . "," . "\r\n" .  "\r\n" .
+                    $id = base64_encode($username);
 
-                            
-                        "Foi-nos pedido para recuperar a sua senha. Se nos pediu isto basta seguir as instruções seguintes, caso contrário, ignore esta mensagem.". "\r\n" .  "\r\n" .
+                    $urlPagina = "https://ntbarenas.000webhostapp.com/loginSession/";
 
-                        "Para recuperar agora a sua senha basta carregar na seguinte ligação:" ."\r\n" ."\r\n" .
 
-                        $urlPagina . "userNovaSenha.php?id=$id&code=$code" ."\r\n" ."\r\n" . 
+                    $mensagem = "Caro(a) $fName" . "," . "\r\n" .  "\r\n" .
 
-                        "Esta mensagem foi-lhe enviada automaticamente.";  
+
+                        "Foi-nos pedido para recuperar a sua senha. Se nos pediu isto basta seguir as instruções seguintes, caso contrário, ignore esta mensagem." . "\r\n" .  "\r\n" .
+
+                        "Para recuperar agora a sua senha basta carregar na seguinte ligação:" . "\r\n" . "\r\n" .
+
+                        $urlPagina . "userNovaSenha.php?id=$id&code=$code" . "\r\n" . "\r\n" .
+
+                        "Esta mensagem foi-lhe enviada automaticamente.";
 
                     $subject = "Recuperação da sua senha em $urlPagina";
 
                     // use wordwrap() if lines are longer than 70 characters
-                    $mensagem = wordwrap($mensagem,70);
+                    $mensagem = wordwrap($mensagem, 70);
 
                     // send email
-                    mail_utf8($email,$subject,$mensagem); 
+                    mail_utf8($email, $subject, $mensagem);
                     // echo $mensagem; // apenas para efeitos de teste...
                     //$msgTemporaria = $email . " " . $subject . " " . $mensagem;
                     // mail enviado
-                   
-                    $mensagemEmail= " " . "$nome, verifique por favor a sua caixa de correio para recuperar de imediato a sua senha!";
- 
+
+                    $mensagemEmail = " " . "$nome, verifique por favor a sua caixa de correio para recuperar de imediato a sua senha!";
+
                     // fim do envio de mensagem //////////////////////////////////////////////////////////////////            
-                        
+
                     $geraFormulario = "Nao";
-    
-                                    
                 } else {
                     // erro
                     echo "STATUS ADMIN (recuperar senha): " . mysqli_error($_conn);
-                }                  
-                                    
-                    
-                } 
-
-
-
+                }
             }
-        } else {
-            $mensagemErroCodigo = "O código de utilizador não existe na nossa base de dados!";
         }
-    
+    } else {
+        $mensagemErrousername = "O código de utilizador não existe na nossa base de dados!";
+    }
+
     $stmt->free_result();
     $stmt->close();
-    
 }
- 
+
 ?>
+
 <!DOCTYPE html>
-<html>
-<title>Cloud Gallery - Recuperar senha</title>
-<?php include_once  './includes/estilos.php'; ?>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma-Ma Profile</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/loginSession.css">
+    <link rel="shortcut icon" href="../gallery/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
 <body>
-<?php include_once  './includes/menus.php'; ?>
+    <main>
+        <!--Header starts here-->
+        <header>
+            <div class="logo">
+                <a href="../index.php">
+                    <img src="../gallery/logo.png" alt="Ma-ma logo" class="logo">
+                </a>
+            </div>
+
+            <div class="search-bar">
+                <input type="search" placeholder="Encontre o produto de que precisa...">
+                <span><img src="../gallery/searchBtn.png" id="searchBtn"></span>
+            </div>
+
+            <?php
+            if (isset($_SESSION["USER"])) { ?>
+                <div class="divIcon">
+                    <span><a href="#"><img src="../gallery/like.png" id="likeBtn"></a></span>
+                    <span><a href="../profileAccount.php"><img src="../gallery/user.png" id="userBtn"></a></span>
+                    <span><a href="#"><img src="../gallery/cart.png" id="cartBtn"></a></span>
+                </div>
+            <?php } else { ?>
+                <div class="divIcon">
+                    <span><a href="#"><img src="gallery/like.png" id="likeBtn"></a></span>
+                    <span><a href="./login.php"><img src="../gallery/user.png" id="userBtn"></a></span>
+                    <span><a href="#"><img src="gallery/cart.png" id="cartBtn"></a></span>
+                </div>
+            <?php } ?>
 
 
-<div class="w3-container w3-light-grey" style="padding:128px 16px" >
-  <h3 class="w3-center">RECUPERAR SENHA</h3>
-  <p class="w3-center w3-large">Recuperar a sua senha de utilizador.</p>
-  
-  <?php 
+        </header>
+        <!--Header ends here-->
 
-   if ( $geraFormulario == "Sim" ) { 
-   
-  ?>
-  
-    <form action="#" method="POST">
-    
-       <p class="w3-center w3-large">Introduza o código que utiliza para inciar sessão e carregue no botão para recuperar senha. Será enviada para o seu e-mail uma mensagem com um código de recuperação de senha.
-         Por vezes estas mensagens são consideradas correio não solicitado. Se não vir a mensagem de recuperação verifique o seu correio não solicitado (SPAM).
-         </p>  
-        
-         <p><input class="w3-input w3-border" type="text" style="width:300px" placeholder="Código de utilizador"  name="formCodigo" value="<?php echo $codigo;?>"></p>
-         <p class="w3-large w3-text-red"><?php echo $mensagemErroCodigo;?></p>
-         
-         <p class="w3-large w3-text-red"><?php echo $mensagemErroSenha;?></p>
-         <p class="w3-large w3-text-red"><?php echo $mensagemErroEmail;?></p>
-          
-   		<p><button class="w3-button w3-black" name="botao-recuperar-senha" type="submit">Recuperar senha agora</button></p>
-   
-    </form>
-  
-  <?php 
-   } else { 
-  ?>
-    <p class="w3-center w3-large">Recuperação de senha: <i>link</i> de recuperação enviado. Verifique a sua caixa de correio.</p>
- 
-   <form action="./index.php" method="POST">
-        <!-- A LINHA SEGUINTE DEVE SER REMOVIDA EM INSTANCIAÇÃO COM SERVIÇO DE EMAIL ATIVO -->
-        <textarea class="w3-input w3-border" rows="10" cols="50"><?php echo $mensagem;?></textarea>
-         
-   		<p><button class="w3-button w3-black" type="submit">PÁGINA PRINCIPAL</button></p>
-   
-   </form>
-  
-  <?php
-   }   		
-  ?>
-  
-</div>
+        <!--Navbar starts here-->
+        <div class="navBar">
+            <span><a href="./almofadasAma.php">ALMOFADAS DE AMAMENTAÇÃO</a></span>
+            <span><a href="./cunhas.php">CUNHAS</a></span>
+            <span><a href="./slings.php">SLINGS</a></span>
+            <span><a href="./mudafraldas.php">MUDA FRALDAS</a></span>
+            <span><a href="./kitMat.php">KIT MATERNIDADE</a></span>
+            <span><a href="./almofadasAnti.php">ALMOFADAS ANTI-CÓLICAS</a></span>
+        </div>
+        <!--Navbar ends here-->
 
-<!--  -->
-<?php include_once  './includes/rodape.php'; ?>
-<?php include_once  './includes/scripts.php'; ?>
+        <div class="information-container">
+            <div class="sidebar-main">
+                <div class="customer-area">
+                    <h1>
+                        Olá <?php echo $_SESSION["FIRSTNAME_USER"] ?>
+                    </h1>
+                    <h3><a href="./userSair.php">Logout</a></h3>
+                </div>
+
+                <div class="account-panel">
+                    <h3>PAINEL DE CONTA</h3>
+                    <div class="account-panel-wrapper">
+                        <p><a href="../profileAccount.php">A MINHA CONTA</a></p>
+                        <p><a href="#">AS MINHAS ENCOMENDAS</a></p>
+                        <p><a href="#">SUBSCRIÇÃO MARKETING</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="information-component">
+                <h1>Recuperar Senha</h1>
+                <br>
+                <div class="editAcc-box">
+                    <div class="information-editAcc-content">
+                        <?php
+
+                        if ($geraFormulario == "Sim") {
+
+                        ?>
+
+                            <form action="#" method="POST">
+
+                                <p>Introduza o código que utiliza para inciar sessão e carregue no botão para recuperar senha. Será enviada para o seu e-mail uma mensagem com um código de recuperação de senha.
+                                    Por vezes estas mensagens são consideradas correio não solicitado. Se não vir a mensagem de recuperação verifique o seu correio não solicitado (SPAM).
+                                </p>
+
+                                <fieldset class="editAcc-fieldset">
+                                    <legend>Código de Utilizador</legend>
+                                    <div class="div-input">
+                                        <input type="text" class="editAcc-input" name="formusername" value="<?php echo $username; ?>">
+                                    </div>
+                                </fieldset>
+                                <p><?php echo $mensagemErrousername; ?></p>
+
+                                <p><?php echo $mensagemErroSenha; ?></p>
+                                <p><?php echo $mensagemErroEmail; ?></p>
+
+                                <p><button class="w3-button w3-black" name="botao-recuperar-senha" type="submit">Recuperar senha agora</button></p>
+
+                            </form>
+
+                        <?php
+                        } else {
+                        ?>
+                            <p>Recuperação de senha: <i>link</i> de recuperação enviado. Verifique a sua caixa de correio.</p>
+
+                            <form action="../loginSession/userRecuperarSenha.php" method="POST">
+                                <!-- A LINHA SEGUINTE DEVE SER REMOVIDA EM INSTANCIAÇÃO COM SERVIÇO DE EMAIL ATIVO -->
+                                <textarea rows="10" cols="50"><?php echo $mensagem; ?></textarea>
+
+                                <p><button type="submit">PÁGINA PRINCIPAL</button></p>
+
+                            </form>
+
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+
+                <!--Footer section starts here-->
+                <footer>
+                    <div class="coverFooter">
+                        <div class="logoContainer">
+                            <div class="logo">
+                                <a href="../index.php"><img src="../gallery/logo.png" alt=""></a>
+                            </div>
+                            <div class="apoio">
+                                <h5>Apoio Comercial</h5>
+                                <h4><b>916 532 480</b></h4>
+                                <p>das 9h às 18h</p>
+                            </div>
+                        </div>
+
+                        <div class="componentContainer">
+                            <div class="component">
+                                <div class="componentTitle">
+                                    <h4>Sobre Nós</h4>
+                                </div>
+                                <div class="line"></div>
+                                <div class="componentContent">
+                                    <a href="#">Quem Somos</a><br>
+                                    <a href="#">Contactos</a>
+                                </div>
+                            </div>
+                            <div class="component">
+                                <div class="componentTitle">
+                                    <h4>Informações</h4>
+                                </div>
+                                <div class="line"></div>
+                                <div class="componentContent">
+                                    <a href="#">Modos de Pagamento</a><br>
+                                    <a href="#">Envio de Encomendas e Custos</a>
+                                    <a href="#">Garantias</a>
+                                </div>
+                            </div>
+                            <div class="component">
+                                <div class="componentTitle">
+                                    <h4>Siga-nos</h4>
+                                </div>
+                                <div class="line"></div>
+                                <div class="componentContent">
+                                    <a href="#">Instagram</a><br>
+                                    <a href="#">Facebook</a><br>
+                                    <a href="#">Twitter</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!--Footer section ends here-->
+    </main>
 </body>
+
 </html>
-
-
-
-
-
-
-
-

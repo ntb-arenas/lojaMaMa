@@ -281,7 +281,7 @@ if (isset($_POST['btn-save-changes'])) {
             </div>
 
             <div class="information-component">
-                <h1>Editar Conta</h1>
+                <h1>Editar Morada</h1>
                 <br>
                 Por uma questão de segurança, para alterar as suas definições de conta deverá digitar a
                 sua senha. No final, não se esqueça de gravar as alterações. Se apenas pretende alterar a sua senha use a opção "Esqueci-me da senha".
