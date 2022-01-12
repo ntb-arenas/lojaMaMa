@@ -120,7 +120,9 @@ if ($usersResult->num_rows > 0) {
                         </p>
                     </div>
                     <div class="div-btn-profile">
-                        <button class="btn-profile" name="button-edit-info" type="submit"><span>EDITAR</span></button>
+                        <form action="./loginSession/userEditPass.php">
+                            <button class="btn-profile" name="button-edit-info" type="submit"><span>EDITAR</span></button>
+                        </form>
                     </div>
                 </div>
                 <div class="box-information">
@@ -136,9 +138,11 @@ if ($usersResult->num_rows > 0) {
                         <p><?php echo "T: " . $telemovel; ?></p>
                     </div>
 
-                    <form action="./loginSession/userEditAccount.php">
-                        <button class="btn-profile" name="button-edit-morada" type="submit"><span>EDITAR</span></button>
-                    </form>
+                    <div class="div-btn-profile">
+                        <form action="./loginSession/userEditAccount.php">
+                            <button class="btn-profile" name="button-edit-morada" type="submit"><span>EDITAR</span></button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

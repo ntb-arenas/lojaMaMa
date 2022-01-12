@@ -273,7 +273,7 @@ if (isset($_POST['btn-save-changes'])) {
                 <div class="account-panel">
                     <h3>PAINEL DE CONTA</h3>
                     <div class="account-panel-wrapper">
-                        <p><a href="#">A MINHA CONTA</a></p>
+                        <p><a href="../profileAccount.php">A MINHA CONTA</a></p>
                         <p><a href="#">AS MINHAS ENCOMENDAS</a></p>
                         <p><a href="#">SUBSCRIÇÃO MARKETING</a></p>
                     </div>
@@ -286,7 +286,6 @@ if (isset($_POST['btn-save-changes'])) {
                 Por uma questão de segurança, para alterar as suas definições de conta deverá digitar a
                 sua senha. No final, não se esqueça de gravar as alterações. Se apenas pretende alterar a sua senha use a opção "Esqueci-me da senha".
 
-                <p><b><?php echo $temporaryMsg; ?></b></p>
                 <div class="editAcc-box">
                     <div class="information-editAcc-content">
                         <form action="#" method="POST">
@@ -380,20 +379,18 @@ if (isset($_POST['btn-save-changes'])) {
 
                     </div>
                 </div>
-                <button name="btn-save-changes" type="submit">GRAVAR ALTERAÇÕES</button>
-                <button name="btn-cancel-changes" type="submit">CANCELAR ALTERAÇÕES</button>
-                </form>
+                <p><b><?php echo $temporaryMsg; ?></b></p>
 
                 <br>
 
-                <form action="#" method="POST">
-                    <button name="btn-cancel-my-account" type="submit">Pretendo cancelar a minha conta</button>
-                </form>
-
-                <br>
-
-                <form action="#" method="POST">
-                    <button name="btn-forgot-pass" type="submit">Esqueci-me da senha</button>
+                <div class="btn-editAcc">
+                    <div class="div-btn-profile">
+                        <button class="btn-profile" name="btn-save-changes" type="submit"><span>GRAVAR ALTERAÇÕES</span></button>
+                    </div>
+                    <div class="div-btn-profile">
+                        <button class="btn-profile" name="btn-cancel-changes" type="submit"><span>CANCELAR ALTERAÇÕES</span></button>
+                    </div>
+                </div>
                 </form>
             </div>
         </div>

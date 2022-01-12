@@ -433,3 +433,14 @@
 .div-errors {
     color: red;
 }
+
+.btn-editAcc{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 70%;
+}
+
+.btn-editAcc .btn-profile{
+    width: 100%;
+}
