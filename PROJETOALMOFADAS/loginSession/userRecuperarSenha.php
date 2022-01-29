@@ -219,7 +219,7 @@ if (isset($_POST['botao-recuperar-senha'])) {
                                 <p><?php echo $mensagemErroSenha; ?></p>
                                 <p><?php echo $mensagemErroEmail; ?></p>
 
-                                <p><button class="w3-button w3-black" name="botao-recuperar-senha" type="submit">Recuperar senha agora</button></p>
+                                <p><button name="botao-recuperar-senha" type="submit">Recuperar senha agora</button></p>
 
                             </form>
 
