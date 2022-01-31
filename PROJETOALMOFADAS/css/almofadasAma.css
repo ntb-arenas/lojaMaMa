@@ -23,6 +23,7 @@
     margin-top: 10px;
     color: rgb(56, 56, 56);
 }
+
 .desc__read-more {
     display: block;
     opacity: 0;
@@ -251,34 +252,8 @@
     margin: 20px;
 }
 
-.image-modoUtilizacao-dormir {
-    background-image: url("../gallery/productimg/6.jpg");
-    height: 300px;
-    width: auto;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    margin-bottom: 10px;
-}
-
-.image-modoUtilizacao-amamentar {
-    background-image: url("../gallery/productimg/10.jpg");
-    height: 300px;
-    width: auto;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    margin-bottom: 10px;
-}
-
-.image-modoUtilizacao-descansar {
-    background-image: url("../gallery/productimg/7.jpg");
-    height: 300px;
-    width: auto;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    margin-bottom: 10px;
+.title-desc {
+    font-family: 'Roboto', sans-serif;
 }
 
 .content-wrapper-modoUtilizacao {
@@ -286,7 +261,30 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    flex-direction: column;
 }
+
+.component-modoUtilizacao.right {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.component-modoUtilizacao.left {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.component-modoUtilizacao img {
+    width: 100%;
+    height: auto;
+    max-width: 700px;
+    border-radius: 20px;
+}
+
 /* HOW TO USE */
 /* HOW TO USE */
 /* HOW TO USE */

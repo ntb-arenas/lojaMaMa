@@ -650,9 +650,10 @@ include_once  './loginSession/connect_DB.php';
             <br><br>
 
             <div class="content-wrapper-modoUtilizacao">
-                <div class="component-modoUtilizacao">
-                    <div class="image-modoUtilizacao-dormir">
-                    </div>
+                <div class="component-modoUtilizacao left">
+
+                    <img src="./gallery/productimg/6.jpg" alt="">
+
                     <div class="content">
                         <h3>Para dormir</h3>
                         <span>
@@ -669,9 +670,10 @@ include_once  './loginSession/connect_DB.php';
                 </div>
                 <br><br>
 
-                <div class="component-modoUtilizacao">
-                    <div class="image-modoUtilizacao-amamentar">
-                    </div>
+                <div class="component-modoUtilizacao right">
+
+                    <img src="./gallery/productimg/10.jpg" alt="">
+
                     <div class="content">
                         <h3>Para amamentar</h3>
                         <span>
@@ -688,9 +690,10 @@ include_once  './loginSession/connect_DB.php';
                 </div>
                 <br><br>
 
-                <div class="component-modoUtilizacao">
-                    <div class="image-modoUtilizacao-descansar">
-                    </div>
+                <div class="component-modoUtilizacao left">
+
+                    <img src="./gallery/productimg/7.jpg" alt="">
+
                     <div class="content">
                         <h3>Para o bebé descansar</h3>
                         <span>
