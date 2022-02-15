@@ -736,7 +736,7 @@ include_once  './loginSession/connect_DB.php';
                         </div>
                         <div class="line"></div>
                         <div class="componentContent">
-                            <a href="#">Instagram</a><br>
+                            <a href="#"><img src="./gallery/facebook.png" alt=""></a><br>
                             <a href="#">Facebook</a><br>
                             <a href="#">Twitter</a>
                         </div>
