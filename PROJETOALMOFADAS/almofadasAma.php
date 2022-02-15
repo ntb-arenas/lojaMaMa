@@ -23,6 +23,8 @@ include_once  './loginSession/connect_DB.php';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
     <!-- Jquery ----------------------------------------------->
     <script src="js/jquery.js"></script>
     <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -657,14 +659,7 @@ include_once  './loginSession/connect_DB.php';
                     <div class="content">
                         <h3>Para dormir</h3>
                         <span>
-                            A Almofada de Amamentação MA-MA® é uma perfeita aliada da mamã mesmo antes do nascimento do
-                            bebé.
-                            <br> Durante a gravidez a mamã pode utilizar a almofada para dormir. O seu tamanho e
-                            <br> formato em U permitem colocar a almofada entre as pernas ao mesmo tempo que a barriga
-                            <br> fica apoiada e a cabeça e pescoço ficam numa posição ideal. Desta forma a mamã consegue
-                            encontrar uma
-                            <br> posição de repouso confortável tanto para ela como para o pequeno bebé que se está a
-                            desenvolver.
+                            A Almofada de Amamentação MA-MA é a aliada perfeita da mãe mesmo antes do nascimento do bebé.Com o seu tamanho e a sua forma em U, esta almofada ajuda a mãe a encontrar uma posição de repouso confortável tanto para ela como para o seu bebé.
                         </span>
                     </div>
                 </div>
@@ -677,14 +672,7 @@ include_once  './loginSession/connect_DB.php';
                     <div class="content">
                         <h3>Para amamentar</h3>
                         <span>
-                            A Almofada de Amamentação MA-MA® é uma perfeita aliada da mamã mesmo antes do nascimento do
-                            bebé.
-                            <br> Durante a gravidez a mamã pode utilizar a almofada para dormir. O seu tamanho e
-                            <br> formato em U permitem colocar a almofada entre as pernas ao mesmo tempo que a barriga
-                            <br> fica apoiada e a cabeça e pescoço ficam numa posição ideal. Desta forma a mamã consegue
-                            encontrar uma
-                            <br> posição de repouso confortável tanto para ela como para o pequeno bebé que se está a
-                            desenvolver.
+                            A Almofada de Amamentação MA-MA® ajuda a mãe a amamentar numa posição confortável, apoiando o bebé e evitando a colocação de stress desnecessário na coluna e costas da mãe. O fecho nas extremidades da almofada permitem que fique presa e apoiada, pelo que a mãe poderá focar-se totalmente no bebé e aproveitar o momento de vínculo.
                         </span>
                     </div>
                 </div>
@@ -697,13 +685,7 @@ include_once  './loginSession/connect_DB.php';
                     <div class="content">
                         <h3>Para o bebé descansar</h3>
                         <span>
-                            A Almofada de Amamentação MA-MA® é uma perfeita aliada da mamã mesmo antes do nascimento do
-                            bebé.
-                            <br> Durante a gravidez a mamã pode utilizar a almofada para dormir. O seu tamanho e
-                            <br> formato em U permitem colocar a almofada entre as pernas ao mesmo tempo que a barriga
-                            <br> fica apoiada e a cabeça e pescoço ficam numa posição ideal. Desta forma a mamã consegue encontrar uma
-                            <br> posição de repouso confortável tanto para ela como para o pequeno bebé que se está a
-                            desenvolver.
+                            A Almofada de Amamentação MA-MA® permite que os bebés façam sestas em perfeita segurança sem o risco de se virarem. Além disso, também servem de redutor em cama de grades ou de ninho, aconchegando o bebé. Quando o bebé se começa a sentar, apoia-o, evitando desequilíbrios para os lados ou para trás.
                         </span>
                     </div>
                 </div>
