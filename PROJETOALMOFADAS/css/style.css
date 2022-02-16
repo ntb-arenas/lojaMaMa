@@ -1,19 +1,22 @@
-html{
+html {
     font-size: 10px;
     scroll-behavior: smooth;
 }
+
 html, body {
     height: 100%;
     width: 100%;
 }
-main{
+
+main {
     height: 100%;
     width: 100%;
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 header {
@@ -35,18 +38,22 @@ header ol {
     list-style: none;
     margin: auto 0;
 }
+
 header ol li {
     margin: 0 2px;
 }
+
 header ol li a {
     padding: 5px 20px;
 }
+
 header .search-bar {
     display: flex;
     margin: auto 0;
     height: 35px;
     line-height: 35px;
 }
+
 header .search-bar input {
     border: none;
     outline: none;
@@ -56,17 +63,20 @@ header .search-bar input {
     width: 60rem;
     box-shadow: 11px 3px 7px gray;
 }
-header .search-bar input::placeholder{
+
+header .search-bar input::placeholder {
     color: rgb(179, 179, 179);
 }
-header .search-bar span{
+
+header .search-bar span {
     width: 100px;
     background-color: #f35518;
     box-shadow: 6px 4px 7px gray;
     cursor: pointer;
     transition: 0.6s;
 }
-header .search-bar span:hover{
+
+header .search-bar span:hover {
     background-color: black;
 }
 
@@ -91,7 +101,7 @@ header .search-bar span:hover{
     padding-top: 20px;
 }
 
-.navBar span a{
+.navBar span a {
     text-decoration: none;
     color: rgb(63, 63, 63);
     font-size: 1.5rem;
@@ -100,13 +110,14 @@ header .search-bar span:hover{
     transition: 0.1s;
 
 }
-.navBar span:hover a{
+
+.navBar span:hover a {
     border-bottom-style: solid;
     border-bottom-width: 1.5px;
 }
 
 /*main cover*/
-.coverDiv{
+.coverDiv {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -115,20 +126,24 @@ header .search-bar span:hover{
     width: 100%;
     height: 400px;
 }
-.titleDiv{
+
+.titleDiv {
     color: white;
     line-height: 50px;
     font-size: 2.5rem;
     margin-left: 150px;
 }
+
 .divImage {
     height: 100%;
     margin-right: 150px;
 }
-#coverImg{
+
+#coverImg {
     height: 100%;
 }
-.divIcon{
+
+.divIcon {
     display: flex;
     justify-content: space-around;
     margin-right: 20px;
@@ -136,7 +151,7 @@ header .search-bar span:hover{
 }
 
 /*Title message*/
-.titleMsg{
+.titleMsg {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -150,35 +165,36 @@ header .search-bar span:hover{
 }
 
 /**FEATURES STARTS HERE**/
-.features .box-container{
+.features .box-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     /* gap:1.5rem; */
 }
-.features .box-container .box{
-    padding:3rem 2rem;
-    background: #fff; 
+
+.features .box-container .box {
+    padding: 3rem 2rem;
+    background: #fff;
     text-align: center;
 }
 
-.features .box-container .box:hover{
+.features .box-container .box:hover {
     outline: var(--outline-hover);
     outline-offset: 0rem;
 }
 
-.features .box-container .box img{
+.features .box-container .box img {
     margin: 1rem 0;
     height: 30rem;
 }
 
-.features .box-container .box h3{
+.features .box-container .box h3 {
     font-size: 2rem;
     font-family: 'Roboto', sans-serif;
-    font-weight: 500; 
+    font-weight: 500;
     line-height: 1.8;
 }
 
-.features .box-container .box a{
+.features .box-container .box a {
     font-size: 1.5rem;
     font-family: "Times New Roman", Times, serif;
     text-decoration: none;
@@ -186,35 +202,36 @@ header .search-bar span:hover{
     color: white;
 }
 
-.features2 .box-container2{
+.features2 .box-container2 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     /* gap:1.5rem; */
 }
-.features2 .box-container2 .box{
-    padding:3rem 2rem;
-    background: #fff; 
+
+.features2 .box-container2 .box {
+    padding: 3rem 2rem;
+    background: #fff;
     text-align: center;
 }
 
-.features2 .box-container2 .box:hover{
+.features2 .box-container2 .box:hover {
     outline: var(--outline-hover);
     outline-offset: 0rem;
 }
 
-.features2 .box-container2 .box img{
-    margin:1rem 0;
+.features2 .box-container2 .box img {
+    margin: 1rem 0;
     height: 30rem;
 }
 
-.features2 .box-container2 .box h3{
+.features2 .box-container2 .box h3 {
     font-size: 2rem;
     font-family: 'Roboto', sans-serif;
-    font-weight: 500; 
+    font-weight: 500;
     line-height: 1.8;
 }
 
-.features2 .box-container2 .box a{
+.features2 .box-container2 .box a {
     font-size: 1.5rem;
     font-family: "Times New Roman", Times, serif;
     text-decoration: none;
@@ -235,33 +252,38 @@ header .search-bar span:hover{
     transition: all 0.4s;
     cursor: pointer;
     margin: 5px;
-  }
- .b6 .example_f span {
+}
+
+.b6 .example_f span {
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.4s;
-  }
- .b6 .example_f span:after {
+}
+
+.b6 .example_f span:after {
     content: '\00bb';
     position: absolute;
     opacity: 0;
     top: 0;
     right: -20px;
     transition: 0.5s;
-  }
- .b6 .example_f:hover span {
+}
+
+.b6 .example_f:hover span {
     padding-right: 25px;
-  }
- .b6 .example_f:hover span:after {
+}
+
+.b6 .example_f:hover span:after {
     opacity: 1;
     right: 0;
-  }
+}
+
 /**FEATURES ENDS HERE**/
 
 
 /**FOOTER STARTS HERE**/
-.coverFooter{
+.coverFooter {
     display: flex;
     align-items: center;
     height: 200px;
@@ -269,7 +291,8 @@ header .search-bar span:hover{
     margin-top: 50px;
     background-color: rgb(224, 224, 224);
 }
-.coverFooter .logoContainer{
+
+.coverFooter .logoContainer {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -277,10 +300,12 @@ header .search-bar span:hover{
     height: 80%;
     margin-left: 50px;
 }
-.coverFooter .logoContainer .logo img{
+
+.coverFooter .logoContainer .logo img {
     height: 6rem;
 }
-.coverFooter .logoContainer .apoio{
+
+.coverFooter .logoContainer .apoio {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -290,23 +315,26 @@ header .search-bar span:hover{
     width: 15rem;
     padding-left: 10px;
 }
-.coverFooter .logoContainer .apoio h5{
+
+.coverFooter .logoContainer .apoio h5 {
     font-size: 1.5rem;
     font-family: 'Roboto', sans-serif;
     color: #f35518;
 }
-.coverFooter .logoContainer .apoio h4{
+
+.coverFooter .logoContainer .apoio h4 {
     font-size: 2.5rem;
     font-family: 'Roboto', sans-serif;
     color: rgb(71, 71, 71);
     text-decoration: none;
 }
-.coverFooter .logoContainer .apoio p{
+
+.coverFooter .logoContainer .apoio p {
     font-size: 1.1rem;
 }
 
 
-.componentContainer{
+.componentContainer {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -314,40 +342,62 @@ header .search-bar span:hover{
     width: 80%;
     margin-left: 7rem;
 }
-.component{
+
+.component {
     width: 30%;
 }
-.componentContainer .component .componentTitle{
+
+.componentContainer .component .componentTitle {
     font-size: 2rem;
     color: rgb(44, 44, 44);
     font-family: 'Roboto', sans-serif;
 }
-.componentContainer .component .componentContent a{
+
+.componentContainer .component .componentContent a {
     font-size: 1.5rem;
     color: rgb(117, 117, 117);
     line-height: 2rem;
     text-decoration: none;
 }
-.componentContainer .component .line{
+
+.componentContainer .component .componentContent img {
+    width: 35px;
+    height: auto;
+}
+
+.componentContainer .component .componentContent.logo{
+    display: flex;
+    flex-direction: row;
+}
+
+.componentContainer .component .componentContent.logo a{
+    padding-right: 2em;
+}
+
+
+.componentContainer .component .line {
     width: 70%;
     height: 1px;
     background-color: rgb(150, 150, 150);
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 /**FOOTER ENDS HERE**/
 
 
-@media (max-width: 1290px){
-    .titleDiv{
+@media (max-width: 1290px) {
+    .titleDiv {
         font-size: 2.3rem;
     }
 }
+
 @media only screen and (max-width: 992px) {
     .navBar span a {
         font-size: 1.1rem;
     }
-    .titleMsg{
+
+    .titleMsg {
         font-size: 1.9rem;
     }
 }

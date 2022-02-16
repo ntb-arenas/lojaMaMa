@@ -324,7 +324,7 @@ include_once  './loginSession/connect_DB.php';
                                 </div>
                             </a>
                             <div class="productName">
-                                <h4>Azul-Escuro</h4>
+                                <h4>WANTED</h4>
                             </div>
                         </div>
                     </li>
@@ -726,7 +726,7 @@ include_once  './loginSession/connect_DB.php';
                         <div class="line"></div>
                         <div class="componentContent">
                             <a href="#">Modos de Pagamento</a><br>
-                            <a href="#">Envio de Encomendas e Custos</a>
+                            <a href="#">Envio de Encomendas e Custos</a><br>
                             <a href="#">Garantias</a>
                         </div>
                     </div>
@@ -735,10 +735,10 @@ include_once  './loginSession/connect_DB.php';
                             <h4>Siga-nos</h4>
                         </div>
                         <div class="line"></div>
-                        <div class="componentContent">
-                            <a href="#"><img src="./gallery/facebook.png" alt=""></a><br>
-                            <a href="#">Facebook</a><br>
-                            <a href="#">Twitter</a>
+                        <div class="componentContent logo">
+                            <a href="#"><img src="./gallery/facebook.png" alt=""></a>
+                            <a href="#"><img src="./gallery/twitter.png" alt=""></a>
+                            <a href="#"><img src="./gallery/instagram.png" alt=""></a>
                         </div>
                     </div>
                 </div>
