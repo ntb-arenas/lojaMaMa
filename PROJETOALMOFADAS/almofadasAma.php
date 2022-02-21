@@ -324,7 +324,7 @@ include_once  './loginSession/connect_DB.php';
                                 </div>
                             </a>
                             <div class="productName">
-                                <h4>WANTED</h4>
+                                <h4>Azul-Escuro</h4>
                             </div>
                         </div>
                     </li>
