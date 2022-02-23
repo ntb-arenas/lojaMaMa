@@ -70,7 +70,7 @@ include_once  './loginSession/connect_DB.php';
         <!--Navbar starts here-->
         <div class="navBar">
             <?php
-
+        
 
             $resultTablecategory = mysqli_query($_conn, "SELECT * FROM CATEGORY WHERE VISIBLE = 1 ORDER BY SEQUENCE ASC");
 
