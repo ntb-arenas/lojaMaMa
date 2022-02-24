@@ -70,7 +70,7 @@ include_once  './loginSession/connect_DB.php';
         <!--Navbar starts here-->
         <div class="navBar">
             <?php
-        
+
 
             $resultTablecategory = mysqli_query($_conn, "SELECT * FROM CATEGORY WHERE VISIBLE = 1 ORDER BY SEQUENCE ASC");
 
@@ -124,8 +124,11 @@ include_once  './loginSession/connect_DB.php';
         </div>
 
 
-        <br><br>
-
+        <div class="option-container">
+            <a href="#"><img src="./gallery/padrao.jpg" alt=""></a>
+            <a href="#"><img src="./gallery/liso.jpg" alt=""></a>
+        </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
         <div class="div-row">
             <div class="sidebar">
@@ -136,7 +139,14 @@ include_once  './loginSession/connect_DB.php';
                             <h3>GRANDE</h3>
                         </div>
                         <div class="div-preco">
-                            <h3>€45</h3>
+                            <h3>
+                                <?php
+                                $price = 0;
+
+
+                                echo $price;
+                                ?>
+                            </h3>
                         </div>
                     </div>
 
@@ -144,17 +154,45 @@ include_once  './loginSession/connect_DB.php';
 
                     <form action="">
                         <label for="frente">Frente</label>
-                        <select name="frente" id="frente">
-                            <option value="">Escolher</option>
-                            <option value="amarelo">Amarelo</option>
-                            <option value="laranja">Laranja</option>
-                            <option value="castanho">Castanho</option>
-                            <option value="rosa">Rosa</option>
-                            <option value="verde">Verde</option>
-                            <option value="azul">Azul</option>
-                            <option value="azul-escuro">Azul-Escuro</option>
-                            <option value="azul-pique">Azul-Pique</option>
-                            <option value="azulao">Azulão</option>
+                        <select name="frenteID" id="frente">
+                            <optgroup label="Liso">
+                                <option id="cor-liso" value="">Escolher</option>
+                                <option id="cor-liso" value="amarelo">Amarelo</option>
+                                <option id="cor-liso" value="laranja">Laranja</option>
+                                <option id="cor-liso" value="castanho">Castanho</option>
+                                <option id="cor-liso" value="rosa">Rosa</option>
+                                <option id="cor-liso" value="verde">Verde</option>
+                                <option id="cor-liso" value="azul">Azul</option>
+                                <option id="cor-liso" value="azul-escuro">Azul-Escuro</option>
+                                <option id="cor-liso" value="azul-pique">Azul-Pique</option>
+                                <option id="cor-liso" value="azulao">Azulão</option>
+                            </optgroup>
+                            <optgroup label="Padrão">
+                                <option value="">Escolher</option>
+                                <option id="cor-padrao" value="baloes">Balões</option>
+                                <option id="cor-padrao" value="bhen">Bhen</option>
+                                <option id="cor-padrao" value="selva">Selva</option>
+                                <option id="cor-padrao" value="risca-differente">Riscas Tamanhos Diferentes</option>
+                                <option id="cor-padrao" value="risca-larga">Riscas Largas</option>
+                                <option id="cor-padrao" value="flores-fundo-verde">Flores Fundo Verde</option>
+                                <option id="cor-padrao" value="bolas">Bolas</option>
+                                <option id="cor-padrao" value="carros">Carros</option>
+                                <option id="cor-padrao" value="animas-beje">Animais com Fundo Beje</option>
+                                <option id="cor-padrao" value="circo-verde">Circo com Fundo Verde</option>
+                                <option id="cor-padrao" value="malmequeres">Malmequeres</option>
+                                <option id="cor-padrao" value="coracoes-azuis">Corações Azuis</option>
+                                <option id="cor-padrao" value="cidade">Cidade</option>
+                                <option id="cor-padrao" value="circulos">Circulos</option>
+                                <option id="cor-padrao" value="overlhas-rosa">Overlhas Fundo Rosa</option>
+                                <option id="cor-padrao" value="animas-beje">Animais com Fundo Beje</option>
+                                <option id="cor-padrao" value="argolas-laranja">Argolas Laranja</option>
+                                <option id="cor-padrao" value="argolas-turquesa">Argolas Turquesa</option>
+                                <option id="cor-padrao" value="bola-azul">Bolas Azul</option>
+                                <option id="cor-padrao" value="estrela-azul-bebe">Estrelinhas Azul Bebé</option>
+                                <option id="cor-padrao" value="pitinhas-azul-bebe">Pitinhas Azul Bebé</option>
+                                <option id="cor-padrao" value="pitinhas-cinza">Pitinhas Cinza</option>
+                                <option id="cor-padrao" value="pitinhas-rosa">Pitinhas Rosa</option>
+                            </optgroup>
                         </select>
                         <br><br>
                         <label for="verso">Verso</label>

@@ -103,6 +103,26 @@
     color: #ff723a;
 }
 
+.option-container {
+    display: flex;
+    justify-content: center;
+}
+.option-container a {
+    width: 100%;
+}
+
+.option-container a img{
+    width: 100%;
+    height: auto;
+    transition: 0.5s;
+}
+
+.option-container a img:hover{
+    opacity: 0.7;
+}
+
+
+
 .product {
     display: flex;
     justify-content: center;
