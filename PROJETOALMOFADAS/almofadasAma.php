@@ -128,7 +128,6 @@ include_once  './loginSession/connect_DB.php';
 
 
         <div class="div-row">
-
             <div class="sidebar">
                 <div class="comPadrao">
 
