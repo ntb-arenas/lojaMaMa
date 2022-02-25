@@ -19,6 +19,16 @@
     margin-top: 20px;
 }
 
+@media only screen and (max-width: 480px) {
+    .content-wrapper .div-contents h1 {
+        font-size: 2rem;
+    }
+
+    .content-wrapper .div-contents h2 b {
+        font-size: 1.3rem;
+    }
+}
+
 .content-wrapper .div-contents h2 {
     font-family: 'Roboto', sans-serif;
     font-size: 1.5rem;
