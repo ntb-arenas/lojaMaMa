@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,18 +8,17 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
-
 <body>
     <nav>
         <div class="logo">
             Brand
         </div>
-        <div class="div">
+
             <input type="checkbox" id="click">
             <label for="click" class="menu-btn">
                 <i class="fas fa-bars"></i>
             </label>
-        </div>
+ 
         <ul>
 
             <li><a class="active" href="#">Home</a></li>
@@ -39,5 +37,4 @@
         </div>
     </div>
 </body>
-
 </html>

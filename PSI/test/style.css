@@ -5,6 +5,11 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 } 
+
+html {
+  height: 1000px;
+}
+
 nav{
   display: flex;
   height: 80px;

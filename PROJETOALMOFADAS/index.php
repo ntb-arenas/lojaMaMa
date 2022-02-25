@@ -114,7 +114,7 @@ include_once  './loginSession/connect_DB.php';
         <!--Page cover ends here-->
 
         <!--Features section starts here-->
-        <!-- <section class="features" id="features">
+        <section class="features" id="features">
             <div class="box-container">
                 <div class="box">
                     <img src="gallery/almofadaImg.png" alt="">
@@ -143,11 +143,6 @@ include_once  './loginSession/connect_DB.php';
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section class="features2">
-            <div class="box-container2">
                 <div class="box">
                     <img src="gallery/mudaFraldas.png" alt="">
                     <h3>MUDA FRALDAS</h3>
@@ -176,8 +171,8 @@ include_once  './loginSession/connect_DB.php';
                     </div>
                 </div>
             </div>
-        </section> -->
-        <!--Features section ends here -->
+        </section>
+        <!--Features section ends here-->
 
         <footer>
             <div class="coverFooter">
