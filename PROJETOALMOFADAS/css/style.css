@@ -1,16 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
 html {
     font-size: 10px;
     scroll-behavior: smooth;
-}
-
-html, body {
-    height: 100%;
-    width: 100%;
-}
-
-main {
-    height: 100%;
-    width: 100%;
 }
 
 * {
@@ -33,25 +25,12 @@ header {
     width: 25px;
 }
 
-header ol {
-    display: flex;
-    list-style: none;
-    margin: auto 0;
-}
-
-header ol li {
-    margin: 0 2px;
-}
-
-header ol li a {
-    padding: 5px 20px;
-}
-
 header .search-bar {
     display: flex;
     margin: auto 0;
     height: 35px;
     line-height: 35px;
+    width: 50%;
 }
 
 header .search-bar input {
@@ -60,7 +39,7 @@ header .search-bar input {
     height: 100%;
     padding: 0 10px;
     font-size: 1.5rem;
-    width: 60rem;
+    width: 100%;
     box-shadow: 11px 3px 7px gray;
 }
 
@@ -83,37 +62,51 @@ header .search-bar span:hover {
 #searchBtn {
     display: flex;
     margin: 7px auto;
-    height: 20px;
-    width: 20px;
+    height: auto;
+    width: 25%;
 }
 
 /*Nav bar*/
 .navBar {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    margin: 20px auto 20px auto;
-    border-top-style: solid;
-    border-top-width: 1px;
-    border-top-color: rgb(163, 163, 163);
-    padding-top: 20px;
+    margin-bottom: 20px;
 }
 
-.navBar span a {
+.navBar ul {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-top: 20px;
+}
+
+.navBar ul li {
+    margin: 0 5px;
+}
+
+.navBar a {
     text-decoration: none;
     color: rgb(63, 63, 63);
     font-size: 1.5rem;
     font-family: 'Roboto', sans-serif;
     padding: 10px 15px 5px;
     transition: 0.1s;
-
 }
 
-.navBar span:hover a {
-    border-bottom-style: solid;
-    border-bottom-width: 1.5px;
+.navBar ul li a:hover {
+    color: #111;
+    background: #ff8f62;
+}
+
+.navBar .menu-btn i {
+    color: #f35518;
+    font-size: 22px;
+    cursor: pointer;
+    margin-left: 20px;
+    display: none;
+}
+
+input[type="checkbox"] {
+    display: none;
 }
 
 /*main cover*/
@@ -136,6 +129,7 @@ header .search-bar span:hover {
 
 .divImage {
     height: 100%;
+    width: auto;
     margin-right: 150px;
 }
 
@@ -349,7 +343,7 @@ header .search-bar span:hover {
 
 .componentContainer .component .componentTitle {
     font-size: 2rem;
-    color: rgb(44, 44, 44);
+    color: rgb(71, 71, 71);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -365,12 +359,12 @@ header .search-bar span:hover {
     height: auto;
 }
 
-.componentContainer .component .componentContent.logo{
+.componentContainer .component .componentContent.logo {
     display: flex;
     flex-direction: row;
 }
 
-.componentContainer .component .componentContent.logo a{
+.componentContainer .component .componentContent.logo a {
     padding-right: 2em;
 }
 
@@ -392,12 +386,121 @@ header .search-bar span:hover {
     }
 }
 
-@media only screen and (max-width: 992px) {
-    .navBar span a {
-        font-size: 1.1rem;
+@media only screen and (max-width: 920px) {
+    .navBar {
+        border-style: none;
+        padding-top: 5px;
+        max-width: 50px;
+    }
+
+    .navBar .menu-btn i {
+        display: block;
+    }
+
+    #click:checked~.menu-btn i:before {
+        content: "\f00d";
+    }
+
+    .navBar ul {
+        position: fixed;
+        top: 85px;
+        left: -100%;
+        background: rgb(255, 255, 255);
+        height: 100vh;
+        width: 100%;
+        text-align: center;
+        display: block;
+        transition: all 0.3s ease;
+    }
+
+    #click:checked~ul {
+        left: 0;
+    }
+
+    .navBar ul li {
+        width: 100%;
+        margin: 40px 0;
+    }
+
+    .navBar ul li a {
+        width: 100%;
+        margin-left: -100%;
+        display: block;
+        font-size: 20px;
+        transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    #click:checked~ul li a {
+        margin-left: -15px;
+    }
+
+    .navBar ul li a:hover {
+        background: #f35518;
+    }
+
+
+    footer {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 690px) {
+    .titleDiv {
+        font-size: 1.5rem;
+        line-height: 25px;
+    }
+
+    .coverDiv {
+        height: 300px;
     }
 
     .titleMsg {
-        font-size: 1.9rem;
+        text-align: center;
+        font-size: 1.5rem;
+        padding-bottom: 15px;
+    }
+
+    header .search-bar {
+        display: none;
+    }
+
+    header {
+        justify-content: space-around;
+    }
+}
+
+@media only screen and (max-width: 530px) {
+    .coverDiv {
+        height: 200px;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .logo {
+        max-width: 150px;
+    }
+
+    .coverDiv {
+        height: 150px;
+    }
+
+    .titleDiv {
+        font-size: 1rem;
+        line-height: 15px;
+    }
+
+    .titleMsg {
+        text-align: center;
+        font-size: 1.5rem;
+        padding-bottom: 15px;
+        margin-top: 8px;
+    }
+
+    header .search-bar {
+        display: none;
+    }
+
+    header {
+        justify-content: space-around;
     }
 }

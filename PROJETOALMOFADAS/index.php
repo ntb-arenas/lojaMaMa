@@ -39,6 +39,7 @@ include_once  './loginSession/connect_DB.php';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 
 <body>
@@ -75,29 +76,30 @@ include_once  './loginSession/connect_DB.php';
 
         <!--Navbar starts here-->
         <div class="navBar">
-            <?php
+            <input type="checkbox" id="click">
+            <label for="click" class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <ul>
+                <?php
+                $resultTablecategory = mysqli_query($_conn, "SELECT * FROM CATEGORY WHERE VISIBLE = 1 ORDER BY SEQUENCE ASC");
+                if (mysqli_num_rows($resultTablecategory) > 0) {
+                    $ctd = 0;
+                    while ($rowTablecategory = mysqli_fetch_assoc($resultTablecategory)) {
+                        $ctd = $ctd + 1;
+                ?>
 
-            
-            $resultTablecategory = mysqli_query($_conn, "SELECT * FROM CATEGORY WHERE VISIBLE = 1 ORDER BY SEQUENCE ASC");
-
-            if (mysqli_num_rows($resultTablecategory) > 0) {
-                $ctd = 0;
-                while ($rowTablecategory = mysqli_fetch_assoc($resultTablecategory)) {
-                    $ctd = $ctd + 1;
-
-            ?>
-
-                    <span><a href="<?php echo $rowTablecategory['LINK'] ?>"><?php echo $rowTablecategory['TITLE'] ?></a></span>
-
-            <?php
+                        <li><a href="<?php echo $rowTablecategory['LINK'] ?>"><?php echo $rowTablecategory['TITLE'] ?></a></li>
+                <?php
+                    }
                 }
-            }
-            mysqli_free_result($resultTablecategory);
-            ?>
+                mysqli_free_result($resultTablecategory);
+                ?>
+            </ul>
         </div>
         <!--Navbar ends here-->
 
-        <!--Page cover starts here-->
+        <!-- Page cover starts here-->
         <div class="coverDiv">
             <div class="titleDiv">
                 <h1>Conforto e Bem-estar <br> ao Melhor Preço</h1>
@@ -112,7 +114,7 @@ include_once  './loginSession/connect_DB.php';
         <!--Page cover ends here-->
 
         <!--Features section starts here-->
-        <section class="features" id="features">
+        <!-- <section class="features" id="features">
             <div class="box-container">
                 <div class="box">
                     <img src="gallery/almofadaImg.png" alt="">
@@ -174,8 +176,8 @@ include_once  './loginSession/connect_DB.php';
                     </div>
                 </div>
             </div>
-        </section>
-        <!--Features section ends here-->
+        </section> -->
+        <!--Features section ends here -->
 
         <footer>
             <div class="coverFooter">

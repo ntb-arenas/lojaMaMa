@@ -24,10 +24,11 @@ include_once  './loginSession/connect_DB.php';
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <!-- Jquery ----------------------------------------------->
     <script src="js/jquery.js"></script>
     <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
     <!-- lightslider.js ------------------------------------------>
     <script src="js/lightslider.js"></script>
     <script src="js/script1.js"></script>
@@ -69,25 +70,26 @@ include_once  './loginSession/connect_DB.php';
 
         <!--Navbar starts here-->
         <div class="navBar">
-            <?php
+            <input type="checkbox" id="click">
+            <label for="click" class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <ul>
+                <?php
+                $resultTablecategory = mysqli_query($_conn, "SELECT * FROM CATEGORY WHERE VISIBLE = 1 ORDER BY SEQUENCE ASC");
+                if (mysqli_num_rows($resultTablecategory) > 0) {
+                    $ctd = 0;
+                    while ($rowTablecategory = mysqli_fetch_assoc($resultTablecategory)) {
+                        $ctd = $ctd + 1;
+                ?>
 
-
-            $resultTablecategory = mysqli_query($_conn, "SELECT * FROM CATEGORY WHERE VISIBLE = 1 ORDER BY SEQUENCE ASC");
-
-            if (mysqli_num_rows($resultTablecategory) > 0) {
-                $ctd = 0;
-                while ($rowTablecategory = mysqli_fetch_assoc($resultTablecategory)) {
-                    $ctd = $ctd + 1;
-
-            ?>
-
-                    <span><a href="<?php echo $rowTablecategory['LINK'] ?>"><?php echo $rowTablecategory['TITLE'] ?></a></span>
-
-            <?php
+                        <li><a href="<?php echo $rowTablecategory['LINK'] ?>"><?php echo $rowTablecategory['TITLE'] ?></a></li>
+                <?php
+                    }
                 }
-            }
-            mysqli_free_result($resultTablecategory);
-            ?>
+                mysqli_free_result($resultTablecategory);
+                ?>
+            </ul>
         </div>
         <!--Navbar ends here-->
 
@@ -121,12 +123,10 @@ include_once  './loginSession/connect_DB.php';
 
                 <p class="read-more-btn">Ler mais</p>
             </div>
-        </div>
-
-
-        <div class="option-container">
-            <a href="#"><img src="./gallery/padrao.jpg" alt=""></a>
-            <a href="#"><img src="./gallery/liso.jpg" alt=""></a>
+            <div class="option-container">
+                <a href="#"><img src="./gallery/padrao.png" alt=""></a>
+                <a href="#"><img src="./gallery/liso.png" alt=""></a>
+            </div>
         </div>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
