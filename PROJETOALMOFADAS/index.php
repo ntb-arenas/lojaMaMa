@@ -109,7 +109,7 @@ include_once  './loginSession/connect_DB.php';
             </div>
         </div>
         <div class="titleMsg">
-            <p>Com a Ma-Ma, a vida da mãe e do seu bebé nunca foi tão fácil. Descubra os nossos produtos!</p>
+            <p style="margin: 0 10px 0 10px;">Com a Ma-Ma, a vida da mãe e do seu bebé nunca foi tão fácil. Descubra os nossos produtos!</p>
         </div>
         <!--Page cover ends here-->
 
@@ -182,7 +182,7 @@ include_once  './loginSession/connect_DB.php';
                     </div>
                     <div class="apoio">
                         <h5>Apoio Comercial</h5>
-                        <h4><b>916 532 480</b></h4>
+                        <h4>916 532 480</h4>
                         <p>das 9h às 18h</p>
                     </div>
                 </div>
@@ -214,10 +214,10 @@ include_once  './loginSession/connect_DB.php';
                             <h4>Siga-nos</h4>
                         </div>
                         <div class="line"></div>
-                        <div class="componentContent">
-                            <a href="#">Instagram</a><br>
-                            <a href="#">Facebook</a><br>
-                            <a href="#">Twitter</a>
+                        <div class="componentContent logo">
+                            <a href="#"><img src="./gallery/facebook.png" alt=""></a>
+                            <a href="#"><img src="./gallery/twitter.png" alt=""></a>
+                            <a href="#"><img src="./gallery/instagram.png" alt=""></a>
                         </div>
                     </div>
                 </div>
