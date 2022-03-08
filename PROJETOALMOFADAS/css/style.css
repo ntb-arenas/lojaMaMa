@@ -90,6 +90,7 @@ header .search-bar span:hover {
     font-family: 'Roboto', sans-serif;
     padding: 10px 15px 5px;
     transition: 0.1s;
+    max-width: 100%;
 }
 
 .navBar ul li a:hover {
@@ -605,7 +606,7 @@ input[type="checkbox"] {
 
 @media only screen and (max-width: 480px) {
     .logo {
-        max-width: 123px;
+        max-width: 150px;
     }
 
     .coverDiv {
