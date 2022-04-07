@@ -158,7 +158,7 @@ include_once  './loginSession/connect_DB.php';
                 </div>
                 <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
                     <div class="container d-flex flex-column py-3 border h-100">
-                        <img class="img-fluid" src="gallery/cunhas.png" alt="">
+                        <img class="img-fluid" src="gallery/antiColicas.png" alt="">
                         <h4 class="text-center card-message-fs">ALMOFADAS ANTI-CÓLICAS</h4>
                         <a href="./cunhas.php" class="btn mt-auto" style="background-color: #ff7b46; color: white;" role="button">Explorar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
