@@ -11,7 +11,7 @@ include_once  './loginSession/connect_DB.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma-Ma</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.scss">
     <link rel="shortcut icon" href="gallery/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,13 +29,13 @@ include_once  './loginSession/connect_DB.php';
                         <img class="img-fluid" src="gallery/logo.png" alt="Ma-ma logo" class="logo">
                     </a>
                 </div>
-                <form class="col-sm-6 col-md-7 col-lg-6 col-xl-7 mt-3 custom-class">
+                <form class="col-sm-6 col-md-7 col-lg-6 col-xl-7 mt-3 d-none d-sm-block">
                     <div class="row justify-content-center">
                         <div class="col-sm-9">
                             <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                         </div>
                         <div class="col-sm-3">
-                            <button class="btn btn-outline-warning p-sm-6 " style="color: #f35518;" type="submit">Search</button>
+                            <button class="btn p-sm-6 " style="background-color: #ff7b46; color: white;" type="submit">Search</button>
                         </div>
                     </div>
                 </form>
@@ -98,127 +98,120 @@ include_once  './loginSession/connect_DB.php';
         <!--Navbar ends here-->
 
         <!-- Page cover -->
-        <img class="img-fluid mx-auto d-block custom-main-size" src="./gallery/maincover.png" alt="">
-        <img class="img-fluid mx-auto d-block custom-tablet-size" src="./gallery/maincovertabletsize.png" alt="">
-        <img class="img-fluid mx-auto d-block custom-mobile-size" src="./gallery/maincovermobilesize.png" alt="">
+        <img class="img-fluid mx-auto d-none d-md-block" src="./gallery/maincover.png" alt="">
+        <img class="img-fluid mx-auto d-none d-sm-block d-md-none" src="./gallery/maincovertabletsize.png" alt="">
+        <img class="img-fluid mx-auto d-sm-none" src="./gallery/maincovermobilesize.png" alt="">
         <!-- Page cover -->
 
         <div class="container-fluid p-0 border-bottom">
             <h3 class="text-center m-3 cover-message-fs" style="color: rgb(93, 93, 93);">Com a Ma-Ma, a vida da mãe e do seu bebé nunca foi tão fácil. Descubra os nossos produtos!</h3>
         </div>
 
-        <!--Features section starts here
-        <section class="features" id="features">
-            <div class="box-container">
-                <div class="box">
-                    <img src="gallery/almofadaImg.png" alt="">
-                    <h3>ALMOFADAS DE AMAMENTAÇÃO</h3>
-                    <div class="b6">
-                        <div class="button_cont" align="center">
-                            <div class="example_f"> <span><a href="almofadasAma.php" class="btn">EXPLORAR</a></div>
-                        </div>
+        <div class="container-fluid px-lg-5">
+            <div class="row mx-lg-n5">
+                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
+                    <div class="container d-flex flex-column py-3 border h-100">
+                        <img class="img-fluid" src="gallery/almofadaImg.png" alt="">
+                        <h4 class="text-center card-message-fs">ALMOFADAS DE AMAMENTAÇÃO</h4>
+                        <a href="./cunhas.php" class="btn mt-auto" style="background-color: #ff7b46; color: white;" role="button">Explorar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                            </svg></a>
                     </div>
                 </div>
-                <div class="box">
-                    <img src="gallery/cunhas.png" alt="">
-                    <h3>CUNHAS</h3>
-                    <div class="b6">
-                        <div class="button_cont" align="center">
-                            <div class="example_f"> <span><a href="cunhas.php" class="btn">EXPLORAR</a></div>
-                        </div>
+                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
+                    <div class="container d-flex flex-column py-3 border h-100">
+                        <img class="img-fluid" src="gallery/cunhas.png" alt="">
+                        <h4 class="text-center card-message-fs">CUNHAS</h4>
+                        <a href="./cunhas.php" class="btn mt-auto" style="background-color: #ff7b46; color: white;" role="button">Explorar
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                            </svg></a>
+
                     </div>
                 </div>
-                <div class="box">
-                    <img src="gallery/slingBebe1.png" alt="">
-                    <h3>SLINGS</h3>
-                    <div class="b6">
-                        <div class="button_cont" align="center">
-                            <div class="example_f"> <span><a href="slings.php" class="btn">EXPLORAR</a></div>
-                        </div>
+                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
+                    <div class="container d-flex flex-column py-3 border h-100">
+                        <img class="img-fluid" src="gallery/slingBebe1.png" alt="">
+                        <h4 class="text-center card-message-fs">SLINGS</h4>
+                        <a href="./cunhas.php" class="btn mt-auto" style="background-color: #ff7b46; color: white;" role="button">Explorar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                            </svg></a>
                     </div>
                 </div>
-                <div class="box">
-                    <img src="gallery/mudaFraldas.png" alt="">
-                    <h3>MUDA FRALDAS</h3>
-                    <div class="b6">
-                        <div class="button_cont" align="center">
-                            <div class="example_f"> <span><a href="mudafraldas.php" class="btn">EXPLORAR</a></div>
-                        </div>
+                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
+                    <div class="container d-flex flex-column py-3 border h-100">
+                        <img class="img-fluid" src="gallery/mudaFraldas.png" alt="">
+                        <h4 class="text-center card-message-fs">MUDA FRALDAS</h4>
+                        <a href="./cunhas.php" class="btn mt-auto" style="background-color: #ff7b46; color: white;" role="button">Explorar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                            </svg></a>
                     </div>
                 </div>
-                <div class="box">
-                    <img src="gallery/kitMaternidadeAzul.png" alt="">
-                    <h3>KIT MATERNIDADE</h3>
-                    <div class="b6">
-                        <div class="button_cont" align="center">
-                            <div class="example_f"> <span><a href="kitMat.php" class="btn">EXPLORAR</a></div>
-                        </div>
+                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
+                    <div class="container d-flex flex-column py-3 border h-100">
+                        <img class="img-fluid" src="gallery/kitMaternidadeAzul.png" alt="">
+                        <h4 class="text-center card-message-fs">KIT MATERNIDADE</h4>
+                        <a href="./cunhas.php" class="btn mt-auto" style="background-color: #ff7b46; color: white;" role="button">Explorar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                            </svg></a>
                     </div>
                 </div>
-                <div class="box">
-                    <img src="gallery/antiColicas.png" alt="">
-                    <h3>ALMOFADAS ANTI-CÓLICAS</h3>
-                    <div class="b6">
-                        <div class="button_cont" align="center">
-                            <div class="example_f"> <span><a href="almofadasAnti.php" class="btn">EXPLORAR</a></div>
-                        </div>
+                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
+                    <div class="container d-flex flex-column py-3 border h-100">
+                        <img class="img-fluid" src="gallery/cunhas.png" alt="">
+                        <h4 class="text-center card-message-fs">ALMOFADAS ANTI-CÓLICAS</h4>
+                        <a href="./cunhas.php" class="btn mt-auto" style="background-color: #ff7b46; color: white;" role="button">Explorar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                            </svg></a>
                     </div>
                 </div>
             </div>
-        </section>
-        Features section ends here-->
+        </div>
 
-        <!-- <footer>
-            <div class="coverFooter">
-                <div class="logoContainer">
-                    <div class="logo">
-                        <a href="#"><img src="gallery/logo.png" alt=""></a>
-                    </div>
-                    <div class="apoio">
-                        <h5>Apoio Comercial</h5>
-                        <h4>916 532 480</h4>
+
+        <footer style="background-color: rgb(224, 224, 224);">
+            <div class="container-fluid p-0">
+                <div class="row">
+                    <div class="col-12 col-lg-4 ps-4 ps-lg-5">
+                        <a href="./index.php">
+                            <img class="img-fluid col-5 col-sm-4 col-md-3" src="gallery/logo.png" alt="Ma-ma logo" class="logo">
+                        </a>
+                        <h4 style="color: #ff7b46;">Apoio Comercial</h4>
+                        <h2 style="color: rgb(93, 93, 93);"><strong>916 532 480</strong></h2>
                         <p>das 9h às 18h</p>
                     </div>
-                </div>
-
-                <div class="componentContainer">
-                    <div class="component">
-                        <div class="componentTitle">
-                            <h4>Sobre Nós</h4>
-                        </div>
-                        <div class="line"></div>
-                        <div class="componentContent">
-                            <a href="#">Quem Somos</a><br>
-                            <a href="#">Contactos</a>
-                        </div>
-                    </div>
-                    <div class="component">
-                        <div class="componentTitle">
-                            <h4>Informações</h4>
-                        </div>
-                        <div class="line"></div>
-                        <div class="componentContent">
-                            <a href="#">Modos de Pagamento</a><br>
-                            <a href="#">Envio de Encomendas e Custos</a>
-                            <a href="#">Garantias</a>
-                        </div>
-                    </div>
-                    <div class="component">
-                        <div class="componentTitle">
-                            <h4>Siga-nos</h4>
-                        </div>
-                        <div class="line"></div>
-                        <div class="componentContent logo">
-                            <a href="#"><img src="./gallery/facebook.png" alt=""></a>
-                            <a href="#"><img src="./gallery/twitter.png" alt=""></a>
-                            <a href="#"><img src="./gallery/instagram.png" alt=""></a>
+                    <div class="col-12 col-lg-8">
+                        <div class="row justify-content-center p-2 footer-layout">
+                            <div class="col-12 col-lg-3 mb-3">
+                                <h4 class=" border-bottom border-secondary">Sobre Nós</h4>
+                                <div class="p-0 d-flex flex-column">
+                                    <a class="text-decoration-none" style="color: rgb(93, 93, 93);" href="#">Quem Somos</a>
+                                    <a class="text-decoration-none" style="color: rgb(93, 93, 93);" href="#">Contactos</a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-3 mb-3">
+                                <h4 class=" border-bottom border-secondary">Informações</h4>
+                                <div class="p-0 d-flex flex-column">
+                                    <a class="text-decoration-none" style="color: rgb(93, 93, 93);" href="#">Modos de Pagamento</a>
+                                    <a class="text-decoration-none" style="color: rgb(93, 93, 93);" href="#">Envio de Encomendas e Custos</a>
+                                    <a class="text-decoration-none" style="color: rgb(93, 93, 93);" href="#">Garantias</a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-3 mb-3">
+                                <h4 class=" border-bottom border-secondary">Siga-nos</h4>
+                                <div class="p-0 d-flex flex-row col-9 justify-content-around">
+                                    <a class="text-decoration-none" href="#"><img style="width: 2rem;" src="./gallery/facebook.png" alt=""></a>
+                                    <a class="text-decoration-none" href="#"><img style="width: 2rem;" src="./gallery/twitter.png" alt=""></a>
+                                    <a class="text-decoration-none" href="#"><img style="width: 2rem;" src="./gallery/instagram.png" alt=""></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer> -->
+        </footer>
     </main>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="./bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 
 </html>

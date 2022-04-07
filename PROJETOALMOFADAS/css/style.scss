@@ -5,7 +5,6 @@ body {
     width: 100%;
     height: 100%;
     margin: 0px;
-    margin-top: 10px;
     padding: 0px;
     overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
@@ -212,43 +211,24 @@ body {
 }
 
 
-.custom-class {
-    display: block;
-}
 
-.custom-tablet-size {
-    display: none !important;
-}
-
-.custom-mobile-size {
-    display: none !important;
-}
-
-@media only screen and (max-width: 768px) {
-    .custom-main-size {
-        display: none !important;
-    }
-
-    .custom-tablet-size {
-        display: block !important;
-    }
+.card-message-fs {
+    color: rgb(93, 93, 93);
 }
 
 @media only screen and (max-width: 425px) {
-    .custom-tablet-size {
-        display: none !important;
-    }
-
-    .custom-mobile-size {
-        display: block !important;
-    }
-    .cover-message-fs{
+    .cover-message-fs {
         font-size: calc(0.8rem + .9vw);
     }
+
+    .card-message-fs {
+        font-size: calc(0.9rem + .3vw);
+    }
+
 }
 
-@media only screen and (max-width: 577px) {
-    .custom-class {
-        display: none;
+@media only screen and (min-width: 992px) {
+    .footer-layout {
+        justify-content: space-around!important;
     }
 }

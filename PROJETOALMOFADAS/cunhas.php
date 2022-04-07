@@ -209,50 +209,42 @@ include_once  './loginSession/connect_DB.php';
 
 
         <!--Footer section starts here-->
-        <footer>
-            <div class="coverFooter">
-                <div class="logoContainer">
-                    <div class="logo">
-                        <a href="#"><img src="gallery/logo.png" alt=""></a>
-                    </div>
-                    <div class="apoio">
-                        <h5>Apoio Comercial</h5>
-                        <h4><b>916 532 480</b></h4>
+        <footer style="background-color: rgb(224, 224, 224);">
+            <div class="container-fluid p-0">
+                <div class="row">
+                    <div class="col-12 col-lg-4 ps-4 ps-lg-5">
+                        <a href="./index.php">
+                            <img class="img-fluid col-5 col-sm-4 col-md-3" src="gallery/logo.png" alt="Ma-ma logo" class="logo">
+                        </a>
+                        <h4 style="color: #ff7b46;">Apoio Comercial</h4>
+                        <h2 style="color: rgb(93, 93, 93);"><strong>916 532 480</strong></h2>
                         <p>das 9h às 18h</p>
                     </div>
-                </div>
-
-                <div class="componentContainer">
-                    <div class="component">
-                        <div class="componentTitle">
-                            <h4>Sobre Nós</h4>
-                        </div>
-                        <div class="line"></div>
-                        <div class="componentContent">
-                            <a href="#">Quem Somos</a><br>
-                            <a href="#">Contactos</a>
-                        </div>
-                    </div>
-                    <div class="component">
-                        <div class="componentTitle">
-                            <h4>Informações</h4>
-                        </div>
-                        <div class="line"></div>
-                        <div class="componentContent">
-                            <a href="#">Modos de Pagamento</a><br>
-                            <a href="#">Envio de Encomendas e Custos</a>
-                            <a href="#">Garantias</a>
-                        </div>
-                    </div>
-                    <div class="component">
-                        <div class="componentTitle">
-                            <h4>Siga-nos</h4>
-                        </div>
-                        <div class="line"></div>
-                        <div class="componentContent">
-                            <a href="#">Instagram</a><br>
-                            <a href="#">Facebook</a><br>
-                            <a href="#">Twitter</a>
+                    <div class="col-12 col-lg-8">
+                        <div class="row justify-content-center p-2 footer-layout">
+                            <div class="col-12 col-lg-3 mb-3">
+                                <h4 class=" border-bottom border-secondary">Sobre Nós</h4>
+                                <div class="p-0 d-flex flex-column">
+                                    <a class="text-decoration-none" style="color: rgb(93, 93, 93);" href="#">Quem Somos</a>
+                                    <a class="text-decoration-none" style="color: rgb(93, 93, 93);" href="#">Contactos</a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-3 mb-3">
+                                <h4 class=" border-bottom border-secondary">Informações</h4>
+                                <div class="p-0 d-flex flex-column">
+                                    <a class="text-decoration-none" style="color: rgb(93, 93, 93);" href="#">Modos de Pagamento</a>
+                                    <a class="text-decoration-none" style="color: rgb(93, 93, 93);" href="#">Envio de Encomendas e Custos</a>
+                                    <a class="text-decoration-none" style="color: rgb(93, 93, 93);" href="#">Garantias</a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-3 mb-3">
+                                <h4 class=" border-bottom border-secondary">Siga-nos</h4>
+                                <div class="p-0 d-flex flex-row col-9 justify-content-around">
+                                    <a class="text-decoration-none" href="#"><img style="width: 2rem;" src="./gallery/facebook.png" alt=""></a>
+                                    <a class="text-decoration-none" href="#"><img style="width: 2rem;" src="./gallery/twitter.png" alt=""></a>
+                                    <a class="text-decoration-none" href="#"><img style="width: 2rem;" src="./gallery/instagram.png" alt=""></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

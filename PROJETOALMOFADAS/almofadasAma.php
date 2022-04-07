@@ -12,7 +12,7 @@ include_once  './loginSession/connect_DB.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma-Ma</title>
     <!-- stylesheet ---------------------------->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.scss">
     <link rel="stylesheet" href="css/almofadasAma.css">
     <link rel="stylesheet" href="css/button.css">
     <link rel="stylesheet" href="css/lightslider.css">
@@ -46,13 +46,13 @@ include_once  './loginSession/connect_DB.php';
                         <img class="img-fluid" src="gallery/logo.png" alt="Ma-ma logo" class="logo">
                     </a>
                 </div>
-                <form class="col-sm-6 col-md-7 col-lg-6 col-xl-7 mt-3 custom-class">
+                <form class="col-sm-6 col-md-7 col-lg-6 col-xl-7 mt-3 d-none d-sm-block">
                     <div class="row justify-content-center">
                         <div class="col-sm-9">
                             <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                         </div>
                         <div class="col-sm-3">
-                            <button class="btn btn-outline-warning p-sm-6 " style="color: #f35518;" type="submit">Search</button>
+                            <button class="btn p-sm-6 " style="background-color: #ff7b46; color: white;" type="submit">Search</button>
                         </div>
                     </div>
                 </form>
@@ -206,50 +206,42 @@ include_once  './loginSession/connect_DB.php';
 
 
         <!--Footer section starts here-->
-        <footer>
-            <div class="coverFooter">
-                <div class="logoContainer">
-                    <div class="logo">
-                        <a href="#"><img src="gallery/logo.png" alt=""></a>
-                    </div>
-                    <div class="apoio">
-                        <h5>Apoio Comercial</h5>
-                        <h4><b>916 532 480</b></h4>
+        <footer style="background-color: rgb(224, 224, 224);">
+            <div class="container-fluid p-0">
+                <div class="row">
+                    <div class="col-12 col-lg-4 ps-4 ps-lg-5">
+                        <a href="./index.php">
+                            <img class="img-fluid col-5 col-sm-4 col-md-3" src="gallery/logo.png" alt="Ma-ma logo" class="logo">
+                        </a>
+                        <h4 style="color: #ff7b46;">Apoio Comercial</h4>
+                        <h2 style="color: rgb(93, 93, 93);"><strong>916 532 480</strong></h2>
                         <p>das 9h às 18h</p>
                     </div>
-                </div>
-
-                <div class="componentContainer">
-                    <div class="component">
-                        <div class="componentTitle">
-                            <h4>Sobre Nós</h4>
-                        </div>
-                        <div class="line"></div>
-                        <div class="componentContent">
-                            <a href="#">Quem Somos</a><br>
-                            <a href="#">Contactos</a>
-                        </div>
-                    </div>
-                    <div class="component">
-                        <div class="componentTitle">
-                            <h4>Informações</h4>
-                        </div>
-                        <div class="line"></div>
-                        <div class="componentContent">
-                            <a href="#">Modos de Pagamento</a><br>
-                            <a href="#">Envio de Encomendas e Custos</a><br>
-                            <a href="#">Garantias</a>
-                        </div>
-                    </div>
-                    <div class="component">
-                        <div class="componentTitle">
-                            <h4>Siga-nos</h4>
-                        </div>
-                        <div class="line"></div>
-                        <div class="componentContent logo">
-                            <a href="#"><img src="./gallery/facebook.png" alt=""></a>
-                            <a href="#"><img src="./gallery/twitter.png" alt=""></a>
-                            <a href="#"><img src="./gallery/instagram.png" alt=""></a>
+                    <div class="col-12 col-lg-8">
+                        <div class="row justify-content-center p-2 footer-layout">
+                            <div class="col-12 col-lg-3 mb-3">
+                                <h4 class=" border-bottom border-secondary">Sobre Nós</h4>
+                                <div class="p-0 d-flex flex-column">
+                                    <a class="text-decoration-none" style="color: rgb(93, 93, 93);" href="#">Quem Somos</a>
+                                    <a class="text-decoration-none" style="color: rgb(93, 93, 93);" href="#">Contactos</a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-3 mb-3">
+                                <h4 class=" border-bottom border-secondary">Informações</h4>
+                                <div class="p-0 d-flex flex-column">
+                                    <a class="text-decoration-none" style="color: rgb(93, 93, 93);" href="#">Modos de Pagamento</a>
+                                    <a class="text-decoration-none" style="color: rgb(93, 93, 93);" href="#">Envio de Encomendas e Custos</a>
+                                    <a class="text-decoration-none" style="color: rgb(93, 93, 93);" href="#">Garantias</a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-3 mb-3">
+                                <h4 class=" border-bottom border-secondary">Siga-nos</h4>
+                                <div class="p-0 d-flex flex-row col-9 justify-content-around">
+                                    <a class="text-decoration-none" href="#"><img style="width: 2rem;" src="./gallery/facebook.png" alt=""></a>
+                                    <a class="text-decoration-none" href="#"><img style="width: 2rem;" src="./gallery/twitter.png" alt=""></a>
+                                    <a class="text-decoration-none" href="#"><img style="width: 2rem;" src="./gallery/instagram.png" alt=""></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
