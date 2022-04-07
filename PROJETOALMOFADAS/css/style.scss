@@ -22,7 +22,6 @@ body {
     border-color: #ff7b46;
 }
 
-
 .card-message-fs {
     color: rgb(93, 93, 93);
 }
@@ -38,8 +37,18 @@ body {
 
 }
 
+@media only screen and (min-width: 768px) {
+    footer {
+        margin-top: 10rem;
+    }
+}
+
 @media only screen and (min-width: 992px) {
     .footer-layout {
         justify-content: space-around !important;
+    }
+
+    footer {
+        margin-top: 20rem;
     }
 }

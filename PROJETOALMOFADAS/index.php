@@ -2,10 +2,8 @@
 session_start();
 include_once  './loginSession/connect_DB.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -173,7 +171,7 @@ include_once  './loginSession/connect_DB.php';
         </div>
 
 
-        <footer style="background-color: rgb(224, 224, 224);">
+        <footer class="p-3" style="background-color: rgb(224, 224, 224);">
             <div class="container-fluid p-0">
                 <div class="row">
                     <div class="col-12 col-lg-4 ps-4 ps-lg-5">

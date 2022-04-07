@@ -75,7 +75,6 @@ if (isset($_POST['button-login'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -212,7 +211,8 @@ if (isset($_POST['button-login'])) {
                 </div>
             </div>
         </div>
-        <footer style="background-color: rgb(224, 224, 224);">
+
+        <footer class="p-3" style="background-color: rgb(224, 224, 224);">
             <div class="container-fluid p-0">
                 <div class="row">
                     <div class="col-12 col-lg-4 ps-4 ps-lg-5">
@@ -243,9 +243,9 @@ if (isset($_POST['button-login'])) {
                             <div class="col-12 col-lg-3 mb-3">
                                 <h4 class=" border-bottom border-secondary">Siga-nos</h4>
                                 <div class="p-0 d-flex flex-row col-9 justify-content-around">
-                                    <a class="text-decoration-none" href="#"><img style="width: 2rem;" src="./gallery/facebook.png" alt=""></a>
-                                    <a class="text-decoration-none" href="#"><img style="width: 2rem;" src="./gallery/twitter.png" alt=""></a>
-                                    <a class="text-decoration-none" href="#"><img style="width: 2rem;" src="./gallery/instagram.png" alt=""></a>
+                                    <a class="text-decoration-none" href="#"><img style="width: 2rem;" src="../gallery/facebook.png" alt=""></a>
+                                    <a class="text-decoration-none" href="#"><img style="width: 2rem;" src="../gallery/twitter.png" alt=""></a>
+                                    <a class="text-decoration-none" href="#"><img style="width: 2rem;" src="../gallery/instagram.png" alt=""></a>
                                 </div>
                             </div>
                         </div>
