@@ -242,6 +242,9 @@ body {
     .custom-mobile-size {
         display: block !important;
     }
+    .cover-message-fs{
+        font-size: calc(0.8rem + .9vw);
+    }
 }
 
 @media only screen and (max-width: 577px) {

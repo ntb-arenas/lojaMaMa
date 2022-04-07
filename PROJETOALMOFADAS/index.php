@@ -102,8 +102,9 @@ include_once  './loginSession/connect_DB.php';
         <img class="img-fluid mx-auto d-block custom-tablet-size" src="./gallery/maincovertabletsize.png" alt="">
         <img class="img-fluid mx-auto d-block custom-mobile-size" src="./gallery/maincovermobilesize.png" alt="">
         <!-- Page cover -->
-        <div class="container-fluid">
-            <p class="h3">Com a Ma-Ma, a vida da mãe e do seu bebé nunca foi tão fácil. Descubra os nossos produtos!</p>
+
+        <div class="container-fluid p-0">
+            <h3 class="text-center m-3 cover-message-fs" style="color: rgb(93, 93, 93);">Com a Ma-Ma, a vida da mãe e do seu bebé nunca foi tão fácil. Descubra os nossos produtos!</h3>
         </div>
 
 
