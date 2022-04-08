@@ -11,7 +11,7 @@ include_once  './loginSession/connect_DB.php';
     <title>Ma-Ma</title>
     <!-- stylesheet ---------------------------->
     <link rel="stylesheet" href="./bootstrap-5.1.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.scss">
+    <link rel="stylesheet" href="css/style.css">
     <!-- page icon --------------------------------->
     <link rel="shortcut icon" href="gallery/logo.png">
     <!-- fonts ------------------------------------------>
