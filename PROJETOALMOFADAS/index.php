@@ -4,6 +4,7 @@ include_once  './loginSession/connect_DB.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,6 +23,7 @@ include_once  './loginSession/connect_DB.php';
 
 <body>
     <main>
+
         <div class="container-fluid p-0">
             <div class="row">
                 <div class="col-6 col-sm-3 col-md-3 col-lg-3 col-xl-3">
@@ -109,13 +111,13 @@ include_once  './loginSession/connect_DB.php';
             <h3 class="text-center m-3 cover-message-fs" style="color: rgb(93, 93, 93);">Com a Ma-Ma, a vida da mãe e do seu bebé nunca foi tão fácil. Descubra os nossos produtos!</h3>
         </div>
 
-        <div class="container-fluid px-lg-5">
+        <div class="container-fluid px-lg-5 d-none d-sm-block">
             <div class="row mx-lg-n5">
                 <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
                     <div class="container d-flex flex-column py-3 border h-100">
                         <img class="img-fluid" src="gallery/almofadaImg.png" alt="">
                         <h4 class="text-center card-message-fs">ALMOFADAS DE AMAMENTAÇÃO</h4>
-                        <a href="./cunhas.php" class="btn mt-auto btn-customized" role="button">Explorar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                        <a href="./almofadasAma.php" class="btn mt-auto btn-customized" role="button">Explorar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                             </svg></a>
                     </div>
@@ -135,7 +137,7 @@ include_once  './loginSession/connect_DB.php';
                     <div class="container d-flex flex-column py-3 border h-100">
                         <img class="img-fluid" src="gallery/slingBebe1.png" alt="">
                         <h4 class="text-center card-message-fs">SLINGS</h4>
-                        <a href="./cunhas.php" class="btn mt-auto btn-customized" role="button">Explorar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                        <a href="#" class="btn mt-auto btn-customized" role="button">Explorar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                             </svg></a>
                     </div>
@@ -144,7 +146,7 @@ include_once  './loginSession/connect_DB.php';
                     <div class="container d-flex flex-column py-3 border h-100">
                         <img class="img-fluid" src="gallery/mudaFraldas.png" alt="">
                         <h4 class="text-center card-message-fs">MUDA FRALDAS</h4>
-                        <a href="./cunhas.php" class="btn mt-auto btn-customized" role="button">Explorar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                        <a href="#" class="btn mt-auto btn-customized" role="button">Explorar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                             </svg></a>
                     </div>
@@ -153,7 +155,7 @@ include_once  './loginSession/connect_DB.php';
                     <div class="container d-flex flex-column py-3 border h-100">
                         <img class="img-fluid" src="gallery/kitMaternidadeAzul.png" alt="">
                         <h4 class="text-center card-message-fs">KIT MATERNIDADE</h4>
-                        <a href="./cunhas.php" class="btn mt-auto btn-customized" role="button">Explorar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                        <a href="#" class="btn mt-auto btn-customized" role="button">Explorar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                             </svg></a>
                     </div>
@@ -162,13 +164,85 @@ include_once  './loginSession/connect_DB.php';
                     <div class="container d-flex flex-column py-3 border h-100">
                         <img class="img-fluid" src="gallery/antiColicas.png" alt="">
                         <h4 class="text-center card-message-fs">ALMOFADAS ANTI-CÓLICAS</h4>
-                        <a href="./cunhas.php" class="btn mt-auto btn-customized" role="button">Explorar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                        <a href="#" class="btn mt-auto btn-customized" role="button">Explorar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                             </svg></a>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="container-fluid px-lg-5 d-block d-sm-none">
+            <div class="row mx-lg-n5">
+                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
+                    <a href="./almofadasAma.php" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
+                        <div class="container d-flex flex-column py-3 border h-100">
+                            <img class="img-fluid" src="gallery/almofadaImg.png" alt="">
+                            <h4 class="text-center card-message-fs">ALMOFADAS DE AMAMENTAÇÃO</h4>
+                            <p class="text-center mt-auto">EXPLORAR <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                </svg></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
+                    <a href="./cunhas.php" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
+                        <div class="container d-flex flex-column py-3 border h-100">
+                            <img class="img-fluid" src="gallery/cunhas.png" alt="">
+                            <h4 class="text-center card-message-fs">CUNHAS</h4>
+                            <p class="text-center mt-auto">EXPLORAR <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                </svg></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
+                    <a href="#" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
+                        <div class="container d-flex flex-column py-3 border h-100">
+                            <img class="img-fluid" src="gallery/slingBebe1.png" alt="">
+                            <h4 class="text-center card-message-fs">SLINGS</h4>
+                            <p class="text-center mt-auto">EXPLORAR <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                </svg></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
+                    <a href="#" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
+                        <div class="container d-flex flex-column py-3 border h-100">
+                            <img class="img-fluid" src="gallery/mudaFraldas.png" alt="">
+                            <h4 class="text-center card-message-fs">MUDA FRALDAS</h4>
+                            <p class="text-center mt-auto">EXPLORAR <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                </svg></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
+                    <a href="#" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
+                        <div class="container d-flex flex-column py-3 border h-100">
+                            <img class="img-fluid" src="gallery/kitMaternidadeAzul.png" alt="">
+                            <h4 class="text-center card-message-fs">KIT MATERNIDADE</h4>
+                            <p class="text-center mt-auto">EXPLORAR <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                </svg></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
+                    <a href="#" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
+                        <div class="container d-flex flex-column py-3 border h-100">
+                            <img class="img-fluid" src="gallery/antiColicas.png" alt="">
+                            <h4 class="text-center card-message-fs">ALMOFADAS ANTI-CÓLICAS</h4>
+                            <p class="text-center mt-auto">EXPLORAR <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                </svg></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
 
 
         <footer class="p-3" style="background-color: rgb(224, 224, 224);">
