@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<!-- Adform API Script -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://s1.seadform.net/banners/scripts/rmb/Adform.DHTML.js?bv=610"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title></title>
+  <link rel="stylesheet" href="styles/style.css" />
+<!--Adform Global Clicktag START-->
+<script type="text/javascript">
+    function adfOpenGlobalClickTAG() {
+        var adfClickTAGName = 'clickTAG',
+            adfClickTAGUrl = 'http://vodafone.pt';
+
+        window.open(dhtml.getVar(adfClickTAGName, adfClickTAGUrl), dhtml.getVar('landingPageTarget', '_blank'));
+    }
+    if(window.addEventListener) {
+        window.addEventListener('click', function(e) {
+            if(e.button !== 0) return;
+            e.stopPropagation();
+            e.preventDefault();
+            adfOpenGlobalClickTAG();
+        }, true);
+    } else {
+        document.attachEvent('onclick', function() {
+            adfOpenGlobalClickTAG();
+        });
+    }
+</script>
+<style>
+    html {
+        cursor: pointer;
+    }
+</style>
+<!--Adform Global Clicktag END-->
+
+</head>
+<body>
+  <div id="ad" class="ad-300x600">
+    <div class="layer"></div>
+    <div class="contentor">
+        <div class="bg z-1 p-abs ad-300x600"></div>
+        <div class="copy1 z-4 p-abs ad-300x600"></div>
+        <div class="copy2 z-4 p-abs ad-300x600"></div>
+        <div class="copy3 z-4 p-abs ad-300x600"></div>
+        <img src="images/logos.png" class="p-abs logos z-4" alt="">
+        <img src="images/call.png" class="p-abs call z-4" alt="">
+    </div>
+  </div>
+</body>
+<script src="scripts/script.js"></script>
+</html>
