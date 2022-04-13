@@ -82,7 +82,7 @@ if (isset($_POST['button-login'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma-Ma Entrar</title>
     <!-- stylesheet ---------------------------->
-    <link rel="stylesheet" href="../bootstrap-5.1.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <!-- page icon --------------------------------->
     <link rel="shortcut icon" href="../gallery/logo.png">
@@ -180,7 +180,7 @@ if (isset($_POST['button-login'])) {
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-6">
+                <div class="col-12 col-md-6 ">
                     <h2>Entre na sua conta!</h3>
                         <form action="#" method="POST">
                             <div class="form-group">
@@ -202,7 +202,7 @@ if (isset($_POST['button-login'])) {
                                 </svg></button>
                         </form>
                 </div>
-                <div class="col-6 border-start" style="border-color: gray!important;">
+                <div class="col-12 col-md-6 border-start mt-5" style="border-color: gray!important;">
                     <h2 class="text-center">Criar Conta</h3>
                         <div class="container-fluid text-center">
                             <a href="./userCreateAccount.php" class="btn btn-customized" role="button">
@@ -258,6 +258,6 @@ if (isset($_POST['button-login'])) {
         </footer>
     </main>
 </body>
-<script src="../bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </html>

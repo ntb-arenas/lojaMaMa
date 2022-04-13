@@ -11,7 +11,7 @@ include_once  './loginSession/connect_DB.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma-Ma</title>
     <!-- stylesheet ---------------------------->
-    <link rel="stylesheet" href="./bootstrap-5.1.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <!-- page icon --------------------------------->
     <link rel="shortcut icon" href="gallery/logo.png">
@@ -288,6 +288,6 @@ include_once  './loginSession/connect_DB.php';
         </footer>
     </main>
 </body>
-<script src="./bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+<script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </html>
