@@ -227,7 +227,7 @@ if (isset($_POST['submit-create-account'])) {
                     </strong></span
                   >
                 </center>
-                '.$urlPagina.'/loginSession/userVerifyAccount.php?id=$id&code=$code'.'
+                '.$urlPagina.'/loginSession/userVerifyAccount.php?id='. $id. '&code='.$code.'
                 <center>
                   <span style="font-size: 14.5pt"
                     ><strong

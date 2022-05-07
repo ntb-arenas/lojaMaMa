@@ -348,8 +348,8 @@ if (isset($_GET['id']) && isset($_GET['code'])) {
         </footer>
 
         <footer class="list-group w-100 p-3 d-md-none mb-5 mb-sm-1 mt-5" style="background-color: rgb(224, 224, 224);">
-            <a href="./index.php">
-                <img class="img-fluid col-5 col-sm-4 col-md-3" src="gallery/logo.png" alt="Ma-ma logo" class="logo">
+            <a href="../index.php">
+                <img class="img-fluid col-5 col-sm-4 col-md-3" src="../gallery/logo.png" alt="Ma-ma logo" class="logo">
             </a>
             <h4 style="color: #ff7b46;">Apoio Comercial</h4>
             <h2 style="color: rgb(93, 93, 93);"><strong>916 532 480</strong></h2>
