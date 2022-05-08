@@ -16,8 +16,6 @@ include_once  './loginSession/connect_DB.php';
     <!-- page icon --------------------------------->
     <link rel="shortcut icon" href="gallery/logo.png">
     <!-- fonts ------------------------------------------>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
@@ -312,7 +310,6 @@ include_once  './loginSession/connect_DB.php';
                 </div>
             </div>
         </div>
-
 
 
         <footer class="p-3 d-none d-md-block mb-5 mt-5" style="background-color: rgb(224, 224, 224);">

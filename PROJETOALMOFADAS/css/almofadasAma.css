@@ -6,9 +6,9 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    background-image: url("../gallery/coverAlmofada.png");
+    background-image: url("../gallery/coverAlmofada.jpg");
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top;
     background-size: cover;
     flex-direction: column;
 }
