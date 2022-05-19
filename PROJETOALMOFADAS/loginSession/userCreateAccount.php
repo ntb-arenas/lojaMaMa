@@ -223,7 +223,7 @@ if (isset($_POST['submit-create-account'])) {
                     </strong></span
                   >
                 </center>
-                ' . $urlPagina . '/loginSession/userVerifyAccount.php?id=' . $id . '&code=' . $code . '
+                <a  class="btn" id="btn-customized" style="font-size: 12pt; margin-top: 10px;" role="button" href="' . $urlPagina . '/loginSession/userVerifyAccount.php?id=' . $id . '&code=' . $code . '">Clique aqui para ativar a sua conta</a>
                 <center>
                   <span style="font-size: 14.5pt"
                     ><strong

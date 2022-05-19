@@ -1,37 +1,59 @@
 <?php
+
 session_start();
-include_once  './loginSession/connect_DB.php';
+include_once  '../loginSession/connect_DB.php';
+
+$username = $_SESSION["USER"];
+
+$stmt = $_conn->prepare('SELECT * FROM USERS WHERE USERNAME = ?');
+$stmt->bind_param('s', $username);
+$stmt->execute();
+
+$usersResult = $stmt->get_result();
+
+if ($usersResult->num_rows > 0) {
+    while ($rowUsers = $usersResult->fetch_assoc()) {
+        $morada = $rowUsers['MORADA'];
+        $telemovel = $rowUsers['TELEMOVEL'];
+        $cidade = $rowUsers['CIDADE'];
+        $codPostal = $rowUsers['COD_POSTAL'];
+        $pais = $rowUsers['PAIS'];
+    }
+}
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ma-Ma</title>
-    <!-- stylesheet ---------------------------->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/almofadasAma.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
-    <!-- page icon --------------------------------->
-    <link rel="shortcut icon" href="gallery/logo.png">
-    <!-- fonts ------------------------------------------>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ma-Ma</title>
+        <!-- stylesheet ---------------------------->
+        <link rel="stylesheet" href="../css/style.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
+        <!-- page icon --------------------------------->
+        <link rel="shortcut icon" href="../gallery/logo.png">
+        <!-- fonts ------------------------------------------>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+        <!-- Google Fonts -->
+    </head>
 </head>
 
 <body>
     <main>
-
         <!--Header starts here-->
         <div class="container-fluid p-0 d-none d-lg-block">
             <div class="row">
                 <div class="col-6 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                    <a href="./index.php">
-                        <img class="img-fluid" src="gallery/logo.png" alt="Ma-ma logo">
+                    <a href="../index.php">
+                        <img class="img-fluid" src="../gallery/logo.png" alt="Ma-ma logo">
                     </a>
                 </div>
                 <form class="col-sm-6 col-md-7 col-lg-6 col-xl-7 mt-3 d-none d-sm-block">
@@ -49,26 +71,27 @@ include_once  './loginSession/connect_DB.php';
                 <div class="col-6 col-sm-3 col-md-2 col-lg-3 col-xl-2 mt-3"><?php
                                                                             if (isset($_SESSION["USER"])) { ?>
                         <div class="d-flex justify-content-evenly col-12">
-                            <a href="like.html" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
+                            <a href="#" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
                                     <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
                                 </svg></a>
-                            <a href="./loginSession/userEditAccount.php" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                            <a href="./profileAccount.php" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                                </svg></a>
-                            <a href="cart.html" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                                </svg><span class="badge badge-notification bg-danger rounded-pill">0</span></a>
+
+                            <a href="#" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
                                     <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                                 </svg></a>
                         </div>
 
                     <?php } else { ?>
                         <div class="d-flex justify-content-evenly col-12">
-                            <a href="like.html" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
+                            <a href="#" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
                                     <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
                                 </svg></a>
                             <a href="./loginSession/login.php" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
                                 </svg></a>
-                            <a href="cart.html" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                            <a href="#" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
                                     <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                                 </svg></a>
                         </div>
@@ -76,7 +99,7 @@ include_once  './loginSession/connect_DB.php';
                 </div>
             </div>
         </div>
-        <!--Header ends here-->
+        <!--Header starts here-->
 
         <!--Navbar starts here-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -105,9 +128,9 @@ include_once  './loginSession/connect_DB.php';
                                 <a href="#" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
                                         <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
                                     </svg></a>
-                                <a href="./loginSession/userEditAccount.php" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                <a href="./profileAccount.php" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                                         <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                                    </svg></a>
+                                    </svg><span class="badge badge-notification bg-danger rounded-pill">0</span></a>
                                 <a href="#" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
                                         <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                                     </svg></a>
@@ -155,7 +178,7 @@ include_once  './loginSession/connect_DB.php';
                                 <?php
                                 if ($rowTablecategoryDropdown['TITLE'] == 'ALMOFADAS DE AMAMENTAÇÃO') { ?>
                                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">GRANDE</a></li>
+                                        <li><a class="dropdown-item" href="./almofadasAmaPadrao.php">GRANDE</a></li>
                                         <li><a class="dropdown-item" href="#">PEQUENO</a></li>
                                     </ul>
                                 <?php
@@ -199,50 +222,95 @@ include_once  './loginSession/connect_DB.php';
         </nav>
         <!--Navbar ends here-->
 
-        <!--Product page starts here-->
+        <div class="container py-5">
+            <h2>Olá <?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"] ?>, </h2>
+        </div>
 
-        <div class="content-wrapper">
-            <div class="div-contents">
-                <h1>Almofadas de Amamentação</h1>
-                <h2><b>Pequenos detalhes que tornam o seu mundo grande</b></h2>
-
-                <p>
-                    <span class="desc__read-more">
-                        A Almofada de Amamentação MA-MA® foi concebida para acompanhar a mamã tanto na gravidez como
-                        no
-                        pós
-                        parto,
-                        ajudando <br> a mamã num conjunto de situações para que ela se possa focar no que é mais
-                        importante:
-                        o
-                        seu bebé. <br> <br>
-                        A Almofada de Amamentação MA-MA® Original serve como um apoio fundamental para a futura
-                        mamã, proporcionando noites de sono tranquilas e sem os habituais desconfortos que costumam
-                        ocorrer
-                        durante a
-                        gravidez. <br> Chegada a altura de amamentar a almofada MA-MA® será igualmente uma fiel
-                        aliada,
-                        permitindo que a
-                        mamã adopte uma posição confortável e que o bebé fique bem apoiado.
-                    </span>
-                </p>
-
-                <p class="read-more-btn">Ler mais</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <div class="list-group list-group-light">
+                        <a href="./profileAccount.php" class="list-group-item list-group-item-action px-3 border-0">INFORMAÇÕES DA CONTA</a>
+                        <a href="./encomendas.php" class="list-group-item list-group-item-action px-3 border-0 active" id="account-style"  aria-current="true">AS MINHAS ENCOMENDAS</a>
+                        <a href="./address.php" class="list-group-item list-group-item-action px-3 border-0">MORADAS</a>
+                        <a href="./favorite.php" class="list-group-item list-group-item-action px-3 border-0">LISTA DE DESEJOS</a>
+                    </div>
+                </div>
+                <div class="col-9 border-start">
+                    Encomendas
+                </div>
             </div>
         </div>
-        <div class="container text-center">
-            <h1 style="font-size: 8vw;">Test</h1>
-        </div>
 
-        <!--Product page ends here-->
+        <!-- <div class="information-container">
+            <div class="sidebar-main">
+                <div class="customer-area">
+                    <h1>
+                        Olá 
+                    </h1>
+                    <h3><a href="./loginSession/userSair.php">Logout</a></h3>
+                </div>
 
-        <!--Footer section starts here-->
+                <div class="account-panel">
+                    <h3>PAINEL DE CONTA</h3>
+                    <div class="account-panel-wrapper">
+                        <p><a href="#">A MINHA CONTA</a></p>
+                        <p><a href="#">AS MINHAS ENCOMENDAS</a></p>
+                        <p><a href="#">SUBSCRIÇÃO MARKETING</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="information-component">
+                <h1>A Minha conta</h1>
+
+                <div class="box-information">
+                    <div class="box-title">
+                        <h2 class="info_cont">INFORMAÇÃO DE CONTACTO</h2>
+                    </div>
+
+                    <div class="box-content">
+                        <p>
+                            <?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"] ?>
+                            <br>
+                            <?php echo $_SESSION["EMAIL_USER"] ?>
+                        </p>
+                    </div>
+                    <div class="div-btn-profile">
+                        <form action="./loginSession/userEditPass.php">
+                            <button class="btn-profile" name="button-edit-info" type="submit"><span>EDITAR</span></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="box-information">
+                    <div class="box-title">
+                        <h2 class="info_cont">MORADA</h2>
+                    </div>
+
+                    <div class="box-content">
+                        <p><?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"]; ?></p>
+                        <p><?php echo $morada; ?></p>
+                        <p><?php echo $codPostal . ", " . $cidade; ?></p>
+                        <p><?php echo $pais; ?></p>
+                        <p><?php echo "T: " . $telemovel; ?></p>
+                    </div>
+
+                    <div class="div-btn-profile">
+                        <form action="./loginSession/userEditAccount.php">
+                            <button class="btn-profile" name="button-edit-morada" type="submit"><span>EDITAR</span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Footer -->
         <footer class="p-3 d-none d-md-block mb-5 mt-5" style="background-color: rgb(224, 224, 224);">
             <div class="container-fluid p-0">
                 <div class="row">
                     <div class="col-12 col-lg-4 ps-4 ps-lg-5">
-                        <a href="./index.php">
-                            <img class="img-fluid col-5 col-sm-4 col-md-3" src="gallery/logo.png" alt="Ma-ma logo" class="logo">
+                        <a href="../index.php">
+                            <img class="img-fluid col-5 col-sm-4 col-md-3" src="../gallery/logo.png" alt="Ma-ma logo" class="logo">
                         </a>
                         <h4 style="color: #ff7b46;">Apoio Comercial</h4>
                         <h2 style="color: rgb(93, 93, 93);"><strong>916 532 480</strong></h2>
@@ -288,8 +356,8 @@ include_once  './loginSession/connect_DB.php';
         </footer>
 
         <footer class="list-group w-100 p-3 d-md-none mb-5 mb-sm-1 mt-5" style="background-color: rgb(224, 224, 224);">
-            <a href="./index.php">
-                <img class="img-fluid col-5 col-sm-4 col-md-3" src="gallery/logo.png" alt="Ma-ma logo" class="logo">
+            <a href="../index.php">
+                <img class="img-fluid col-5 col-sm-4 col-md-3" src="../gallery/logo.png" alt="Ma-ma logo" class="logo">
             </a>
             <h4 style="color: #ff7b46;">Apoio Comercial</h4>
             <h2 style="color: rgb(93, 93, 93);"><strong>916 532 480</strong></h2>
@@ -337,10 +405,9 @@ include_once  './loginSession/connect_DB.php';
                 </div>
             </a>
         </footer>
-        <!--Footer section ends here-->
+        <!-- Footer -->
     </main>
 </body>
-<script src="./js/script.js"></script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
 
