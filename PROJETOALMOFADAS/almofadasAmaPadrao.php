@@ -230,8 +230,8 @@ include_once  './loginSession/connect_DB.php';
                 <p class="read-more-btn">Ler mais</p>
             </div>
         </div>
-        <div class="container text-center">
-            <h1 style="font-size: 8vw;">Test</h1>
+        <div class="container">
+
         </div>
 
         <!--Product page ends here-->

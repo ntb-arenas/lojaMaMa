@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2022 at 07:35 PM
+-- Generation Time: May 20, 2022 at 11:47 PM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.5
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -14,26 +14,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `projetoalmo`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `back_product`
---
-
-CREATE TABLE `back_product` (
-  `CODE` varchar(30) NOT NULL,
-  `DESCRIPTION` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `back_product`
---
-
-INSERT INTO `back_product` (`CODE`, `DESCRIPTION`) VALUES
-('AZ', 'Azul'),
-('CA', 'Castanho'),
-('LA', 'Laranja');
 
 -- --------------------------------------------------------
 
@@ -65,41 +45,46 @@ INSERT INTO `category` (`CODE`, `TITLE`, `SEQUENCE`, `VISIBLE`, `LINK`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `front_product`
+-- Table structure for table `option_group`
 --
 
-CREATE TABLE `front_product` (
-  `CODE` varchar(30) NOT NULL,
-  `DESCRIPTION` varchar(50) NOT NULL
+CREATE TABLE `option_group` (
+  `PACK` varchar(5) NOT NULL,
+  `CODE` varchar(5) NOT NULL,
+  `NAME` varchar(50) NOT NULL,
+  `IMAGE_URL` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `front_product`
+-- Dumping data for table `option_group`
 --
 
-INSERT INTO `front_product` (`CODE`, `DESCRIPTION`) VALUES
-('BS', 'Balões'),
-('FLVE', 'Flores Verde'),
-('RLS', 'Riscas Largas');
+INSERT INTO `option_group` (`PACK`, `CODE`, `NAME`, `IMAGE_URL`) VALUES
+('OP1', 'F1', 'LARANJA', ''),
+('OP1', 'F2', 'CASTANHA', ''),
+('OP1', 'F3', 'AZUL', ''),
+('OP2', 'V1', 'BALÕES', ''),
+('OP2', 'V2', 'RISCAS LARGAS', ''),
+('OP2', 'V3', 'BOLAS BRANCAS', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Table structure for table `option_pack`
 --
 
-CREATE TABLE `orders` (
-  `ORDER_ID` int(5) NOT NULL,
-  `CUSTOMER_ID` int(5) NOT NULL,
-  `PRODUCT_ID` int(10) NOT NULL
+CREATE TABLE `option_pack` (
+  `CODE` varchar(5) NOT NULL,
+  `NAME` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `orders`
+-- Dumping data for table `option_pack`
 --
 
-INSERT INTO `orders` (`ORDER_ID`, `CUSTOMER_ID`, `PRODUCT_ID`) VALUES
-(123, 101, 0);
+INSERT INTO `option_pack` (`CODE`, `NAME`) VALUES
+('OP1', 'BALÕES'),
+('OP2', 'RISCAS LARGAS');
 
 -- --------------------------------------------------------
 
@@ -108,22 +93,17 @@ INSERT INTO `orders` (`ORDER_ID`, `CUSTOMER_ID`, `PRODUCT_ID`) VALUES
 --
 
 CREATE TABLE `product` (
-  `SKU` varchar(30) NOT NULL,
-  `PRODUCT_TYPE` varchar(50) NOT NULL,
-  `PRODUCT_NAME` varchar(50) NOT NULL,
-  `FRONT_PRODUCT` varchar(50) NOT NULL,
-  `BACK_PRODUCT` varchar(50) NOT NULL,
-  `SIZE` varchar(20) NOT NULL,
-  `PRICE` int(5) NOT NULL,
-  `IVA_CODE` int(5) NOT NULL
+  `PRODUCT_CODE` varchar(5) NOT NULL,
+  `OPTION_PACK` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`SKU`, `PRODUCT_TYPE`, `PRODUCT_NAME`, `FRONT_PRODUCT`, `BACK_PRODUCT`, `SIZE`, `PRICE`, `IVA_CODE`) VALUES
-('AMA/Al-AzGr', 'AMA', 'Almofada de Amamentação', 'FLVE', 'AZ', 'Grande', 45, 1);
+INSERT INTO `product` (`PRODUCT_CODE`, `OPTION_PACK`) VALUES
+('P1', 'OP1'),
+('P1', 'OP2');
 
 -- --------------------------------------------------------
 
@@ -164,37 +144,28 @@ INSERT INTO `users` (`ID`, `USERNAME`, `EMAIL`, `PASSWORD`, `fNAME`, `lNAME`, `M
 --
 
 --
--- Indexes for table `back_product`
---
-ALTER TABLE `back_product`
-  ADD PRIMARY KEY (`CODE`);
-
---
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`CODE`);
 
 --
--- Indexes for table `front_product`
+-- Indexes for table `option_group`
 --
-ALTER TABLE `front_product`
-  ADD PRIMARY KEY (`CODE`);
+ALTER TABLE `option_group`
+  ADD PRIMARY KEY (`PACK`,`CODE`);
 
 --
--- Indexes for table `orders`
+-- Indexes for table `option_pack`
 --
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`ORDER_ID`),
-  ADD KEY `Customer_ID_FK` (`CUSTOMER_ID`);
+ALTER TABLE `option_pack`
+  ADD PRIMARY KEY (`CODE`);
 
 --
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`SKU`),
-  ADD KEY `CODE_FRONT_PROD` (`FRONT_PRODUCT`),
-  ADD KEY `CODE_BACK_PROD` (`BACK_PRODUCT`);
+  ADD KEY `PROD_OPT-PA_FK` (`OPTION_PACK`);
 
 --
 -- Indexes for table `users`
@@ -217,15 +188,14 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `orders`
+-- Constraints for table `option_pack`
 --
-ALTER TABLE `orders`
-  ADD CONSTRAINT `Customer_ID_FK` FOREIGN KEY (`CUSTOMER_ID`) REFERENCES `users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `option_pack`
+  ADD CONSTRAINT `OPT_PAGR_FK` FOREIGN KEY (`CODE`) REFERENCES `option_group` (`PACK`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `CODE_BACK_PROD` FOREIGN KEY (`BACK_PRODUCT`) REFERENCES `back_product` (`CODE`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `CODE_FRONT_PROD` FOREIGN KEY (`FRONT_PRODUCT`) REFERENCES `front_product` (`CODE`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `PROD_OPT-PA_FK` FOREIGN KEY (`OPTION_PACK`) REFERENCES `option_pack` (`CODE`);
 COMMIT;
