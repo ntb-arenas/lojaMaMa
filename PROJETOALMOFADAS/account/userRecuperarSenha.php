@@ -1,7 +1,106 @@
 <?php
+
 session_start();
-include_once  './loginSession/connect_DB.php';
+error_reporting(E_ERROR | E_PARSE);
+
+
+include_once  '../loginSession/connect_DB.php';
+include_once '../loginSession/function_mail_utf8.php';
+
+$mensagemErrousername = "";
+$mensagemErroSenha = "";
+$mensagemErroEmail = "";
+$geraFormulario = "Sim";
+
+
+
+if (isset($_POST['botao-recuperar-senha'])) {
+
+    $username = mysqli_real_escape_string($_conn, $_POST['formusername']);
+    $username = strtolower(trim($username));
+
+
+    $stmt = $_conn->prepare('SELECT * FROM USERS WHERE USERNAME = ?');
+    $stmt->bind_param('s', $username);
+    $stmt->execute();
+
+    $resultadoUsers = $stmt->get_result();
+
+    if ($resultadoUsers->num_rows > 0) {
+        while ($rowUsers = $resultadoUsers->fetch_assoc()) {
+
+            $fName = $rowUsers['fNAME'];
+            $lName = $rowUsers['lNAME'];
+
+            if ($rowUsers['USER_STATUS'] == 2) { // utilizador bloqueado
+
+                $mensagemErroSenha = "Não foi enviada mensagem de recuperação de senha, contacte os nossos serviços para obter ajuda.";
+            } else  if ($rowUsers['USER_STATUS'] == 0) { // Utilizador criou a conta mas não ativou
+
+                $mensagemErroSenha =  $rowUsers['fNAME'] . ", ainda não ativou a sua conta. A mensagem com o código inicial de ativação de conta foi enviada para a sua caixa de correio. Caso não a encontre na sua caixa de entrada, verifique também o seu correio não solicitado ou envie-nos um email para ativarmos a sua conta. Obrigado.";
+            } else {
+
+                // Recuperar a senha 
+                // gerar token, preparar e enviar mail de recuperação
+
+                $code = md5(uniqid(rand()));
+
+                $sql = "UPDATE USERS SET TOKEN_CODE=? WHERE USERNAME=?";
+
+                if ($stmt = mysqli_prepare($_conn, $sql)) {
+
+                    mysqli_stmt_bind_param($stmt, "ss", $code, $username);
+                    mysqli_stmt_execute($stmt);
+
+                    // Update efetuado com sucesso, preparar e enviar mensagem 
+                    $id = base64_encode($username);
+
+                    $urlPagina = "https://ntbarenas.000webhostapp.com/loginSession/";
+
+
+                    $mensagem = "Caro(a) $fName" . "," . "\r\n" .  "\r\n" .
+
+
+                        "Foi-nos pedido para recuperar a sua senha. Se nos pediu isto basta seguir as instruções seguintes, caso contrário, ignore esta mensagem." . "\r\n" .  "\r\n" .
+
+                        "Para recuperar agora a sua senha basta carregar na seguinte ligação:" . "\r\n" . "\r\n" .
+
+                        $urlPagina . "userNovaSenha.php?id=$id&code=$code" . "\r\n" . "\r\n" .
+
+                        "Esta mensagem foi-lhe enviada automaticamente.";
+
+                    $subject = "Recuperação da sua senha em $urlPagina";
+
+                    // use wordwrap() if lines are longer than 70 characters
+                    $mensagem = wordwrap($mensagem, 70);
+
+                    // send email
+                    mail_utf8($email, $subject, $mensagem);
+                    // echo $mensagem; // apenas para efeitos de teste...
+                    //$msgTemporaria = $email . " " . $subject . " " . $mensagem;
+                    // mail enviado
+
+                    $mensagemEmail = " " . "$nome, verifique por favor a sua caixa de correio para recuperar de imediato a sua senha!";
+
+                    // fim do envio de mensagem //////////////////////////////////////////////////////////////////            
+
+                    $geraFormulario = "Nao";
+                } else {
+                    // erro
+                    echo "STATUS ADMIN (recuperar senha): " . mysqli_error($_conn);
+                }
+            }
+        }
+    } else {
+        $mensagemErrousername = "O código de utilizador não existe na nossa base de dados!";
+    }
+
+    $stmt->free_result();
+    $stmt->close();
+}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,10 +110,10 @@ include_once  './loginSession/connect_DB.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma-Ma</title>
     <!-- stylesheet ---------------------------->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
     <!-- page icon --------------------------------->
-    <link rel="shortcut icon" href="gallery/logo.png">
+    <link rel="shortcut icon" href="../gallery/logo.png">
     <!-- fonts ------------------------------------------>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -27,8 +126,8 @@ include_once  './loginSession/connect_DB.php';
         <div class="container-fluid p-0 d-none d-lg-block">
             <div class="row">
                 <div class="col-6 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                    <a href="./index.php">
-                        <img class="img-fluid" src="gallery/logo.png" alt="Ma-ma logo">
+                    <a href="../index.php">
+                        <img class="img-fluid" src="../gallery/logo.png" alt="Ma-ma logo">
                     </a>
                 </div>
                 <form class="col-sm-6 col-md-7 col-lg-6 col-xl-7 mt-3 d-none d-sm-block">
@@ -49,9 +148,10 @@ include_once  './loginSession/connect_DB.php';
                             <a href="#" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
                                     <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
                                 </svg></a>
-                            <a href="./account/profileAccount.php" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                            <a href="./profileAccount.php" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
                                 </svg><span class="badge bg-danger rounded-pill">0</span></a>
+
                             <a href="#" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
                                     <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                                 </svg></a>
@@ -80,8 +180,8 @@ include_once  './loginSession/connect_DB.php';
             <div class="d-lg-none" style="width: 100%;">
                 <div class="row align-items-center">
                     <div class="col-5 col-sm-6 col-md-3">
-                        <a href="./index.php">
-                            <img class="img-fluid" src="gallery/logo.png" alt="Ma-ma logo">
+                        <a href="../index.php">
+                            <img class="img-fluid" src="../gallery/logo.png" alt="Ma-ma logo">
                         </a>
                     </div>
                     <form class="col-md-6 d-none d-md-block">
@@ -102,7 +202,7 @@ include_once  './loginSession/connect_DB.php';
                                 <a href="#" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
                                         <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
                                     </svg></a>
-                                <a href="./account/profileAccount.php" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                <a href="./profileAccount.php" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                                         <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
                                     </svg><span class="badge bg-danger rounded-pill">0</span></a>
                                 <a href="#" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
@@ -115,7 +215,7 @@ include_once  './loginSession/connect_DB.php';
                                 <a href="#" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
                                         <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
                                     </svg></a>
-                                <a href="./loginSession/login.php" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                <a href="../loginSession/login.php" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                                         <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
                                     </svg></a>
                                 <a href="#" id="icon-hover"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
@@ -152,7 +252,7 @@ include_once  './loginSession/connect_DB.php';
                                 <?php
                                 if ($rowTablecategoryDropdown['TITLE'] == 'ALMOFADAS DE AMAMENTAÇÃO') { ?>
                                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="./almofadasAmaPadrao.php">GRANDE</a></li>
+                                        <li><a class="dropdown-item" href="../almofadasAmaPadrao.php">GRANDE</a></li>
                                         <li><a class="dropdown-item" href="#">PEQUENO</a></li>
                                     </ul>
                                 <?php
@@ -173,7 +273,7 @@ include_once  './loginSession/connect_DB.php';
                         while ($rowTablecategory = mysqli_fetch_assoc($resultTablecategory)) {
                             $ctd = $ctd + 1;
                     ?>
-                            <li class="nav-item"><a href="./<?php echo $rowTablecategory['LINK'] ?>" class="nav-link fs-5"> <?php echo $rowTablecategory['TITLE'] ?></a></li>
+                            <li class="nav-item"><a href="../<?php echo $rowTablecategory['LINK'] ?>" class="nav-link fs-5"> <?php echo $rowTablecategory['TITLE'] ?></a></li>
                     <?php
                         }
                     }
@@ -196,130 +296,56 @@ include_once  './loginSession/connect_DB.php';
         </nav>
         <!--Navbar ends here-->
 
-        <!-- Page cover -->
-        <img class="img-fluid mx-auto d-none d-md-block" src="./gallery/maincover.jpg" alt="">
-        <img class="img-fluid mx-auto d-none d-sm-block d-md-none" src="./gallery/maincovertabletsize.jpg" alt="">
-        <img class="img-fluid mx-auto d-sm-none" src="./gallery/maincovermobilesize.jpg" alt="">
-        <!-- Page cover -->
+        <div class="container border p-3 mt-3">
+            <h2>Recuperar senha</h2>
+            <?php
+            if ($geraFormulario == "Sim") {
+            ?>
+                <form action="#" method="POST">
+                    <div class="form-group">
 
-        <div class="container-fluid p-0 border-bottom">
-            <h3 class="text-center m-3 cover-message-fs" style="color: rgb(93, 93, 93);">Com a Ma-Ma, a vida da mãe e do seu bebé nunca foi tão fácil. Descubra os nossos produtos!</h3>
-        </div>
+                        <label for="form-login-input">Código de Utilizador</label>
+                        <input type="text" class="form-control mb-2" name="formusername" value="<?php echo $username; ?>" id="form-login-input">
+                        <?php
+                        if (empty($mensagemErrousername)) {
+                        } else {
+                        ?>
+                            <span class="alert alert-danger p-2" role="alert">
+                                <?php echo $mensagemErrousername; ?>
+                            </span>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <button class="btn mt-3" id="btn-customized" name="botao-recuperar-senha" type="submit">RECUPERAR SENHA</button>
+                </form>
+            <?php
+            } else {
+            ?>
 
-        <!-- Product Page -->
-        <div class="container-fluid px-lg-5 d-none d-sm-block">
-            <div class="row mx-lg-n5">
-                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#">
-                        <div class="py-3 border h-100 hover-shadow">
-                            <img class="img-fluid" src="gallery/almofadaImg.png" alt="">
-                            <h4 class="text-center card-message-fs">ALMOFADAS DE AMAMENTAÇÃO</h4>
-                        </div>
-                    </a>
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                    </symbol>
+                </svg>
+                <div class="alert alert-success" role="alert">
+                    <p><b>Verifique por favor a sua caixa de correio para recuperar a senha! Por vezes estas mensagens são consideradas correio não solicitado. Se não vir a mensagem de ativação verifique o seu correio não solicitado (SPAM).</p>
+                    <hr>
+                    <form action="../index.php" method="POST">
+                        <button class="btn btn-success" type="submit">VOLTAR</button>
+                    </form>
                 </div>
-                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#">
-                        <div class="py-3 border h-100 hover-shadow">
-                            <img class="img-fluid" src="gallery/cunhas.png" alt="">
-                            <h4 class="text-center card-message-fs">CUNHAS</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#">
-                        <div class="py-3 border h-100 hover-shadow">
-                            <img class="img-fluid" src="gallery/slingBebe1.png" alt="">
-                            <h4 class="text-center card-message-fs">SLINGS</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#">
-                        <div class="py-3 border h-100 hover-shadow">
-                            <img class="img-fluid" src="gallery/mudaFraldas.png" alt="">
-                            <h4 class="text-center card-message-fs">MUDA FRALDAS</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#">
-                        <div class="py-3 border h-100 hover-shadow">
-                            <img class="img-fluid" src="gallery/kitMaternidadeAzul.png" alt="">
-                            <h4 class="text-center card-message-fs">KIT MATERNIDADE</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#">
-                        <div class="py-3 border h-100 hover-shadow">
-                            <img class="img-fluid" src="gallery/antiColicas.png" alt="">
-                            <h4 class="text-center card-message-fs">ALMOFADAS ANTI-CÓLICAS</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            <?php
+            }
+            ?>
         </div>
-        <div class="container-fluid px-lg-5 d-block d-sm-none">
-            <div class="row mx-lg-n5">
-                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
-                        <div class="border h-100">
-                            <img class="img-fluid" src="gallery/almofadaImg.png" alt="">
-                            <h4 class="text-center card-message-fs">ALMOFADAS DE AMAMENTAÇÃO</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
-                        <div class="border h-100">
-                            <img class="img-fluid" src="gallery/cunhas.png" alt="">
-                            <h4 class="text-center card-message-fs">CUNHAS</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
-                        <div class="border h-100">
-                            <img class="img-fluid" src="gallery/slingBebe1.png" alt="">
-                            <h4 class="text-center card-message-fs">SLINGS</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
-                        <div class="border h-100">
-                            <img class="img-fluid" src="gallery/mudaFraldas.png" alt="">
-                            <h4 class="text-center card-message-fs">MUDA FRALDAS</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
-                        <div class="border h-100">
-                            <img class="img-fluid" src="gallery/kitMaternidadeAzul.png" alt="">
-                            <h4 class="text-center card-message-fs">KIT MATERNIDADE</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
-                        <div class="border h-100">
-                            <img class="img-fluid" src="gallery/antiColicas.png" alt="">
-                            <h4 class="text-center card-message-fs">ALMOFADAS ANTI-CÓLICAS</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- Product Page -->
-
-        <!-- Footer -->
+        <!--Footer section starts here-->
         <footer class="p-3 d-none d-md-block mb-5 mt-5" style="background-color: rgb(224, 224, 224);">
             <div class="container-fluid p-0">
                 <div class="row">
                     <div class="col-12 col-lg-4 ps-4 ps-lg-5">
-                        <a href="./index.php">
-                            <img class="img-fluid col-5 col-sm-4 col-md-3" src="gallery/logo.png" alt="Ma-ma logo" class="logo">
+                        <a href="../index.php">
+                            <img class="img-fluid col-5 col-sm-4 col-md-3" src="../gallery/logo.png" alt="Ma-ma logo" class="logo">
                         </a>
                         <h4 style="color: #ff7b46;">Apoio Comercial</h4>
                         <h2 style="color: rgb(93, 93, 93);"><strong>916 532 480</strong></h2>
@@ -365,8 +391,8 @@ include_once  './loginSession/connect_DB.php';
         </footer>
 
         <footer class="list-group w-100 p-3 d-md-none mb-5 mb-sm-1 mt-5" style="background-color: rgb(224, 224, 224);">
-            <a href="./index.php">
-                <img class="img-fluid col-5 col-sm-4 col-md-3" src="gallery/logo.png" alt="Ma-ma logo" class="logo">
+            <a href="../index.php">
+                <img class="img-fluid col-5 col-sm-4 col-md-3" src="../gallery/logo.png" alt="Ma-ma logo" class="logo">
             </a>
             <h4 style="color: #ff7b46;">Apoio Comercial</h4>
             <h2 style="color: rgb(93, 93, 93);"><strong>916 532 480</strong></h2>
@@ -414,10 +440,10 @@ include_once  './loginSession/connect_DB.php';
                 </div>
             </a>
         </footer>
-        <!-- Footer -->
+        <!--Footer section ends here-->
     </main>
 </body>
-<!-- <script src="./bootstrap/js/bootstrap.bundle.min.js"></script> -->
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
 
 </html>

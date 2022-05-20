@@ -28,7 +28,6 @@ $aceitoMarketing = 0;
 
 $geraFormulario = "Sim";
 
-
 if (isset($_POST['button-cancel-account'])) {
 
     header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
