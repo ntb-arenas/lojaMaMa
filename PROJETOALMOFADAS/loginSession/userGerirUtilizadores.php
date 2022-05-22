@@ -2,20 +2,20 @@
 
 session_start();
 
-include_once  './conexaobasedados.php'; 
+include_once  './connect_DB.php'; 
 
-if (!isset($_SESSION["UTILIZADOR"]) ) { 
-    header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
-    header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
-    header("Location: ./index.php");
-}
+// if (!isset($_SESSION["UTILIZADOR"]) ) { 
+//     header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+//     header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
+//     header("Location: ./index.php");
+// }
 
 
-if ($_SESSION["NIVEL_UTILIZADOR"]!=2 ) {
-    header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
-    header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
-    header("Location: ./index.php");
-}
+// if ($_SESSION["NIVEL_UTILIZADOR"]!=2 ) {
+//     header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+//     header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
+//     header("Location: ./index.php");
+// }
 
 
 
@@ -34,17 +34,17 @@ if ( isset($_POST["filtroSQL"]))  {
 }
 
 
-if ( $_SESSION["NIVEL_UTILIZADOR"]==2) {
+// if ( $_SESSION["NIVEL_UTILIZADOR"]==2) {
     
-    if ( isset($_POST["botao-ordenar-users-nome-asc"])  ) {
+//     if ( isset($_POST["botao-ordenar-users-nome-asc"])  ) {
         
-        $filtroSQL = "SELECT * FROM USERS ORDER BY NOME ASC";
-    }
-    if ( isset($_POST["botao-ordenar-users-nome-desc"])  ) {
+//         $filtroSQL = "SELECT * FROM USERS ORDER BY NOME ASC";
+//     }
+//     if ( isset($_POST["botao-ordenar-users-nome-desc"])  ) {
         
-        $filtroSQL = "SELECT * FROM USERS ORDER BY NOME DESC";
-    }
-}
+//         $filtroSQL = "SELECT * FROM USERS ORDER BY NOME DESC";
+//     }
+// }
 
 
 

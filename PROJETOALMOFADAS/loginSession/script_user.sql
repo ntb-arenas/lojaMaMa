@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2022 at 11:47 PM
+-- Generation Time: May 22, 2022 at 11:59 AM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- PHP Version: 8.1.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,6 +52,7 @@ CREATE TABLE `option_group` (
   `PACK` varchar(5) NOT NULL,
   `CODE` varchar(5) NOT NULL,
   `NAME` varchar(50) NOT NULL,
+  `PRICE` float DEFAULT NULL,
   `IMAGE_URL` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -59,13 +60,13 @@ CREATE TABLE `option_group` (
 -- Dumping data for table `option_group`
 --
 
-INSERT INTO `option_group` (`PACK`, `CODE`, `NAME`, `IMAGE_URL`) VALUES
-('OP1', 'F1', 'LARANJA', ''),
-('OP1', 'F2', 'CASTANHA', ''),
-('OP1', 'F3', 'AZUL', ''),
-('OP2', 'V1', 'BALÕES', ''),
-('OP2', 'V2', 'RISCAS LARGAS', ''),
-('OP2', 'V3', 'BOLAS BRANCAS', '');
+INSERT INTO `option_group` (`PACK`, `CODE`, `NAME`, `PRICE`, `IMAGE_URL`) VALUES
+('OP1', 'F1', 'LARANJA', 40, './gallery/productimg/laranja.jpg'),
+('OP1', 'F2', 'CASTANHO', 40, './gallery/productimg/castanho.jpg'),
+('OP1', 'F3', 'AZUL', 40, './gallery/productimg/azul.jpg'),
+('OP2', 'V1', 'BALÕES', NULL, './gallery/productimg/baloes.jpg'),
+('OP2', 'V2', 'RISCAS LARGAS', NULL, './gallery/productimg/riscas_largas.jpg'),
+('OP2', 'V3', 'BOLAS BRANCAS', NULL, './gallery/productimg/bolas_brancas.jpg');
 
 -- --------------------------------------------------------
 
@@ -83,8 +84,8 @@ CREATE TABLE `option_pack` (
 --
 
 INSERT INTO `option_pack` (`CODE`, `NAME`) VALUES
-('OP1', 'BALÕES'),
-('OP2', 'RISCAS LARGAS');
+('OP1', 'FRENTE'),
+('OP2', 'VERSO');
 
 -- --------------------------------------------------------
 
@@ -104,6 +105,28 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`PRODUCT_CODE`, `OPTION_PACK`) VALUES
 ('P1', 'OP1'),
 ('P1', 'OP2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_order`
+--
+
+CREATE TABLE `test_order` (
+  `CODE` varchar(10) NOT NULL,
+  `NAME` varchar(100) NOT NULL,
+  `IMAGE` varchar(100) NOT NULL,
+  `PRICE` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `test_order`
+--
+
+INSERT INTO `test_order` (`CODE`, `NAME`, `IMAGE`, `PRICE`) VALUES
+('C1', 'LARANJA', '', 40),
+('C2', 'CASTANHO', '', 40),
+('C3', 'AZUL', '', 40);
 
 -- --------------------------------------------------------
 
@@ -166,6 +189,12 @@ ALTER TABLE `option_pack`
 --
 ALTER TABLE `product`
   ADD KEY `PROD_OPT-PA_FK` (`OPTION_PACK`);
+
+--
+-- Indexes for table `test_order`
+--
+ALTER TABLE `test_order`
+  ADD PRIMARY KEY (`CODE`);
 
 --
 -- Indexes for table `users`

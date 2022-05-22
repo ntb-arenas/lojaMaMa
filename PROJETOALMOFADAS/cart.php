@@ -1,37 +1,24 @@
 <?php
 session_start();
 include_once  './loginSession/connect_DB.php';
-include_once('./server/component.php');
+include_once("./server/component.php");
 
-if (isset($_POST['add'])) {
-    if (isset($_SESSION['cart'])) {
-        $item_array_id = array_column($_SESSION['cart'], "product_id1",);
+// if (!isset($_SESSION['USER'])) {
+//     header("Location: ./index.php");
+//     exit;
+// }
 
-        if (in_array($product_id, $item_array_id)) {
-            echo "<script>window.location = 'almofadasAmaPadrao.php'</script>";
-        } else {
-
-            $count = count($_SESSION['cart']);
-            $item_array = array(
-                'product_id' => $_POST['product_id1'] && $_POST['product_id2']
-            );
-
-            $_SESSION['cart'][$count] = $item_array;
+if (isset($_POST['remove'])) {
+    if ($_GET['action'] == 'remove') {
+        foreach ($_SESSION['cart'] as $key => $value) {
+            if ($value["product_id"] == $_GET['id']) {
+                unset($_SESSION['cart'][$key]);
+                echo "<script>window.location = 'cart.php'</script>";
+            }
         }
-    } else {
-
-        $item_array = array(
-            'product_id' => $_POST['product_id1'] && $_POST['product_id2']
-        );
-
-        // Create new session variable
-        $_SESSION['cart'][0] = $item_array;
-        print_r($_SESSION['cart']);
     }
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,19 +29,17 @@ if (isset($_POST['add'])) {
     <title>Ma-Ma</title>
     <!-- stylesheet ---------------------------->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/almofadasAma.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
     <!-- page icon --------------------------------->
     <link rel="shortcut icon" href="gallery/logo.png">
     <!-- fonts ------------------------------------------>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-
+    <!-- Google Fonts -->
 </head>
 
 <body>
     <main>
-
         <!--Header starts here-->
         <div class="container-fluid p-0 d-none d-lg-block">
             <div class="row">
@@ -228,210 +213,71 @@ if (isset($_POST['add'])) {
         </nav>
         <!--Navbar ends here-->
 
-        <!--Product page starts here-->
-        <!-- 
-        <div class="content-wrapper">
-            <div class="div-contents">
-                <h1>Almofadas de Amamentação</h1>
-                <h2><b>Pequenos detalhes que tornam o seu mundo grande</b></h2>
+        <div class="container-fluid mt-5">
+            <div class="row px-5">
+                <div class="col-md-7">
+                    <div class="shopping-cart">
+                        <h6>My Cart</h6>
+                        <hr>
 
-                <p>
-                    <span class="desc__read-more">
-                        A Almofada de Amamentação MA-MA® foi concebida para acompanhar a mamã tanto na gravidez como
-                        no
-                        pós
-                        parto,
-                        ajudando <br> a mamã num conjunto de situações para que ela se possa focar no que é mais
-                        importante:
-                        o
-                        seu bebé. <br> <br>
-                        A Almofada de Amamentação MA-MA® Original serve como um apoio fundamental para a futura
-                        mamã, proporcionando noites de sono tranquilas e sem os habituais desconfortos que costumam
-                        ocorrer
-                        durante a
-                        gravidez. <br> Chegada a altura de amamentar a almofada MA-MA® será igualmente uma fiel
-                        aliada,
-                        permitindo que a
-                        mamã adopte uma posição confortável e que o bebé fique bem apoiado.
-                    </span>
-                </p>
+                        <?php
 
-                <p class="read-more-btn">Ler mais</p>
-            </div>
-        </div> -->
+                        $total = 0;
+                        if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+                            $product_id = array_column($_SESSION['cart'], 'product_id');
 
+                            $result = mysqli_query($_conn, "SELECT * FROM OPTION_GROUP");
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                foreach ($product_id as $id) {
+                                    if ($row['CODE'] == $id) {
+                                        cartElement($row['IMAGE_URL'], $row['NAME'], $row['PRICE'], $row['CODE']);
+                                        $total = $total + (int)$row['PRICE'];
+                                    }
+                                }
+                            }
+                        } else {
+                            echo "<h5>Cart is Empty</h5>";
+                        }
 
-        <!-- Carousel wrapper -->
-        <div class="container mt-5 mb-custom">
-            <div class="row">
-                <div class="col-12 col-md-8">
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <div id="carouselFrente" class="carousel slide carousel-fade" data-mdb-ride="carousel">
-                                <!-- Slides -->
-                                <div class="carousel-inner mb-5 shadow-1-strong rounded-3">
-                                    <div class="carousel-item active">
-                                        <img src="./gallery/productimg/amarelo.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/azul.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/rosa.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/castanho.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/laranja.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/verde.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/azulao.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                </div>
-                                <!-- Slides -->
+                        ?>
 
-                                <!-- Controls -->
-                                <button class="carousel-control-prev" type="button" data-mdb-target="#carouselFrente" data-mdb-slide="prev">
-                                    <span class="carousel-control-prev-icon theme-color" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-mdb-target="#carouselFrente" data-mdb-slide="next">
-                                    <span class="carousel-control-next-icon theme-color" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                                <!-- Controls -->
+                    </div>
+                </div>
+                <div class="col-md-4 offset-md-1 border rounded mt-5 bg-white h-25">
 
-                                <!-- Thumbnails -->
-                                <div class="carousel-indicators" style="margin-bottom: -20px;">
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/amarelo.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="1" aria-label="Slide 2" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/azul.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="2" aria-label="Slide 3" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/rosa.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="3" aria-label="Slide 4" style="width: 100px">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/castanho.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="4" aria-label="Slide 5" style="width: 100px">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/laranja.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="5" aria-label="Slide 6" style="width: 100px">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/verde.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="6" aria-label="Slide 7" style="width: 100px">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/azulao.jpg" class="img-fluid" />
-                                    </button>
-                                </div>
-                                <!-- Thumbnails -->
+                    <div class="pt-4">
+                        <h6>PRICE DETAILS</h6>
+                        <hr>
+                        <div class="row price-details">
+                            <div class="col-md-6">
+                                <?php
+                                if (isset($_SESSION['cart'])) {
+                                    $count  = count($_SESSION['cart']);
+                                    echo "<h6>Price ($count items)</h6>";
+                                } else {
+                                    echo "<h6>Price (0 items)</h6>";
+                                }
+                                ?>
+                                <h6>Delivery Charges</h6>
+                                <hr>
+                                <h6>Amount Payable</h6>
                             </div>
-                        </div>
-
-                        <div class="col-12 col-md-6">
-                            <div id="carouselVerso" class="carousel slide carousel-fade" data-mdb-ride="carousel">
-                                <!-- Slides -->
-                                <div class="carousel-inner mb-5 shadow-1-strong rounded-3">
-                                    <div class="carousel-item active">
-                                        <img src="./gallery/productimg/cidade.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/carros.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/baloes.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/circo_verde.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/selva.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/malmequeres.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/riscas_largas.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                </div>
-                                <!-- Slides -->
-
-                                <!-- Controls -->
-                                <button class="carousel-control-prev" type="button" data-mdb-target="#carouselVerso" data-mdb-slide="prev">
-                                    <span class="carousel-control-prev-icon theme-color" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-mdb-target="#carouselVerso" data-mdb-slide="next">
-                                    <span class="carousel-control-next-icon theme-color" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                                <!-- Controls -->
-
-                                <!-- Thumbnails -->
-                                <div class="carousel-indicators" style="margin-bottom: -20px;">
-                                    <button type="button" data-mdb-target="#carouselVerso" data-mdb-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/cidade.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselVerso" data-mdb-slide-to="1" aria-label="Slide 2" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/carros.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselVerso" data-mdb-slide-to="2" aria-label="Slide 3" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/baloes.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselVerso" data-mdb-slide-to="3" aria-label="Slide 4" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/circo_verde.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselVerso" data-mdb-slide-to="4" aria-label="Slide 5" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/selva.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselVerso" data-mdb-slide-to="5" aria-label="Slide 6" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/malmequeres.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselVerso" data-mdb-slide-to="6" aria-label="Slide 7" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/riscas_largas.jpg" class="img-fluid" />
-                                    </button>
-                                </div>
-                                <!-- Thumbnails -->
+                            <div class="col-md-6">
+                                <h6>$<?php echo $total; ?></h6>
+                                <h6 class="text-success">FREE</h6>
+                                <hr>
+                                <h6>$<?php
+                                        echo $total;
+                                        ?></h6>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <form action='almofadasAmaPadrao.php' method='post'>
-                        <select name='product_id1'>
-                            <?php
-                            $result = mysqli_query($_conn, "SELECT * FROM OPTION_GROUP WHERE PACK = 'OP1'");
-                            while ($row = mysqli_fetch_assoc($result)) { ?>
-                                <option value='<?php echo $productid = $row['CODE'] ?>'><?php echo $productname = $row['NAME'] ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-                        <select name='product_id2'>
-                            <?php
-                            $result = mysqli_query($_conn, "SELECT * FROM OPTION_GROUP WHERE PACK = 'OP2'");
-                            while ($row = mysqli_fetch_assoc($result)) { ?>
-                                <option value='<?php echo $productid = $row['CODE'] ?>'><?php echo $productname = $row['NAME'] ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-                        <button class="btn mt-3" id="btn-customized" name="add" type="submit">COMPRAR <i class='fas fa-shopping-cart'></i></button>
-                    </form>
+
                 </div>
             </div>
         </div>
 
-
-
-        <!--Product page ends here-->
-
-        <!--Footer section starts here-->
+        <!-- Footer -->
         <footer class="p-3 d-none d-md-block mb-5 mt-5" style="background-color: rgb(224, 224, 224);">
             <div class="container-fluid p-0">
                 <div class="row">
@@ -532,11 +378,10 @@ if (isset($_POST['add'])) {
                 </div>
             </a>
         </footer>
-        <!--Footer section ends here-->
+        <!-- Footer -->
     </main>
 </body>
-<script src="./js/script.js"></script>
-
+<!-- <script src="./bootstrap/js/bootstrap.bundle.min.js"></script> -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
 
 </html>
