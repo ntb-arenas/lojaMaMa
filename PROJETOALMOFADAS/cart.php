@@ -1,7 +1,7 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
 session_start();
 include_once  './loginSession/connect_DB.php';
-include_once("./server/component.php");
 
 // if (!isset($_SESSION['USER'])) {
 //     header("Location: ./index.php");
@@ -11,7 +11,11 @@ include_once("./server/component.php");
 if (isset($_POST['remove'])) {
     if ($_GET['action'] == 'remove') {
         foreach ($_SESSION['cart'] as $key => $value) {
-            if ($value["product_id"] == $_GET['id']) {
+            if ($value["product_id1"] == $_GET['id']) {
+                unset($_SESSION['cart'][$key]);
+                echo "<script>window.location = 'cart.php'</script>";
+            }
+            if ($value["product_id_cunha"] == $_GET['id']) {
                 unset($_SESSION['cart'][$key]);
                 echo "<script>window.location = 'cart.php'</script>";
             }
@@ -217,54 +221,100 @@ if (isset($_POST['remove'])) {
             <div class="row px-5">
                 <div class="col-md-7">
                     <div class="shopping-cart">
-                        <h6>My Cart</h6>
+                        <h4><strong>Carrinho de compras</strong></h4>
                         <hr>
-
                         <?php
-
                         $total = 0;
-                        if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-                            $product_id = array_column($_SESSION['cart'], 'product_id');
+                        if (isset($_SESSION['cart'])) {
+                            foreach ($_SESSION['cart'] as $key => $value) {
+                                $result = mysqli_query($_conn, "SELECT * FROM OPTION_GROUP");
+                                if (mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        if ($row['CODE'] == $value['product_id1']) {
+                        ?>
+                                            <div class='container border rounded mb-3'>
+                                                <div class="row">
+                                                    <div class="col-4 text-center">
+                                                        <form action='cart.php?action=remove&id=<?php echo $row['CODE'] ?>' method='post' class='cart-items'>
+                                                            <img src=<?php echo $row['IMAGE_URL'] ?> alt='Image1' class='img-fluid'>
 
-                            $result = mysqli_query($_conn, "SELECT * FROM OPTION_GROUP");
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                foreach ($product_id as $id) {
-                                    if ($row['CODE'] == $id) {
-                                        cartElement($row['IMAGE_URL'], $row['NAME'], $row['PRICE'], $row['CODE']);
-                                        $total = $total + (int)$row['PRICE'];
+                                                            <h5 class='pt-2'>(Frente): <?php echo $row['NAME'] ?></h5>
+                                                    </div>
+
+
+                                                <?php
+                                                $total = $total + (int)$row['PRICE'];
+                                            }
+                                            if ($row['CODE'] == $value['product_id2']) {
+                                                ?>
+                                                    <div class="col-4 text-center">
+                                                        <img src=<?php echo $row['IMAGE_URL'] ?> alt='Image1' class='img-fluid'>
+                                                        <h5 class='pt-2'>(Verso): <?php echo $row['NAME'] ?></h5>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <h5 class='pt-2'>€<?php echo $row['PRICE'] ?></h5>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <button type='submit' class='btn btn-danger m-2' name='remove'>Remover</button>
+                                                    </div>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        <?php
+                                            }
+                                            if ($row['CODE'] == $value['product_id_cunha']) {
+                                        ?>
+                                            <div class="container border rounded mb-3">
+
+                                                <form action='cart.php?action=remove&id=<?php echo $row['CODE'] ?>' method='post' class='cart-items'>
+                                                    <div class="row">
+                                                        <div class="col-4 text-center">
+                                                            <img src=<?php echo $row['IMAGE_URL'] ?> alt='Image1' class='img-fluid'>
+                                                            <h5 class='pt-2'><?php echo $row['NAME'] ?></h5>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <h5 class='pt-2'>€<?php echo $row['PRICE'] ?></h5>
+                                                        </div>
+                                                        <div class="col-2">
+                                                            <button type='submit' class='btn btn-danger m-2' name='remove'>Remover</button>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                        <?php
+                                                $total = $total + (int)$row['PRICE'];
+                                            }
+                                        }
                                     }
                                 }
                             }
-                        } else {
-                            echo "<h5>Cart is Empty</h5>";
-                        }
-
                         ?>
 
                     </div>
                 </div>
                 <div class="col-md-4 offset-md-1 border rounded mt-5 bg-white h-25">
-
                     <div class="pt-4">
-                        <h6>PRICE DETAILS</h6>
+                        <h6>Resumo</h6>
                         <hr>
                         <div class="row price-details">
                             <div class="col-md-6">
                                 <?php
                                 if (isset($_SESSION['cart'])) {
                                     $count  = count($_SESSION['cart']);
-                                    echo "<h6>Price ($count items)</h6>";
+                                    echo "<h6>Preço ($count Produtos)</h6>";
                                 } else {
-                                    echo "<h6>Price (0 items)</h6>";
+                                    echo "<h6>Preço (0 Produtos)</h6>";
                                 }
                                 ?>
-                                <h6>Delivery Charges</h6>
+                                <h6>Custo de envio</h6>
                                 <hr>
-                                <h6>Amount Payable</h6>
+                                <h6>TOTAL DA ENCOMENDA</h6>
                             </div>
                             <div class="col-md-6">
                                 <h6>$<?php echo $total; ?></h6>
-                                <h6 class="text-success">FREE</h6>
+                                <h6 class="text-success">Envio gratis</h6>
                                 <hr>
                                 <h6>$<?php
                                         echo $total;

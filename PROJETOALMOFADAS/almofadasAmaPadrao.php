@@ -1,32 +1,43 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
 session_start();
 include_once  './loginSession/connect_DB.php';
-include_once('./server/component.php');
 
 if (isset($_POST['add'])) {
     if (isset($_SESSION['cart'])) {
-        $item_array_id = array_column($_SESSION['cart'], "product_id1",);
 
-        if (in_array($product_id, $item_array_id)) {
-            echo "<script>window.location = 'almofadasAmaPadrao.php'</script>";
+        $item_array_id1 = array_column($_SESSION['cart'], "product_id1");
+        $item_array_id2 = array_column($_SESSION['cart'], "product_id2");
+
+        if (in_array($_POST['product_id1'], $item_array_id1) && in_array($_POST['product_id2'], $item_array_id2)) {
+            $temporaryMsg = 'Item already exists';
         } else {
 
             $count = count($_SESSION['cart']);
             $item_array = array(
-                'product_id' => $_POST['product_id1'] && $_POST['product_id2']
+                'product_id1' => $_POST['product_id1'],
+                'product_id2' => $_POST['product_id2'],
             );
 
             $_SESSION['cart'][$count] = $item_array;
         }
+
+        // $count = count($_SESSION['cart']);
+        // $item_array = array(
+        //     'product_id1' => $_POST['product_id1'],
+        //     'product_id2' => $_POST['product_id2'],
+        // );
+
+        // $_SESSION['cart'][$count] = $item_array;
     } else {
 
         $item_array = array(
-            'product_id' => $_POST['product_id1'] && $_POST['product_id2']
+            'product_id1' => $_POST['product_id1'],
+            'product_id2' => $_POST['product_id2'],
         );
 
         // Create new session variable
         $_SESSION['cart'][0] = $item_array;
-        print_r($_SESSION['cart']);
     }
 }
 
@@ -262,9 +273,9 @@ if (isset($_POST['add'])) {
 
 
         <!-- Carousel wrapper -->
-        <div class="container mt-5 mb-custom">
+        <div class="container-fluid mt-5 mb-custom">
             <div class="row">
-                <div class="col-12 col-md-8">
+                <div class="col-8">
                     <div class="row">
                         <div class="col-12 col-md-6">
                             <div id="carouselFrente" class="carousel slide carousel-fade" data-mdb-ride="carousel">
@@ -401,28 +412,41 @@ if (isset($_POST['add'])) {
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-4">
+                <div class="col-4">
                     <form action='almofadasAmaPadrao.php' method='post'>
-                        <select name='product_id1'>
-                            <?php
-                            $result = mysqli_query($_conn, "SELECT * FROM OPTION_GROUP WHERE PACK = 'OP1'");
-                            while ($row = mysqli_fetch_assoc($result)) { ?>
-                                <option value='<?php echo $productid = $row['CODE'] ?>'><?php echo $productname = $row['NAME'] ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-                        <select name='product_id2'>
-                            <?php
-                            $result = mysqli_query($_conn, "SELECT * FROM OPTION_GROUP WHERE PACK = 'OP2'");
-                            while ($row = mysqli_fetch_assoc($result)) { ?>
-                                <option value='<?php echo $productid = $row['CODE'] ?>'><?php echo $productname = $row['NAME'] ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
+                        <h3 class="m-0">Almofadas de Amamentação</h3>
+                        <hr class="mt-2">
+                        <p class="m-0"><small>Preço:</small><strong class="fs-2"> 45€</strong></p>
+                        <div class="row">
+                            <div class="col">
+                                Frente
+                                <select class="form-select" name='product_id1'>
+                                    <?php
+                                    $result = mysqli_query($_conn, "SELECT * FROM OPTION_GROUP WHERE PACK = 'OP1'");
+                                    while ($row = mysqli_fetch_assoc($result)) { ?>
+                                        <option value='<?php echo $productid = $row['CODE'] ?>'><?php echo $productname = $row['NAME'] ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col">
+                                Verso
+                                <select class="form-select" name='product_id2'>
+                                    <?php
+                                    $result = mysqli_query($_conn, "SELECT * FROM OPTION_GROUP WHERE PACK = 'OP2'");
+                                    while ($row = mysqli_fetch_assoc($result)) { ?>
+                                        <option value='<?php echo $productid = $row['CODE'] ?>'><?php echo $productname = $row['NAME'] ?></option>
+                                    <?php
+                                    } 
+                                    echo $temporaryMsg;
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
                         <button class="btn mt-3" id="btn-customized" name="add" type="submit">COMPRAR <i class='fas fa-shopping-cart'></i></button>
                     </form>
+                    <div class="alert alert-warning" role="alert"><?php echo $temporaryMsg; ?></div>
                 </div>
             </div>
         </div>
