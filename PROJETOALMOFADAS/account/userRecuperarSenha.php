@@ -168,6 +168,7 @@ if (isset($_POST['botao-recuperar-senha'])) {
             }
             ?>
         </div>
+        
         <?php include_once '../components/footer_redirect.php'; ?>
     </main>
 </body>
