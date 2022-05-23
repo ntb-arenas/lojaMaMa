@@ -22,14 +22,6 @@ if (isset($_POST['add'])) {
 
             $_SESSION['cart'][$count] = $item_array;
         }
-
-        // $count = count($_SESSION['cart']);
-        // $item_array = array(
-        //     'product_id1' => $_POST['product_id1'],
-        //     'product_id2' => $_POST['product_id2'],
-        // );
-
-        // $_SESSION['cart'][$count] = $item_array;
     } else {
 
         $item_array = array(
@@ -55,7 +47,6 @@ if (isset($_POST['add'])) {
     <title>Ma-Ma</title>
     <!-- stylesheet ---------------------------->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/almofadasAma.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
     <!-- page icon --------------------------------->
     <link rel="shortcut icon" href="gallery/logo.png">
@@ -113,27 +104,22 @@ if (isset($_POST['add'])) {
                             <div id="carouselFrente" class="carousel slide carousel-fade" data-mdb-ride="carousel">
                                 <!-- Slides -->
                                 <div class="carousel-inner mb-5 shadow-1-strong rounded-3">
-                                    <div class="carousel-item active">
-                                        <img src="./gallery/productimg/amarelo.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/azul.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/rosa.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/castanho.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/laranja.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/verde.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/azulao.jpg" class="d-block w-100" alt="..." />
-                                    </div>
+                                    <?php
+                                    $result = mysqli_query($_conn, "SELECT * FROM OPTION_GROUP WHERE PACK = 'OP1'");
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        if ($row['CODE'] == 'F1') {
+                                            echo '
+                                            <div class="carousel-item active">
+                                                <img src="' . $row["IMAGE_URL"] . '" class="d-block w-100" alt="..." />
+                                            </div>';
+                                        } else {
+                                            echo '
+                                            <div class="carousel-item">
+                                                <img src="' . $row["IMAGE_URL"] . '" class="d-block w-100" alt="..." />
+                                            </div>';
+                                        }
+                                    }
+                                    ?>
                                 </div>
                                 <!-- Slides -->
 
@@ -150,27 +136,26 @@ if (isset($_POST['add'])) {
 
                                 <!-- Thumbnails -->
                                 <div class="carousel-indicators" style="margin-bottom: -20px;">
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/amarelo.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="1" aria-label="Slide 2" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/azul.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="2" aria-label="Slide 3" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/rosa.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="3" aria-label="Slide 4" style="width: 100px">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/castanho.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="4" aria-label="Slide 5" style="width: 100px">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/laranja.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="5" aria-label="Slide 6" style="width: 100px">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/verde.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="6" aria-label="Slide 7" style="width: 100px">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/azulao.jpg" class="img-fluid" />
-                                    </button>
+                                    <?php
+                                    $num = 0;
+                                    $slideNum = 1;
+                                    $result = mysqli_query($_conn, "SELECT * FROM OPTION_GROUP WHERE PACK = 'OP1'");
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        if ($row['CODE'] == 'F1') {
+                                            echo '
+                                            <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="' . $num . '" class="active" aria-current="true" aria-label="Slide ' . $slideNum . '" style="width: 100px;">
+                                                <img class="d-block w-100 shadow-1-strong rounded" src="' . $row['IMAGE_URL'] . '" class="img-fluid" />
+                                            </button>';
+                                        } else {
+                                            $num = $num + 1;
+                                            $slideNum = $slideNum + 1;
+                                            echo '
+                                            <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="' . $num . '" aria-label="Slide ' . $slideNum . '" style="width: 100px;">
+                                                <img class="d-block w-100 shadow-1-strong rounded" src="' . $row['IMAGE_URL'] . '" class="img-fluid" />
+                                            </button>';
+                                        }
+                                    }
+                                    ?>
                                 </div>
                                 <!-- Thumbnails -->
                             </div>
@@ -180,27 +165,22 @@ if (isset($_POST['add'])) {
                             <div id="carouselVerso" class="carousel slide carousel-fade" data-mdb-ride="carousel">
                                 <!-- Slides -->
                                 <div class="carousel-inner mb-5 shadow-1-strong rounded-3">
-                                    <div class="carousel-item active">
-                                        <img src="./gallery/productimg/cidade.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/carros.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/baloes.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/circo_verde.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/selva.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/malmequeres.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/productimg/riscas_largas.jpg" class="d-block w-100" alt="..." />
-                                    </div>
+                                    <?php
+                                    $result = mysqli_query($_conn, "SELECT * FROM OPTION_GROUP WHERE PACK = 'OP2'");
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        if ($row['CODE'] == 'V1') {
+                                            echo '
+                                            <div class="carousel-item active">
+                                                <img src="' . $row["IMAGE_URL"] . '" class="d-block w-100" alt="..." />
+                                            </div>';
+                                        } else {
+                                            echo '
+                                            <div class="carousel-item">
+                                                <img src="' . $row["IMAGE_URL"] . '" class="d-block w-100" alt="..." />
+                                            </div>';
+                                        }
+                                    }
+                                    ?>
                                 </div>
                                 <!-- Slides -->
 
@@ -217,27 +197,26 @@ if (isset($_POST['add'])) {
 
                                 <!-- Thumbnails -->
                                 <div class="carousel-indicators" style="margin-bottom: -20px;">
-                                    <button type="button" data-mdb-target="#carouselVerso" data-mdb-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/cidade.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselVerso" data-mdb-slide-to="1" aria-label="Slide 2" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/carros.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselVerso" data-mdb-slide-to="2" aria-label="Slide 3" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/baloes.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselVerso" data-mdb-slide-to="3" aria-label="Slide 4" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/circo_verde.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselVerso" data-mdb-slide-to="4" aria-label="Slide 5" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/selva.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselVerso" data-mdb-slide-to="5" aria-label="Slide 6" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/malmequeres.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselVerso" data-mdb-slide-to="6" aria-label="Slide 7" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/productimg/riscas_largas.jpg" class="img-fluid" />
-                                    </button>
+                                    <?php
+                                    $num = 0;
+                                    $slideNum = 1;
+                                    $result = mysqli_query($_conn, "SELECT * FROM OPTION_GROUP WHERE PACK = 'OP2'");
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        if ($row['CODE'] == 'V1') {
+                                            echo '
+                                            <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="' . $num . '" class="active" aria-current="true" aria-label="Slide ' . $slideNum . '" style="width: 100px;">
+                                                <img class="d-block w-100 shadow-1-strong rounded" src="' . $row['IMAGE_URL'] . '" class="img-fluid" />
+                                            </button>';
+                                        } else {
+                                            $num = $num + 1;
+                                            $slideNum = $slideNum + 1;
+                                            echo '
+                                            <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="' . $num . '" aria-label="Slide ' . $slideNum . '" style="width: 100px;">
+                                                <img class="d-block w-100 shadow-1-strong rounded" src="' . $row['IMAGE_URL'] . '" class="img-fluid" />
+                                            </button>';
+                                        }
+                                    }
+                                    ?>
                                 </div>
                                 <!-- Thumbnails -->
                             </div>
@@ -282,14 +261,16 @@ if (isset($_POST['add'])) {
                                         <option value='<?php echo $productid = $row['CODE'] ?>'><?php echo $productname = $row['NAME'] ?></option>
                                     <?php
                                     }
-                                    echo $temporaryMsg;
                                     ?>
                                 </select>
                             </div>
                         </div>
                         <button class="btn mt-3" id="btn-customized" name="add" type="submit">COMPRAR <i class='fas fa-shopping-cart'></i></button>
                     </form>
-                    <?php echo $temporaryMsg; ?>
+                    <?php
+                    echo $temporaryMsg;
+                    mysqli_free_result($result);
+                    ?>
                 </div>
             </div>
         </div>

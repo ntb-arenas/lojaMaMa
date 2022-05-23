@@ -9,8 +9,7 @@ if (isset($_POST['add'])) {
         $item_array_id = array_column($_SESSION['cart'], "product_id");
 
         if (in_array($_POST['product_id'], $item_array_id)) {
-            echo "<script>alert('Already added to cart');</script>";
-            echo "<script>window.location = 'cunhas.php'</script>";
+            $temporaryMsg = '<div class="alert alert-warning mt-3 p-2" role="alert">Item already exists</div>';
         } else {
 
             $count = count($_SESSION['cart']);
@@ -69,18 +68,22 @@ if (isset($_POST['add'])) {
                             <div id="carouselFrente" class="carousel slide carousel-fade" data-mdb-ride="carousel">
                                 <!-- Slides -->
                                 <div class="carousel-inner mb-5 shadow-1-strong rounded-3">
-                                    <div class="carousel-item active">
-                                        <img src="./gallery/cunhaProduct/azul_bebe.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/cunhaProduct/azul_escuro.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/cunhaProduct/laranja.jpg" class="d-block w-100" alt="..." />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="./gallery/cunhaProduct/verde.jpg" class="d-block w-100" alt="..." />
-                                    </div>
+                                    <?php
+                                    $result = mysqli_query($_conn, "SELECT * FROM OPTION_GROUP WHERE PACK = 'OPC'");
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        if ($row['CODE'] == 'C1') {
+                                            echo '
+                                            <div class="carousel-item active">
+                                                <img src="' . $row["IMAGE_URL"] . '" class="d-block w-100" alt="..." />
+                                            </div>';
+                                        } else {
+                                            echo '
+                                            <div class="carousel-item">
+                                                <img src="' . $row["IMAGE_URL"] . '" class="d-block w-100" alt="..." />
+                                            </div>';
+                                        }
+                                    }
+                                    ?>
                                 </div>
                                 <!-- Slides -->
 
@@ -97,18 +100,26 @@ if (isset($_POST['add'])) {
 
                                 <!-- Thumbnails -->
                                 <div class="carousel-indicators" style="margin-bottom: -20px;">
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/cunhaProduct/azul_bebe.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="1" aria-label="Slide 2" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/cunhaProduct/azul_escuro.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="2" aria-label="Slide 3" style="width: 100px;">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/cunhaProduct/laranja.jpg" class="img-fluid" />
-                                    </button>
-                                    <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="3" aria-label="Slide 4" style="width: 100px">
-                                        <img class="d-block w-100 shadow-1-strong rounded" src="./gallery/cunhaProduct/verde.jpg" class="img-fluid" />
-                                    </button>
+                                    <?php
+                                    $num = 0;
+                                    $slideNum = 1;
+                                    $result = mysqli_query($_conn, "SELECT * FROM OPTION_GROUP WHERE PACK = 'OPC'");
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        if ($row['CODE'] == 'C1') {
+                                            echo '
+                                            <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="' . $num . '" class="active" aria-current="true" aria-label="Slide ' . $slideNum . '" style="width: 100px;">
+                                                <img class="d-block w-100 shadow-1-strong rounded" src="' . $row['IMAGE_URL'] . '" class="img-fluid" />
+                                            </button>';
+                                        } else {
+                                            $num = $num + 1;
+                                            $slideNum = $slideNum + 1;
+                                            echo '
+                                            <button type="button" data-mdb-target="#carouselFrente" data-mdb-slide-to="' . $num . '" aria-label="Slide ' . $slideNum . '" style="width: 100px;">
+                                                <img class="d-block w-100 shadow-1-strong rounded" src="' . $row['IMAGE_URL'] . '" class="img-fluid" />
+                                            </button>';
+                                        }
+                                    }
+                                    ?>
                                 </div>
                                 <!-- Thumbnails -->
                             </div>
@@ -149,8 +160,10 @@ if (isset($_POST['add'])) {
                                 </button>
                             </div>
                         </div>
-
-
+                        <?php
+                        echo $temporaryMsg;
+                        mysqli_free_result($result);
+                        ?>
                     </form>
                 </div>
             </div>
