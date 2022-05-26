@@ -65,13 +65,11 @@ if (isset($_POST['remove'])) {
                                     <div class="col-3">
 
                                     </div>
-                                    <div class="col-2">
-                                        <h4><strong>Quantidade</strong></h4>
+                                    <div class="col-2 text-center">
+                                        <h4><strong>Qty</strong></h4>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-2 text-center">
                                         <h4><strong>Preço</strong></h4>
-                                    </div>
-                                    <div class="col-2">
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +101,7 @@ if (isset($_POST['remove'])) {
                                                     <div class="col-2 text-center">
                                                         <h5 class='pt-2'><?php echo $value['quantityInput'] ?></h5>
                                                     </div>
-                                                    <div class="col-2">
+                                                    <div class="col-2 text-center">
                                                         <h5 class='pt-2'>€<?php echo $totalQuantity ?></h5>
                                                     </div>
                                                     <div class="col-2 d-none d-sm-block">

@@ -48,7 +48,9 @@ if (isset($_POST['add'])) {
     <!-- page icon --------------------------------->
     <link rel="shortcut icon" href="gallery/logo.png">
     <!-- fonts ------------------------------------------>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 
 </head>
@@ -128,9 +130,10 @@ if (isset($_POST['add'])) {
                 </div>
                 <div class="col-12 col-md-6">
                     <form action='cunhas.php' method='post'>
-                        <h3 class="m-0">Cunhas</h3>
+                        <h3 class="m-0" style="font-weight: 700;">Cunhas</h3>
                         <hr class="mt-2">
-                        <p class="m-0"><small>Preço:</small><strong class="fs-2"> 45€</strong></p>
+                        <p style="font-size: 0.9rem;">Durante a gravidez ocorrem alguns desconfortos que, com algumas soluções alternativas, poderão ser minorados. Nesse sentido a MA-MA® acaba de lançar um produto que poderá servir de grande apoio, devolvendo à futura mamã uma boa qualidade de vida.</p>
+                        <p class="m-0"><small>Preço:</small><span class="fs-3" style="font-weight: 500;"> 45€</span></p>
                         <p class="m-0">
                             <small>
                                 Qty:
@@ -150,7 +153,7 @@ if (isset($_POST['add'])) {
                                         <option value='<?php echo $product_id = $row['CODE'] ?>'><?php echo $productname = $row['NAME'] ?></option>
                                         <?php $product_id = $row['CODE']; ?>
                                     <?php
-                                    $description = $row['DESCRIPTION'];
+                                        $description = $row['DESCRIPTION'];
                                     }
                                     ?>
                                 </select>
@@ -170,6 +173,52 @@ if (isset($_POST['add'])) {
             </div>
         </div>
 
+        <div class="container mt-5">
+            <h1 class="text-center m-0" style="font-weight: 500;">Modo de Utilização</h1>
+        </div>
+        <hr>
+        <div class="container-fluid" style="background: rgb(223,223,223);background: linear-gradient(0deg, rgba(223,223,223,0.8435749299719888) 0%, rgba(238,238,238,0) 100%);">
+            <div class="container-lg">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6">
+                        <img src="gallery/cunhaProduct/1.png" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <p class="fs-3 m-0" style="font-weight: 400; color: #000;">Posição deitada de barriga para cima</p>
+                        <p class="fs-custom" style="font-weight: 400; color: #414042;">A nova Cunha Pré Parto MA-MA® foi concebida especialmente para que a mamã consiga adoptar a posição deitada de barriga para cima, favorecendo assim o seu repouso ou sono em detrimento do habitual desconforto que sente quando o faz sem qualquer apoio de uma cunha específica ou com uma almofada normal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" style="background: rgb(223,223,223);background: linear-gradient(0deg, rgba(223,223,223,0.8435749299719888) 0%, rgba(238,238,238,0) 100%);">
+            <div class="container-lg">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6 order-2 order-md-1">
+                        <p class="fs-3 m-0" style="font-weight: 400; color: #000;">Posição sentada</p>
+                        <p class="fs-custom" style="font-weight: 400; color: #414042;">O diferentes ângulos da Cunha Pré Parto MA-MA® permitem que a grávida adopte outras posições além da posição deitada de barriga para cima. Poderá ser utilizada numa posição sentada de forma a apoiar melhor as costas enquanto está a ler na cama ou a ver televisão no sofá.</p>
+                    </div>
+                    <div class="col-12 col-md-6 order-1 order-md-2">
+                        <img src="gallery/cunhaProduct/2.png" class="img-fluid" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container mt-3">
+            <h1 class="text-center m-0" style="font-weight: 500;">Acabamentos</h1>
+        </div>
+        <hr>
+        <div class="container">
+            <p><b>Todas as nossas Cunhas têm acabamentos importantes para o bem-estar da mãe:</b></p>
+            <p><b>- Forro com fecho</b>: Permite a lavagem sempre que necessário ou modificar o padrão do forro sempre que quiser.</b></p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-3 mb-1"><img src="gallery/cunhaProduct/1Acab.jpg" class="img-fluid" alt=""></div>
+                <div class="col-12 col-sm-3 mb-1"><img src="gallery/cunhaProduct/2Acab.jpg" class="img-fluid" alt=""></div>
+            </div>
+        </div>
         <!--Product page ends here-->
 
         <?php include_once './components/footer.php'; ?>

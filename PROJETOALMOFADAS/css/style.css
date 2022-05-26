@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 .gradient-insta {
   background: #f09433;
   background: -moz-linear-gradient(
@@ -45,7 +44,8 @@ body {
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif !important;
+  scroll-behavior: smooth;
 }
 
 #btn-customized {
@@ -73,6 +73,15 @@ body {
   color: rgb(93, 93, 93);
 }
 
+.footer-link-style {
+  color: #4f4f4f;
+  transition: 0.2s;
+}
+
+.footer-link-style:hover {
+  color: #2c2c2c;
+}
+
 @media only screen and (max-width: 425px) {
   .cover-message-fs {
     font-size: calc(0.9rem + 0.9vw);
@@ -85,6 +94,9 @@ body {
 
   .footer-login-page {
     margin-top: 3rem;
+  }
+  .fs-custom{
+    font-size: 0.9rem;
   }
 }
 
