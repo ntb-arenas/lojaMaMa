@@ -15,7 +15,7 @@ if (isset($_POST['add'])) {
             $count = count($_SESSION['cart']);
             $item_array = array(
                 'product_id' => $_POST['product_id'],
-                'quantityInput' => $_POST['quantityInput']
+                'quantityInput' => $_POST['quantityInput'],
             );
 
             $_SESSION['cart'][$count] = $item_array;
@@ -24,7 +24,7 @@ if (isset($_POST['add'])) {
 
         $item_array = array(
             'product_id' => $_POST['product_id'],
-            'quantityInput' => $_POST['quantityInput']
+            'quantityInput' => $_POST['quantityInput'],
         );
 
         // Create new session variable
@@ -64,7 +64,7 @@ if (isset($_POST['add'])) {
             <div class="row">
                 <div class="col-12 col-md-6">
                     <div class="row">
-                        <div class="col-12 col-md-12">
+                        <div class="col-12 col-md-12 mb-3">
                             <div id="carouselFrente" class="carousel slide carousel-fade" data-mdb-ride="carousel">
                                 <!-- Slides -->
                                 <div class="carousel-inner mb-5 shadow-1-strong rounded-3">
@@ -150,6 +150,7 @@ if (isset($_POST['add'])) {
                                         <option value='<?php echo $product_id = $row['CODE'] ?>'><?php echo $productname = $row['NAME'] ?></option>
                                         <?php $product_id = $row['CODE']; ?>
                                     <?php
+                                    $description = $row['DESCRIPTION'];
                                     }
                                     ?>
                                 </select>

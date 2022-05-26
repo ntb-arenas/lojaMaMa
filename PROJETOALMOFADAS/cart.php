@@ -83,12 +83,12 @@ if (isset($_POST['remove'])) {
                                     while ($row = mysqli_fetch_array($result)) {
                                         if ($row['CODE'] == $value['product_id1']) {
                             ?>
-                                            <div class='container border rounded mb-3'>
-                                                <div class="row">
+                                            <div class='container mb-3 gx-0'>
+                                                <div class="row gx-0">
                                                     <div class="col-3 text-center">
                                                         <form action='cart.php?action=remove&id=<?php echo $row['CODE'] ?>' method='post' class='cart-items'>
                                                             <img src=<?php echo $row['IMAGE_URL'] ?> alt='Image1' class='img-fluid'>
-                                                            <h5 class='pt-2'>(Frente): <?php echo $row['NAME'] ?></h5>
+                                                            <h5 class='pt-2 cover-message-fs'>(Frente): <?php echo $row['NAME'] ?></h5>
                                                     </div>
                                                 <?php
                                                 $totalQuantity = (int)$row['PRICE'] * $value['quantityInput'];
@@ -98,7 +98,7 @@ if (isset($_POST['remove'])) {
                                                 ?>
                                                     <div class="col-3 text-center">
                                                         <img src=<?php echo $row['IMAGE_URL'] ?> alt='Image1' class='img-fluid'>
-                                                        <h5 class='pt-2'>(Verso): <?php echo $row['NAME'] ?></h5>
+                                                        <h5 class='pt-2 cover-message-fs'>(Verso): <?php echo $row['NAME'] ?></h5>
                                                     </div>
                                                     <div class="col-2 text-center">
                                                         <h5 class='pt-2'><?php echo $value['quantityInput'] ?></h5>
@@ -106,11 +106,11 @@ if (isset($_POST['remove'])) {
                                                     <div class="col-2">
                                                         <h5 class='pt-2'>€<?php echo $totalQuantity ?></h5>
                                                     </div>
-                                                    <div class="col-3 d-none d-sm-block">
+                                                    <div class="col-2 d-none d-sm-block">
                                                         <button type='submit' class='btn btn-danger m-2' name='remove'>Remover</button>
                                                     </div>
                                                     <div class="col-2 d-sm-none text-center">
-                                                        <button type='submit' class='btn btn-danger p-0 fs-5' name='remove'>X</button>
+                                                        <button type='submit' class='btn btn-danger p-0 fs-5' name='remove'>×</button>
                                                     </div>
                                                     </form>
                                                 </div>
@@ -119,17 +119,16 @@ if (isset($_POST['remove'])) {
                                             }
                                             if ($row['CODE'] == $value['product_id']) {
                                         ?>
-                                            <div class="container border rounded mb-3">
-
+                                            <div class="container mb-3 gx-0">
                                                 <form action='cart.php?action=remove&id=<?php echo $row['CODE'] ?>' method='post' class='cart-items'>
                                                     <?php
                                                     $totalQuantity = (int)$row['PRICE'] * $value['quantityInput'];
                                                     $total = $total + $totalQuantity;
                                                     ?>
-                                                    <div class="row">
+                                                    <div class="row gx-0">
                                                         <div class="col-3 text-center">
                                                             <img src=<?php echo $row['IMAGE_URL'] ?> alt='Image1' class='img-fluid'>
-                                                            <h5 class='pt-2'><?php echo $row['NAME'] ?></h5>
+                                                            <h5 class='pt-2 cover-message-fs'><?php echo $row['DESCRIPTION'] . '/' . $row['NAME'] ?></h5>
                                                         </div>
                                                         <div class="col-3">
 
@@ -140,11 +139,11 @@ if (isset($_POST['remove'])) {
                                                         <div class="col-2">
                                                             <h5 class='pt-2'>€<?php echo $totalQuantity ?></h5>
                                                         </div>
-                                                        <div class="col-3 d-none d-sm-block">
+                                                        <div class="col-2 d-none d-sm-block">
                                                             <button type='submit' class='btn btn-danger m-2' name='remove'>Remover</button>
                                                         </div>
                                                         <div class="col-2 d-sm-none text-center">
-                                                            <button type='submit' class='btn btn-danger p-0 fs-5' name='remove'>X</button>
+                                                            <button type='submit' class='btn btn-danger p-0 fs-5' name='remove'>×</button>
                                                         </div>
                                                     </div>
 
