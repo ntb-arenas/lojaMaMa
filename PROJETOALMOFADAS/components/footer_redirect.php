@@ -18,14 +18,14 @@
 
                 <!--Grid column-->
                 <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-                    <h4 class="">Sobre Nós</h4>
+                    <h4 style="border-bottom: 1px solid #ada9a9!important;">Sobre Nós</h4>
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="#!" class="">Quem somos</a>
+                            <a href="#!" class="footer-link-style">Quem somos</a>
                         </li>
                         <li>
-                            <a href="#!" class="">Contactos</a>
+                            <a href="#!" class="footer-link-style">Contactos</a>
                         </li>
                     </ul>
                 </div>
@@ -33,17 +33,17 @@
 
                 <!--Grid column-->
                 <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-                    <h4 class="">Informações</h4>
+                    <h4 style="border-bottom: 1px solid #ada9a9!important;">Informações</h4>
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="#!" class="">Modos de Pagamento</a>
+                            <a href="#!" class="footer-link-style">Modos de Pagamento</a>
                         </li>
                         <li>
-                            <a href="#!" class="">Envio de Encomendas e Custos</a>
+                            <a href="#!" class="footer-link-style">Envio de Encomendas e Custos</a>
                         </li>
                         <li>
-                            <a href="#!" class="">Garantias</a>
+                            <a href="#!" class="footer-link-style">Garantias</a>
                         </li>
                     </ul>
                 </div>
@@ -51,7 +51,7 @@
 
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
-                <h4>Siga-nos</h4>
+                    <h4 style="border-bottom: 1px solid #ada9a9!important;">Siga-nos</h4>
                     <div class="container">
                         <!-- Section: Social media -->
                         <section class="mb-4">

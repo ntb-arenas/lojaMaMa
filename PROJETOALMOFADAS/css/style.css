@@ -1,34 +1,24 @@
-.gradient-insta {
-  background: #f09433;
-  background: -moz-linear-gradient(
-    45deg,
-    #f09433 0%,
-    #e6683c 25%,
-    #dc2743 50%,
-    #cc2366 75%,
-    #bc1888 100%
-  );
-  background: -webkit-linear-gradient(
-    45deg,
-    #f09433 0%,
-    #e6683c 25%,
-    #dc2743 50%,
-    #cc2366 75%,
-    #bc1888 100%
-  );
-  background: linear-gradient(
-    45deg,
-    #f09433 0%,
-    #e6683c 25%,
-    #dc2743 50%,
-    #cc2366 75%,
-    #bc1888 100%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
-}
-
+/* Theme */
 .theme-color {
   color: #ff7b46;
+}
+.theme-background-color {
+  background-color: #ff7b46 !important;
+}
+.transparent-background-color {
+  background-color: transparent !important;
+}
+.no-border {
+  border: 0px !important;
+}
+/* Theme */
+.modo-utilizacao-bg {
+  background: rgb(223, 223, 223);
+  background: linear-gradient(
+    0deg,
+    rgba(223, 223, 223, 0.844) 0%,
+    rgba(238, 238, 238, 0) 100%
+  );
 }
 
 #account-style {
@@ -95,7 +85,7 @@ body {
   .footer-login-page {
     margin-top: 3rem;
   }
-  .fs-custom{
+  .fs-custom {
     font-size: 0.9rem;
   }
 }
@@ -137,4 +127,41 @@ body {
   .footer-login-page {
     margin-top: 20rem;
   }
+}
+
+.gradient-insta {
+  background: #f09433;
+  background: -moz-linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+}
+
+.gradient-custom {
+  background: rgb(215,63,14);
+  background: -moz-radial-gradient(circle, rgba(215,63,14,1) 0%, rgba(252,159,27,1) 62%, rgba(252,159,27,1) 100%);
+  background: -webkit-radial-gradient(circle, rgba(215,63,14,1) 0%, rgba(252,159,27,1) 62%, rgba(252,159,27,1) 100%);
+  background: radial-gradient(circle, rgba(215,63,14,1) 0%, rgba(252,159,27,1) 62%, rgba(252,159,27,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d73f0e",endColorstr="#fc9f1b",GradientType=1);
 }
