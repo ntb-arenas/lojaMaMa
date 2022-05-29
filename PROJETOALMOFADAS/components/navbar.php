@@ -77,6 +77,8 @@
 
         </div>
     </div>
+
+    
     <div class="collapse navbar-collapse px-2" id="navbarTogglerDemo02">
         <ul class="navbar-nav justify-content-around col-12">
 
@@ -91,7 +93,7 @@
                     $ctd = $ctd + 1;
             ?>
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link fs-5 dropdown-toggle" id="dropdownMenuLink" data-mdb-boundary="scrollParent" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="nav-link fs-custom-navbar dropdown-toggle" id="dropdownMenuLink" data-mdb-boundary="scrollParent" data-mdb-toggle="dropdown" aria-expanded="false">
                             <?php echo $rowTablecategoryDropdown['TITLE'] ?>
                         </a>
                         <?php
@@ -118,7 +120,7 @@
                 while ($rowTablecategory = mysqli_fetch_assoc($resultTablecategory)) {
                     $ctd = $ctd + 1;
             ?>
-                    <li class="nav-item"><a href="/lojaMaMa/PROJETOALMOFADAS/product/<?php echo $rowTablecategory['LINK'] ?>" class="nav-link fs-5"> <?php echo $rowTablecategory['TITLE'] ?></a></li>
+                    <li class="nav-item"><a href="/lojaMaMa/PROJETOALMOFADAS/product/<?php echo $rowTablecategory['LINK'] ?>" class="nav-link fs-custom-navbar"> <?php echo $rowTablecategory['TITLE'] ?></a></li>
             <?php
                 }
             }

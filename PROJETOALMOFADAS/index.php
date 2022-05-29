@@ -37,115 +37,8 @@ include_once  './loginSession/connect_DB.php';
             <h3 class="text-center m-3 cover-message-fs" style="color: rgb(93, 93, 93);">Com a Ma-Ma, a vida da mãe e do seu bebé nunca foi tão fácil. Descubra os nossos produtos!</h3>
         </div>
 
-        
-
-        <section class="gradient-custom">
-            <div class="container ">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-md-12">
-                        <div class="text-center">
-                            <i class="fas fa-quote-left fa-3x text-white"></i>
-                        </div>
-                        <div class="card">
-                            <div class="card-body px-4 py-5">
-                                <!-- Carousel wrapper -->
-                                <div id="carouselDarkVariant" class="carousel slide carousel-dark" data-mdb-ride="carousel">
-                                    <!-- Indicators -->
-                                    <div class="carousel-indicators mb-0">
-                                        <?php
-                                        $num = 0;
-                                        $slideNum = 1;
-                                        $result = mysqli_query($_conn, "SELECT * FROM REVIEWS");
-                                        while ($row = mysqli_fetch_array($result)) {
-                                            if ($row['CODE'] == 'R1') {
-                                                echo '
-                                            <button data-mdb-target="#carouselDarkVariant" data-mdb-slide-to="' . $num . '" class="active" aria-current="true" aria-label="Slide ' . $slideNum . '"></button>
-                                            ';
-                                            } else {
-                                                $num = $num + 1;
-                                                $slideNum = $slideNum + 1;
-                                                echo '
-                                                <button data-mdb-target="#carouselDarkVariant" data-mdb-slide-to="' . $num . '" aria-label="Slide ' . $slideNum . '"></button>';
-                                            }
-                                        }
-                                        ?>
-                                    </div>
-
-                                    <!-- Inner -->
-                                    <div class="carousel-inner pb-5">
-                                        <!-- Single item -->
-                                        <?php
-                                        $result = mysqli_query($_conn, "SELECT * FROM REVIEWS");
-                                        while ($row = mysqli_fetch_array($result)) {
-                                            if ($row['CODE'] == 'R1') {
-                                                echo '
-                                                <div class="carousel-item active">
-                                                    <div class="row d-flex justify-content-center">
-                                                        <div class="col-lg-10 col-xl-8">
-                                                            <div class="row">
-                                                                <div class="col-md-4 col-lg-4 d-flex justify-content-center">
-                                                                    <img src="' . $row['IMAGE_URL'] . '" class="img-fluid shadow-1 mb-4 mb-lg-0" />
-                                                                </div>
-                                                                <div class="col-9 col-md-8 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
-                                                                    <h4 class="mb-4">' . $row['NAME'] . '</h4>
-                                                                    <p class="mb-0 pb-3">
-                                                                    ' . $row['DESCRIPTION'] . '
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>';
-                                            } else {
-                                                echo '
-                                                <div class="carousel-item">
-                                                    <div class="row d-flex justify-content-center">
-                                                        <div class="col-lg-10 col-xl-8">
-                                                            <div class="row">
-                                                               <div class="col-md-4 col-lg-4 d-flex justify-content-center">
-                                                                   <img src="' . $row['IMAGE_URL'] . '" class="img-fluid shadow-1 mb-4 mb-lg-0" />
-                                                                </div>
-                                                                <div class="col-9 col-md-8 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
-                                                                    <h4 class="mb-4">' . $row['NAME'] . '</h4>
-                                                                    <p class="mb-0 pb-3">
-                                                                    ' . $row['DESCRIPTION'] . '
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>';
-                                            }
-                                        }
-                                        ?>
-                                        <!-- Single item -->
-                                    </div>
-                                    <!-- Inner -->
-
-                                    <!-- Controls -->
-                                    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselDarkVariant" data-mdb-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button" data-mdb-target="#carouselDarkVariant" data-mdb-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
-                                </div>
-                                <!-- Carousel wrapper -->
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <i class="fas fa-quote-right fa-3x text-white"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
         <!-- Product Page -->
-        <!-- <div class="container-fluid px-lg-5 d-none d-sm-block">
+        <div class="container-fluid px-lg-5 d-none d-sm-block">
             <div class="row mx-lg-n5">
                 <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
                     <a href="#">
@@ -248,7 +141,114 @@ include_once  './loginSession/connect_DB.php';
                     </a>
                 </div>
             </div>
-        </div> -->
+        </div>
+
+
+        <section class="gradient-custom ">
+            <div class="container ">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <i class="fas fa-quote-left fa-3x text-white"></i>
+                        </div>
+                        <div class="card">
+                            <div class="card-body px-4 py-5">
+                                <!-- Carousel wrapper -->
+                                <div id="carouselDarkVariant" class="carousel slide" data-mdb-interval="false">
+                                    <!-- Indicators -->
+                                    <div class="carousel-indicators mb-0">
+                                        <?php
+                                        $num = 0;
+                                        $slideNum = 1;
+                                        $result = mysqli_query($_conn, "SELECT * FROM REVIEWS");
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            if ($row['CODE'] == '1') {
+                                                echo '
+                                            <button data-mdb-target="#carouselDarkVariant" data-mdb-slide-to="' . $num . '" class="active theme-background-color" aria-current="true" aria-label="Slide ' . $slideNum . '"></button>
+                                            ';
+                                            } else {
+                                                $num = $num + 1;
+                                                $slideNum = $slideNum + 1;
+                                                echo '
+                                                <button class="theme-background-color" data-mdb-target="#carouselDarkVariant" data-mdb-slide-to="' . $num . '" aria-label="Slide ' . $slideNum . '"></button>';
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+
+                                    <!-- Inner -->
+                                    <div class="carousel-inner pb-5">
+                                        <!-- Single item -->
+                                        <?php
+                                        $result = mysqli_query($_conn, "SELECT * FROM REVIEWS");
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            if ($row['CODE'] == '1') {
+                                                echo '
+                                                <div class="carousel-item active">
+                                                    <div class="row d-flex justify-content-center">
+                                                        <div class="col-lg-10 col-xl-8">
+                                                            <div class="row">
+                                                                <div class="col-md-4 col-lg-4 d-flex justify-content-center">
+                                                                    <img src="' . $row['IMAGE_URL'] . '" class="rounded-8 shadow-1 mb-4 mb-lg-0" width="200"
+                                                                    height="200"/>
+                                                                </div>
+                                                                <div class="col-9 col-md-8 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
+                                                                    <h4 class="mb-4">' . $row['NAME'] . '</h4>
+                                                                    <p class="mb-0 pb-3">
+                                                                    ' . $row['DESCRIPTION'] . '
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>';
+                                            } else {
+                                                echo '
+                                                <div class="carousel-item">
+                                                    <div class="row d-flex justify-content-center">
+                                                        <div class="col-lg-10 col-xl-8">
+                                                            <div class="row">
+                                                               <div class="col-md-4 col-lg-4 d-flex justify-content-center">
+                                                                   <img src="' . $row['IMAGE_URL'] . '" class="rounded-8 shadow-1 mb-4 mb-lg-0" width="200"
+                                                                   height="200" />
+                                                                </div>
+                                                                <div class="col-9 col-md-8 col-lg-7 col-xl-8 text-center text-lg-start mx-auto mx-lg-0">
+                                                                    <h4 class="mb-4">' . $row['NAME'] . '</h4>
+                                                                    <p class="mb-0 pb-3">
+                                                                    ' . $row['DESCRIPTION'] . '
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>';
+                                            }
+                                        }
+                                        ?>
+                                        <!-- Single item -->
+                                    </div>
+                                    <!-- Inner -->
+
+                                    <!-- Controls -->
+                                    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselDarkVariant" data-mdb-slide="prev">
+                                        <span class="carousel-control-prev-icon theme-color"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next " type="button" data-mdb-target="#carouselDarkVariant" data-mdb-slide="next">
+                                        <span class="carousel-control-next-icon theme-color"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                                <!-- Carousel wrapper -->
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-quote-right fa-3x text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- Product Page -->
 
         <?php include_once './components/footer.php'; ?>

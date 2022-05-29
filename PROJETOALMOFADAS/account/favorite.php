@@ -40,17 +40,17 @@ if ($usersResult->num_rows > 0) {
         <!-- page icon --------------------------------->
         <link rel="shortcut icon" href="../gallery/logo.png">
         <!-- fonts ------------------------------------------>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-        <!-- Google Fonts -->
     </head>
 </head>
 
 <body>
+    <?php include_once '../components/header.php'; ?>
+    <?php include_once '../components/navbar.php'; ?>
     <main>
-        <?php include_once '../components/header_redirect.php'; ?>
-        <?php include_once '../components/navbar_redirect.php'; ?>
-
         <div class="container py-5">
             <h2>Olá <?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"] ?>, </h2>
             <h5><a href="../loginSession/userSair.php">Logout</a></h5>
@@ -64,6 +64,7 @@ if ($usersResult->num_rows > 0) {
                         <a href="./encomendas.php" class="list-group-item list-group-item-action px-3 border-0">AS MINHAS ENCOMENDAS</a>
                         <a href="./userEditAccount.php" class="list-group-item list-group-item-action px-3 border-0">EDITAR CONTA</a>
                         <a href="./favorite.php" class="list-group-item list-group-item-action px-3 border-0  active" id="account-style" aria-current="true">LISTA DE DESEJOS</a>
+                        <a href="./reviews.php" class="list-group-item list-group-item-action px-3 border-0">REVIEWS</a>
                     </div>
                 </div>
                 <div class="col-9 border-start">
@@ -134,8 +135,8 @@ if ($usersResult->num_rows > 0) {
             </div>
         </div> -->
 
-        <?php include_once '../components/footer_redirect.php'; ?>
     </main>
+    <?php include_once '../components/footer.php'; ?>
 </body>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>

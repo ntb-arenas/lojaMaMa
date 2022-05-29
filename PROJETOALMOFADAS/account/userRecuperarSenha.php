@@ -122,8 +122,8 @@ if (isset($_POST['botao-recuperar-senha'])) {
 
 <body>
     <main>
-        <?php include_once '../components/header_redirect.php'; ?>
-        <?php include_once '../components/navbar_redirect.php'; ?>
+        <?php include_once '../components/header.php'; ?>
+        <?php include_once '../components/navbar.php'; ?>
 
         <div class="container border p-3 mt-3">
             <h2>Recuperar senha</h2>
@@ -169,7 +169,7 @@ if (isset($_POST['botao-recuperar-senha'])) {
             ?>
         </div>
         
-        <?php include_once '../components/footer_redirect.php'; ?>
+        <?php include_once '../components/footer.php'; ?>
     </main>
 </body>
 

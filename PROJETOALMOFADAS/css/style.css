@@ -12,6 +12,7 @@
   border: 0px !important;
 }
 /* Theme */
+
 .modo-utilizacao-bg {
   background: rgb(223, 223, 223);
   background: linear-gradient(
@@ -88,6 +89,9 @@ body {
   .fs-custom {
     font-size: 0.9rem;
   }
+  .fs-custom-navbar {
+    font-size: 1rem !important;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -100,6 +104,9 @@ body {
 @media only screen and (min-width: 425px) {
   .footer-login-page {
     margin-top: 3rem;
+  }
+  .fs-custom-navbar {
+    font-size: 1.1rem !important;
   }
 }
 
@@ -117,6 +124,9 @@ body {
     border-left: 2px solid;
     border-color: rgb(203, 203, 203);
   }
+  .fs-custom-navbar {
+    font-size: 1.2rem !important;
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -126,6 +136,9 @@ body {
 
   .footer-login-page {
     margin-top: 20rem;
+  }
+  .fs-custom-navbar {
+    font-size: 1.3rem !important;
   }
 }
 
@@ -159,9 +172,24 @@ body {
 }
 
 .gradient-custom {
-  background: rgb(215,63,14);
-  background: -moz-radial-gradient(circle, rgba(215,63,14,1) 0%, rgba(252,159,27,1) 62%, rgba(252,159,27,1) 100%);
-  background: -webkit-radial-gradient(circle, rgba(215,63,14,1) 0%, rgba(252,159,27,1) 62%, rgba(252,159,27,1) 100%);
-  background: radial-gradient(circle, rgba(215,63,14,1) 0%, rgba(252,159,27,1) 62%, rgba(252,159,27,1) 100%);
+  background: rgb(215, 63, 14);
+  background: -moz-radial-gradient(
+    circle,
+    rgba(215, 63, 14, 1) 0%,
+    rgba(252, 159, 27, 1) 62%,
+    rgba(252, 159, 27, 1) 100%
+  );
+  background: -webkit-radial-gradient(
+    circle,
+    rgba(215, 63, 14, 1) 0%,
+    rgba(252, 159, 27, 1) 62%,
+    rgba(252, 159, 27, 1) 100%
+  );
+  background: radial-gradient(
+    circle,
+    rgba(215, 63, 14, 1) 0%,
+    rgba(252, 159, 27, 1) 62%,
+    rgba(252, 159, 27, 1) 100%
+  );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d73f0e",endColorstr="#fc9f1b",GradientType=1);
 }

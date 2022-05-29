@@ -184,62 +184,9 @@ if (isset($_POST['btn-save-changes'])) {
 </head>
 
 <body>
+    <?php include_once '../components/header.php'; ?>
+    <?php include_once '../components/navbar.php'; ?>
     <main>
-        <!--Header starts here-->
-        <header>
-            <div class="logo">
-                <a href="../index.php">
-                    <img src="../gallery/logo.png" alt="Ma-ma logo" class="logo">
-                </a>
-            </div>
-
-            <div class="search-bar">
-                <input type="search" placeholder="Encontre o produto de que precisa...">
-                <span><img src="../gallery/searchBtn.png" id="searchBtn"></span>
-            </div>
-
-            <?php
-            if (isset($_SESSION["USER"])) { ?>
-                <div class="divIcon">
-                    <span><a href="#"><img src="../gallery/like.png" id="likeBtn"></a></span>
-                    <span><a href="../profileAccount.php"><img src="../gallery/user.png" id="userBtn"></a></span>
-                    <span><a href="#"><img src="../gallery/cart.png" id="cartBtn"></a></span>
-                </div>
-            <?php } else { ?>
-                <div class="divIcon">
-                    <span><a href="#"><img src="gallery/like.png" id="likeBtn"></a></span>
-                    <span><a href="./login.php"><img src="../gallery/user.png" id="userBtn"></a></span>
-                    <span><a href="#"><img src="gallery/cart.png" id="cartBtn"></a></span>
-                </div>
-            <?php } ?>
-
-
-        </header>
-        <!--Header ends here-->
-
-        <!--Navbar starts here-->
-        <div class="navBar">
-            <?php
-
-
-            $resultTablecategory = mysqli_query($_conn, "SELECT * FROM CATEGORY WHERE VISIBLE = 1 ORDER BY SEQUENCE ASC");
-
-            if (mysqli_num_rows($resultTablecategory) > 0) {
-                $ctd = 0;
-                while ($rowTablecategory = mysqli_fetch_assoc($resultTablecategory)) {
-                    $ctd = $ctd + 1;
-
-            ?>
-
-                    <span><a href="<?php echo $rowTablecategory['LINK'] ?>"><?php echo $rowTablecategory['TITLE'] ?></a></span>
-
-            <?php
-                }
-            }
-            mysqli_free_result($resultTablecategory);
-            ?>
-        </div>
-        <!--Navbar ends here-->
 
         <div class="information-container">
             <div class="sidebar-main">
@@ -334,59 +281,8 @@ if (isset($_POST['btn-save-changes'])) {
                     <br>
                 </div>
             </div>
-
-            <!--Footer section starts here-->
-            <footer>
-                <div class="coverFooter">
-                    <div class="logoContainer">
-                        <div class="logo">
-                            <a href="../index.php"><img src="../gallery/logo.png" alt=""></a>
-                        </div>
-                        <div class="apoio">
-                            <h5>Apoio Comercial</h5>
-                            <h4><b>916 532 480</b></h4>
-                            <p>das 9h às 18h</p>
-                        </div>
-                    </div>
-
-                    <div class="componentContainer">
-                        <div class="component">
-                            <div class="componentTitle">
-                                <h4>Sobre Nós</h4>
-                            </div>
-                            <div class="line"></div>
-                            <div class="componentContent">
-                                <a href="#">Quem Somos</a><br>
-                                <a href="#">Contactos</a>
-                            </div>
-                        </div>
-                        <div class="component">
-                            <div class="componentTitle">
-                                <h4>Informações</h4>
-                            </div>
-                            <div class="line"></div>
-                            <div class="componentContent">
-                                <a href="#">Modos de Pagamento</a><br>
-                                <a href="#">Envio de Encomendas e Custos</a>
-                                <a href="#">Garantias</a>
-                            </div>
-                        </div>
-                        <div class="component">
-                            <div class="componentTitle">
-                                <h4>Siga-nos</h4>
-                            </div>
-                            <div class="line"></div>
-                            <div class="componentContent">
-                                <a href="#">Instagram</a><br>
-                                <a href="#">Facebook</a><br>
-                                <a href="#">Twitter</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-            <!--Footer section ends here-->
     </main>
+    <?php include_once '../components/footer.php'; ?>
 </body>
 
 <script src="../js/script.js"></script>
