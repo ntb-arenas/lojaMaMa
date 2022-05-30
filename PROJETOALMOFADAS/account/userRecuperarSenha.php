@@ -118,6 +118,11 @@ if (isset($_POST['botao-recuperar-senha'])) {
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
+    <style>
+        .disclaimer {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -168,7 +173,7 @@ if (isset($_POST['botao-recuperar-senha'])) {
             }
             ?>
         </div>
-        
+
         <?php include_once '../components/footer.php'; ?>
     </main>
 </body>

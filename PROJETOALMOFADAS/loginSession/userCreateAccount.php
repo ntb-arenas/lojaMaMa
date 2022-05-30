@@ -174,96 +174,105 @@ if (isset($_POST['submit-create-account'])) {
                 // Update efetuado com sucesso, preparar e enviar mensagem 
                 $id = base64_encode($username);
 
-                $urlPagina = "ntbarenas.000webhostapp.com";
-
-                $phpContentTop = file_get_contents("email_templateTop.html");
-                $phpContentBottom = file_get_contents("email_templateBottom.html");
-
-
+                $urlPagina = "ma-ma.ml";
 
                 $mensagem  = "<table width=100% border=0><tr>";
                 $mensagem .= '<td class="flex-out">
-                <div style="display: block; text-align: center; margin: 0 auto">
-                  <a
-                    href="https://ntbarenas.000webhostapp.com/index.php"
-                    style="display: block; border: none"
-                    ><img src="https://i.ibb.co/8751HZh/AMMHeader.png" alt="AMMHeader" border="0"></a>
-                </div>
-                </td>';
+                                <div style="display: block; text-align: center; margin: 0 auto">
+                                <a
+                                href="https://ma-ma.ml/index"
+                                style="display: block; border: none"
+                                ><img src="https://i.ibb.co/8751HZh/AMMHeader.png" alt="Ma-Ma Header" border="0"></a>
+                            </div>
+                            </td>';
                 $mensagem .= '<tr><td colspan=2><div
-                style="
-                  font-family: Arial, Helvetica, sans-serif;
-                  color: #393838;
-                  font-size: 12pt;
-                  line-height: 18pt;
-                  text-align: center;
-                  margin-top: 20px;
-                "
-                >
-                <center>
-                  <span style="color: #ec6408; font-size: 18.5pt"
-                    ><strong>Obrigado por se ter registado! </strong></span
-                  >
-                </center>
-                </div></td></tr>';
-                $mensagem .= '<tr><td colspan=2><br/><div
-                style="
-                  font-family: Arial, Helvetica, sans-serif;
-                  color: #393838;
-                  line-height: 14pt;
-                  text-align: center;
-                  margin-top: 10px;
-                "
-                >
-                <center>
-                  <span style="font-size: 14.5pt"
-                    ><strong
-                      >Para ativar a sua conta basta carregar na seguinte
-                      ligação:
-                    </strong></span
-                  >
-                </center>
-                <a  class="btn" id="btn-customized" style="font-size: 12pt; margin-top: 10px;" role="button" href="' . $urlPagina . '/loginSession/userVerifyAccount.php?id=' . $id . '&code=' . $code . '">Clique aqui para ativar a sua conta</a>
-                <center>
-                  <span style="font-size: 14.5pt"
-                    ><strong
-                      >Esta mensagem foi-lhe enviada automaticamente.</strong
-                    ></span
-                  >
-                </center>
-                </div></td></tr>';
+                            style="
+                            font-family: Arial, Helvetica, sans-serif;
+                            color: #393838;
+                            font-size: 12pt;
+                                line-height: 18pt;
+                                text-align: center;
+                                margin-top: 20px;
+                                "
+                                >
+                                <center>
+                                <span style="color: #ec6408; font-size: 18.5pt"
+                                    ><strong>Obrigado por se ter registado! </strong></span
+                                >
+                                </center>
+                                </div>
+                                </td>
+                                </tr>';
+                $mensagem .= '
+                                <tr><td colspan=2><br/><div
+                                style="
+                                font-family: Arial, Helvetica, sans-serif;
+                                color: #393838;
+                                line-height: 14pt;
+                                text-align: center;
+                                margin-top: 10px;
+                                "
+                                >
+                                <center>
+                                <span style="font-size: 14.5pt"
+                                    ><strong
+                                    >Para ativar a sua conta ' . $email . ' basta
+                                    <br>
+                                    carregar na seguinte
+                                    ligação:
+                                    </strong></span
+                                >
+                                </center>
+                                <div style="display: block">
+                                <img
+                                    src="https://preview.wundermanlab.com/amm/20210706/spcr_13.png"
+                                    alt=""
+                                    class="spacer"
+                                />
+                                </div>
+                                <a  class="btn" id="btn-customized" style="font-size: 12pt; margin-top: 10px;" role="button" href="' . $urlPagina . '/loginSession/userVerifyAccount.php?id=' . $id . '&code=' . $code . '"><img src="https://i.ibb.co/f09G72M/cta.png" alt="Clique aqui para ativar" border="0"></a>
+                                <div style="display: block">
+                                <img
+                                    src="https://preview.wundermanlab.com/amm/20210706/spcr_13.png"
+                                    alt=""
+                                    class="spacer"
+                                />
+                                </div>
+                                </div></td></tr>';
 
                 $mensagem .= '<tr><td colspan=2><div
-                style="
-                  font-family: Arial, Helvetica, sans-serif;
-                  color: #333;
-                  font-size: 8pt;
-                  line-height: 10pt;
-                  text-align: center;
-                  font-weight: bold;
-                  margin-top: 5rem;
-                "
-                >
-                Centro Pré e Pós Parto - Rua José da Costa Pedreira No12, 1750-130
-                Lisboa
-                <div style="display: block">
-                  <img
-                    src="https://preview.wundermanlab.com/amm/20210706/spcr_13.png"
-                    alt=""
-                    class="spacer"
-                  />
-                </div></td></tr>';
+                                style="
+                                font-family: Arial, Helvetica, sans-serif;
+                                color: #333;
+                                font-size: 8pt;
+                                line-height: 10pt;
+                                text-align: center;
+                                font-weight: bold;
+                                margin-top: 5rem;
+                                "
+                                >
+                                Centro Pré e Pós Parto - Rua José da Costa Pedreira No12, 1750-130
+                                Lisboa
+                                <div style="display: block">
+                                <img
+                                    src="https://preview.wundermanlab.com/amm/20210706/spcr_13.png"
+                                    alt=""
+                                    class="spacer"
+                                />
+                                </div>
+                                </td
+                                ></tr>';
                 $mensagem .= '<td class="flex-out">
-                <div style="display: block; text-align: center; margin: 0 auto">
-                  <a
-                    style="display: block; border: none"
-                    ><img
-                    src="https://i.ibb.co/KWMLns0/footer.jpg"
-                    alt=""
-                    class="spacer logoFooter"
-                  /></a>
-                </div>
-                </td></table>';
+                                <div style="display: block; text-align: center; margin: 0 auto">
+                                <a
+                                    style="display: block; border: none"
+                                    ><img
+                                    src="https://i.ibb.co/KWMLns0/footer.jpg"
+                                    alt="Ma-Ma footer"
+                                    class="spacer logoFooter"
+                                /></a>
+                                </div>
+                                </td></table>';
 
 
                 $subject = "Ativação da sua conta em $urlPagina";
@@ -307,6 +316,11 @@ if (isset($_POST['submit-create-account'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        .disclaimer {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>

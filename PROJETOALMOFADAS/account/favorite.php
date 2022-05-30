@@ -44,6 +44,11 @@ if ($usersResult->num_rows > 0) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+        <style>
+            .disclaimer {
+                display: none;
+            }
+        </style>
     </head>
 </head>
 
@@ -51,90 +56,51 @@ if ($usersResult->num_rows > 0) {
     <?php include_once '../components/header.php'; ?>
     <?php include_once '../components/navbar.php'; ?>
     <main>
-        <div class="container py-5">
+        <div class="container py-3">
             <h2>Olá <?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"] ?>, </h2>
             <h5><a href="../loginSession/userSair.php">Logout</a></h5>
         </div>
 
         <div class="container-md">
             <div class="row">
-                <div class="col-3">
-                    <div class="list-group list-group-light">
+                <div class="col-12 col-md-3">
+                    <div class="list-group list-group-light d-none d-md-block">
                         <a href="./profileAccount.php" class="list-group-item list-group-item-action px-3 border-0">INFORMAÇÕES DA CONTA</a>
                         <a href="./encomendas.php" class="list-group-item list-group-item-action px-3 border-0">AS MINHAS ENCOMENDAS</a>
                         <a href="./userEditAccount.php" class="list-group-item list-group-item-action px-3 border-0">EDITAR CONTA</a>
                         <a href="./favorite.php" class="list-group-item list-group-item-action px-3 border-0  active" id="account-style" aria-current="true">LISTA DE DESEJOS</a>
                         <a href="./reviews.php" class="list-group-item list-group-item-action px-3 border-0">REVIEWS</a>
                     </div>
+                    <div class="container-fluid d-md-none p-0">
+                        <div class="accordion" id="menuPanel">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="menu">
+                                    <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        <p class="fs-3 m-0" style="font-weight: 400; color: #000;">Menu</p>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse no-border" aria-labelledby="menu" data-mdb-parent="#menuPanel">
+                                    <div class="accordion-body">
+                                        <div class="col-12 col-md-6">
+                                            <div class="list-group list-group-light">
+                                                <a href="./profileAccount.php" class="list-group-item list-group-item-action px-3 border-0">INFORMAÇÕES DA CONTA</a>
+                                                <a href="./encomendas.php" class="list-group-item list-group-item-action px-3 border-0">AS MINHAS ENCOMENDAS</a>
+                                                <a href="./userEditAccount.php" class="list-group-item list-group-item-action px-3 border-0">EDITAR CONTA</a>
+                                                <a href="./favorite.php" class="list-group-item list-group-item-action px-3 border-0 active" id="account-style" aria-current="true">LISTA DE DESEJOS</a>
+                                                <a href="./reviews.php" class="list-group-item list-group-item-action px-3 border-0">REVIEWS</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-9 border-start">
+                <div class="col-12 col-md-9 mt-3 border-start">
                     Wishlist
                 </div>
             </div>
         </div>
-
-        <!-- <div class="information-container">
-            <div class="sidebar-main">
-                <div class="customer-area">
-                    <h1>
-                        Olá 
-                    </h1>
-                    <h3><a href="./loginSession/userSair.php">Logout</a></h3>
-                </div>
-
-                <div class="account-panel">
-                    <h3>PAINEL DE CONTA</h3>
-                    <div class="account-panel-wrapper">
-                        <p><a href="#">A MINHA CONTA</a></p>
-                        <p><a href="#">AS MINHAS ENCOMENDAS</a></p>
-                        <p><a href="#">SUBSCRIÇÃO MARKETING</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="information-component">
-                <h1>A Minha conta</h1>
-
-                <div class="box-information">
-                    <div class="box-title">
-                        <h2 class="info_cont">INFORMAÇÃO DE CONTACTO</h2>
-                    </div>
-
-                    <div class="box-content">
-                        <p>
-                            <?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"] ?>
-                            <br>
-                            <?php echo $_SESSION["EMAIL_USER"] ?>
-                        </p>
-                    </div>
-                    <div class="div-btn-profile">
-                        <form action="./loginSession/userEditPass.php">
-                            <button class="btn-profile" name="button-edit-info" type="submit"><span>EDITAR</span></button>
-                        </form>
-                    </div>
-                </div>
-                <div class="box-information">
-                    <div class="box-title">
-                        <h2 class="info_cont">MORADA</h2>
-                    </div>
-
-                    <div class="box-content">
-                        <p><?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"]; ?></p>
-                        <p><?php echo $morada; ?></p>
-                        <p><?php echo $codPostal . ", " . $cidade; ?></p>
-                        <p><?php echo $pais; ?></p>
-                        <p><?php echo "T: " . $telemovel; ?></p>
-                    </div>
-
-                    <div class="div-btn-profile">
-                        <form action="./loginSession/userEditAccount.php">
-                            <button class="btn-profile" name="button-edit-morada" type="submit"><span>EDITAR</span></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
     </main>
     <?php include_once '../components/footer.php'; ?>
 </body>

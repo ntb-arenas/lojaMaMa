@@ -208,29 +208,58 @@ if (isset($_POST['btn-save-changes'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        .disclaimer {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
     <?php include_once '../components/header.php'; ?>
     <?php include_once '../components/navbar.php'; ?>
     <main>
-        <div class="container-md py-5">
+        <div class="container-md py-3">
             <h2>Olá <?php echo $_SESSION["FIRSTNAME_USER"] . " " . $_SESSION["LASTNAME_USER"] ?>, </h2>
             <h5><a href="../loginSession/userSair.php">Logout</a></h5>
         </div>
 
         <div class="container-md">
             <div class="row">
-                <div class="col-3">
-                    <div class="list-group list-group-light">
+                <div class="col-12 col-md-3">
+                    <div class="list-group list-group-light d-none d-md-block">
                         <a href="./profileAccount.php" class="list-group-item list-group-item-action px-3 border-0">INFORMAÇÕES DA CONTA</a>
                         <a href="./encomendas.php" class="list-group-item list-group-item-action px-3 border-0">AS MINHAS ENCOMENDAS</a>
                         <a href="./userEditAccount.php" class="list-group-item list-group-item-action px-3 border-0  active" id="account-style" aria-current="true">EDITAR CONTA</a>
                         <a href="./favorite.php" class="list-group-item list-group-item-action px-3 border-0">LISTA DE DESEJOS</a>
                         <a href="./reviews.php" class="list-group-item list-group-item-action px-3 border-0">REVIEWS</a>
                     </div>
+                    <div class="container-fluid d-md-none p-0">
+                        <div class="accordion" id="menuPanel">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="menu">
+                                    <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        <p class="fs-3 m-0" style="font-weight: 400; color: #000;">Menu</p>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse no-border" aria-labelledby="menu" data-mdb-parent="#menuPanel">
+                                    <div class="accordion-body">
+                                        <div class="col-12 col-md-6">
+                                            <div class="list-group list-group-light">
+                                                <a href="./profileAccount.php" class="list-group-item list-group-item-action px-3 border-0">INFORMAÇÕES DA CONTA</a>
+                                                <a href="./encomendas.php" class="list-group-item list-group-item-action px-3 border-0">AS MINHAS ENCOMENDAS</a>
+                                                <a href="./userEditAccount.php" class="list-group-item list-group-item-action px-3 border-0  active" id="account-style" aria-current="true">EDITAR CONTA</a>
+                                                <a href="./favorite.php" class="list-group-item list-group-item-action px-3 border-0">LISTA DE DESEJOS</a>
+                                                <a href="./reviews.php" class="list-group-item list-group-item-action px-3 border-0">REVIEWS</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-9 border-start">
+                <div class="col-12 col-md-9 mt-3 border-start">
                     <div class="container border p-3">
                         <h2>Editar conta</h3>
 
