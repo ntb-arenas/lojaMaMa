@@ -47,7 +47,7 @@ include_once  './loginSession/connect_DB.php';
         <div class="container-fluid px-lg-5 d-none d-sm-block">
             <div class="row mx-lg-n5">
                 <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#">
+                    <a href="./product/almofadasAmaPadrao">
                         <div class="py-3 border h-100 hover-shadow">
                             <img class="img-fluid" src="gallery/almofadaImg.png" alt="">
                             <h4 class="text-center card-message-fs">ALMOFADAS DE AMAMENTAÇÃO</h4>
@@ -55,7 +55,7 @@ include_once  './loginSession/connect_DB.php';
                     </a>
                 </div>
                 <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#">
+                    <a href="./product/cunhas">
                         <div class="py-3 border h-100 hover-shadow">
                             <img class="img-fluid" src="gallery/cunhas.png" alt="">
                             <h4 class="text-center card-message-fs">CUNHAS</h4>
@@ -63,7 +63,7 @@ include_once  './loginSession/connect_DB.php';
                     </a>
                 </div>
                 <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#">
+                    <a href="./product/slings">
                         <div class="py-3 border h-100 hover-shadow">
                             <img class="img-fluid" src="gallery/slingBebe1.png" alt="">
                             <h4 class="text-center card-message-fs">SLINGS</h4>
@@ -71,7 +71,7 @@ include_once  './loginSession/connect_DB.php';
                     </a>
                 </div>
                 <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#">
+                    <a href="./product/mudaFraldas">
                         <div class="py-3 border h-100 hover-shadow">
                             <img class="img-fluid" src="gallery/mudaFraldas.png" alt="">
                             <h4 class="text-center card-message-fs">MUDA FRALDAS</h4>
@@ -79,7 +79,7 @@ include_once  './loginSession/connect_DB.php';
                     </a>
                 </div>
                 <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#">
+                    <a href="./product/kitMat">
                         <div class="py-3 border h-100 hover-shadow">
                             <img class="img-fluid" src="gallery/kitMaternidadeAzul.png" alt="">
                             <h4 class="text-center card-message-fs">KIT MATERNIDADE</h4>
@@ -87,7 +87,7 @@ include_once  './loginSession/connect_DB.php';
                     </a>
                 </div>
                 <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#">
+                    <a href="./product/almofadasAnti">
                         <div class="py-3 border h-100 hover-shadow">
                             <img class="img-fluid" src="gallery/antiColicas.png" alt="">
                             <h4 class="text-center card-message-fs">ALMOFADAS ANTI-CÓLICAS</h4>
@@ -99,7 +99,7 @@ include_once  './loginSession/connect_DB.php';
         <div class="container-fluid px-lg-5 d-block d-sm-none">
             <div class="row mx-lg-n5">
                 <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
+                    <a href="./product/almofadasAmaPadrao" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
                         <div class="border h-100">
                             <img class="img-fluid" src="gallery/almofadaImg.png" alt="">
                             <h4 class="text-center card-message-fs">ALMOFADAS DE AMAMENTAÇÃO</h4>
@@ -107,7 +107,7 @@ include_once  './loginSession/connect_DB.php';
                     </a>
                 </div>
                 <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
+                    <a href="./product/cunhas" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
                         <div class="border h-100">
                             <img class="img-fluid" src="gallery/cunhas.png" alt="">
                             <h4 class="text-center card-message-fs">CUNHAS</h4>
@@ -115,7 +115,7 @@ include_once  './loginSession/connect_DB.php';
                     </a>
                 </div>
                 <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
+                    <a href="./product/slings" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
                         <div class="border h-100">
                             <img class="img-fluid" src="gallery/slingBebe1.png" alt="">
                             <h4 class="text-center card-message-fs">SLINGS</h4>
@@ -123,7 +123,7 @@ include_once  './loginSession/connect_DB.php';
                     </a>
                 </div>
                 <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
+                    <a href="./product/mudaFraldas" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
                         <div class="border h-100">
                             <img class="img-fluid" src="gallery/mudaFraldas.png" alt="">
                             <h4 class="text-center card-message-fs">MUDA FRALDAS</h4>
@@ -131,7 +131,7 @@ include_once  './loginSession/connect_DB.php';
                     </a>
                 </div>
                 <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
+                    <a href="./product/kitMat" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
                         <div class="border h-100">
                             <img class="img-fluid" src="gallery/kitMaternidadeAzul.png" alt="">
                             <h4 class="text-center card-message-fs">KIT MATERNIDADE</h4>
@@ -139,7 +139,7 @@ include_once  './loginSession/connect_DB.php';
                     </a>
                 </div>
                 <div class="col-6 col-sm-6 col-md-4 py-3 px-lg-3">
-                    <a href="#" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
+                    <a href="./product/almofadasAnti" class="text-decoration-none" style="font-size: calc(0.5rem + .3vw); color: rgb(40, 40, 40);" role="button">
                         <div class="border h-100">
                             <img class="img-fluid" src="gallery/antiColicas.png" alt="">
                             <h4 class="text-center card-message-fs">ALMOFADAS ANTI-CÓLICAS</h4>

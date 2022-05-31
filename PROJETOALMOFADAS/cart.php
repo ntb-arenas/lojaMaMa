@@ -165,36 +165,40 @@ if (isset($_POST['remove'])) {
 
                     </div>
                 </div>
+
                 <div class="col-md-4 offset-md-1 border rounded mt-5 bg-white h-25">
-                    <div class="pt-4">
-                        <h5><strong>Resumo</strong></h5>
-                        <hr>
-                        <div class="row price-details">
-                            <div class="col-md-6">
-                                <?php
-                                if (isset($_SESSION['cart'])) {
-                                    $count  = count($_SESSION['cart']);
-                                    echo "<h6>Preço ($count Produtos)</h6>";
-                                } else {
-                                    echo "<h6>Preço (0 Produtos)</h6>";
-                                }
-                                ?>
-                                <h6>Custo de envio</h6>
-                                <hr>
-                                <h6>TOTAL DA ENCOMENDA</h6>
-                            </div>
-                            <div class="col-md-6">
-                                <h6>$<?php echo $total; ?></h6>
-                                <h6 class="text-success">Envio gratis</h6>
-                                <hr>
-                                <h6>$<?php
-                                        echo $total;
-                                        ?></h6>
-                            </div>
+                    <h5 class="mt-3"><strong>Resumo</strong></h5>
+                    <hr class="mt-1">
+                    <div class="row my-3">
+                        <div class="col-7">
+                            <?php
+                            if (isset($_SESSION['cart'])) {
+                                $count  = count($_SESSION['cart']);
+                                echo "<h6>Preço ($count Produtos)</h6>";
+                            } else {
+                                echo "<h6>Preço (0 Produto)</h6>";
+                            }
+                            ?>
+                        </div>
+                        <div class="col-5">
+                            <h6><?php echo $total; ?>€</h6>
+                        </div>
+                        <div class="col-7">
+                            <h6>Custo de envio</h6>
+                        </div>
+                        <div class="col-5">
+                            <h6 class="text-success">Envio gratis</h6>
+                        </div>
+                        <div class="container">
+                            <hr>
+                        </div>
+                        <div class="col-7"><h6>Total da encomenda</h6></div>
+                        <div class="col-5">
+                            <h6><?php echo $total; ?>€</h6>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
 
